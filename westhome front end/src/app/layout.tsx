@@ -23,16 +23,21 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Dubai Furniture`,
+    default: `${siteConfig.name} | Style your home, live better`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: "/images/logo-header.png",
+    apple: "/images/logo-header.png",
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [{ url: "/images/logo.jpg", alt: "West Home Furniture logo" }],
   },
 };
 

@@ -2,8 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/cms/types";
 import { ButtonLink } from "./ui/Button";
+import { WhatsAppButton } from "./WhatsAppButton";
+import { productWhatsAppMessage } from "@/lib/whatsapp";
 
 export function ProductCard({ product }: { product: Product }) {
+  const waMessage = productWhatsAppMessage({
+    id: product.id,
+    name: product.name,
+    categoryName: product.categoryName,
+    shortDescription: product.shortDescription,
+    slug: product.slug,
+  });
+
   return (
     <article className="group flex flex-col">
       <Link
@@ -31,16 +41,20 @@ export function ProductCard({ product }: { product: Product }) {
           {product.shortDescription}
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
-          <ButtonLink href={`/products/${product.slug}`} variant="ghost" size="sm" className="!px-0">
+          <ButtonLink
+            href={`/products/${product.slug}`}
+            variant="ghost"
+            size="sm"
+            className="!px-0"
+          >
             View details
           </ButtonLink>
-          <ButtonLink
-            href={`/enquire?product=${product.slug}`}
+          <WhatsAppButton
+            message={waMessage}
+            label="Enquire"
             variant="wood-outline"
             size="sm"
-          >
-            Enquire
-          </ButtonLink>
+          />
         </div>
       </div>
     </article>

@@ -8,7 +8,7 @@ import { contactWhatsAppMessage } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact WestHome Furniture on Hessa Street, Al Barsha, Dubai — call, email or WhatsApp.",
+    "Contact West Home Furniture Dubai on Hessa Street, Al Barsha — call or WhatsApp 055 870 8760.",
 };
 
 export default async function ContactPage() {
@@ -27,8 +27,8 @@ export default async function ContactPage() {
           Contact
         </h1>
         <p className="mt-3 max-w-2xl text-muted">
-          Reach the WestHome team by phone, email or WhatsApp — or send a
-          message below.
+          Reach the West Home team by phone, email or WhatsApp — or send a
+          message below. Open daily 9:00 AM – 9:00 PM.
         </p>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2">

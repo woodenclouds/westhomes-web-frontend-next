@@ -7,7 +7,7 @@ import { cms } from "@/lib/cms/client";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Browse WestHome Furniture products and categories — living, dining, bedroom and office.",
+    "Browse customised sofas, beds, chaises, chairs and curtains from West Home Furniture Dubai.",
 };
 
 type SearchParams = Promise<{

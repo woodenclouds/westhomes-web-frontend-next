@@ -6,7 +6,7 @@ import { Input, Select, Textarea } from "./ui/FormFields";
 import { Button } from "./ui/Button";
 import { StatusMessage } from "./ui/States";
 import { WhatsAppButton } from "./WhatsAppButton";
-import { enquiryFollowUpMessage } from "@/lib/whatsapp";
+import { enquiryFollowUpMessage, whatsappUrl } from "@/lib/whatsapp";
 
 type Props = {
   products: Product[];
@@ -40,6 +40,9 @@ export function EnquiryForm({
     phone: string;
     productOrRequirement: string;
     message: string;
+    productId?: string;
+    productCategory?: string;
+    productSlug?: string;
   } | null>(null);
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -113,7 +116,7 @@ export function EnquiryForm({
         }
 
         const data = (await res.json()) as { reference: string };
-        setSuccess({
+        const successPayload = {
           reference: data.reference,
           name: form.name.trim(),
           phone: form.phone.trim(),
@@ -121,7 +124,15 @@ export function EnquiryForm({
             selectedProduct?.name ??
             (form.type === "booking" ? "Booking request" : "General enquiry"),
           message: form.message.trim(),
-        });
+          productId: selectedProduct?.id,
+          productCategory: selectedProduct?.categoryName,
+          productSlug: selectedProduct?.slug,
+        };
+        setSuccess(successPayload);
+
+        // Also open WhatsApp with the enquiry + product details
+        const wa = enquiryFollowUpMessage(successPayload);
+        window.open(whatsappUrl(wa), "_blank", "noopener,noreferrer");
       } catch (err) {
         setFormError(
           err instanceof Error ? err.message : "Unable to submit enquiry",

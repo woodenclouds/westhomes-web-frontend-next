@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { SiteContact } from "@/lib/cms/types";
+import { Logo } from "./Logo";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { generalEnquiryMessage } from "@/lib/whatsapp";
 
@@ -19,10 +20,13 @@ export function Footer({ contact }: { contact: SiteContact }) {
     <footer className="mt-auto border-t border-border bg-charcoal text-stone">
       <div className="container-page grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <p className="font-display text-2xl">WestHome</p>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone/70">
-            Furniture shaped for Dubai living — from our Hessa Street showroom
-            in Al Barsha.
+          <Logo href="/" variant="footer" />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-stone/70">
+            Customised sofas, beds, chaises and curtains — from our Hessa Street
+            showroom in Al Barsha. Open daily 9:00 AM – 9:00 PM.
+          </p>
+          <p className="mt-2 text-xs uppercase tracking-[0.14em] text-stone/45">
+            Style your home, live better
           </p>
           <div className="mt-5">
             <WhatsAppButton

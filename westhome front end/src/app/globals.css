@@ -9,12 +9,12 @@
   --charcoal: #1c1917;
   --stone: #f7f4ef;
   --stone-deep: #ebe4d8;
-  --wood: #8b5e3c;
-  --wood-hover: #734c30;
-  --wood-soft: #c4a484;
+  --wood: #b8952e;
+  --wood-hover: #9a7a22;
+  --wood-soft: #d4af37;
   --success: #3f6b4a;
   --error: #9b3a2f;
-  --focus-ring: #8b5e3c;
+  --focus-ring: #d4af37;
 }
 
 @theme inline {

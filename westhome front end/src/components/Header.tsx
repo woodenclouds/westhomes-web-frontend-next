@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ButtonLink } from "./ui/Button";
+import { Logo } from "./Logo";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { generalEnquiryMessage } from "@/lib/whatsapp";
 
@@ -32,14 +33,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-stone/95 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
-        <Link
-          href="/"
-          className="font-display text-xl tracking-tight text-charcoal md:text-2xl"
-          onClick={closeMenu}
-        >
-          WestHome
-        </Link>
+      <div className="container-page flex h-[5.75rem] items-center justify-between gap-4 md:h-[7rem]">
+        <Logo href="/" priority onClick={closeMenu} variant="header" />
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {nav.map((item) => {
@@ -123,7 +118,10 @@ export function Header() {
               <ButtonLink href="/enquire" onClick={closeMenu}>
                 Enquire Now
               </ButtonLink>
-              <WhatsAppButton message={generalEnquiryMessage()} label="WhatsApp us" />
+              <WhatsAppButton
+                message={generalEnquiryMessage()}
+                label="WhatsApp us"
+              />
             </div>
           </nav>
         </div>

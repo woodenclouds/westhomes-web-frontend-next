@@ -6,7 +6,7 @@ import { cms } from "@/lib/cms/client";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about WestHome Furniture — a Dubai furniture house on Hessa Street, Al Barsha.",
+    "Learn about West Home Furniture Dubai — customised sofas, beds, chaises and curtains on Hessa Street, Al Barsha.",
 };
 
 export default async function AboutPage() {

@@ -1,16 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ProductGrid } from "@/components/ProductCard";
 import { ButtonLink } from "@/components/ui/Button";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { cms } from "@/lib/cms/client";
 import { generalEnquiryMessage } from "@/lib/whatsapp";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Home",
   description:
-    "WestHome Furniture — refined living, dining, bedroom and office pieces from Hessa Street, Al Barsha, Dubai.",
+    "West Home Furniture Dubai — customised sofas, beds, chaises and curtains. Hessa Street, Al Barsha. Open daily 9:00 AM – 9:00 PM.",
 };
 
 export default async function HomePage() {
@@ -23,43 +24,40 @@ export default async function HomePage() {
 
   const galleryPreview = gallery.slice(0, 4);
 
+  const heroSlides = [
+    {
+      src: home.heroImageUrl,
+      alt: "West Home Luxury Living showroom",
+    },
+    {
+      src: "/images/showroom-boucle-sectional.jpg",
+      alt: "Customised bouclé sectional sofa",
+    },
+    {
+      src: "/images/sofa-beige-custom.jpg",
+      alt: "Custom beige sectional with fabric options",
+    },
+    {
+      src: "/images/bedroom-taupe.jpg",
+      alt: "Customised upholstered bed and curtains",
+    },
+    {
+      src: "/images/sofa-powder-blue.jpg",
+      alt: "Powder blue cloud sofa",
+    },
+    {
+      src: "/images/showroom-white-set.jpg",
+      alt: "White living set in the showroom",
+    },
+  ];
+
   return (
     <>
-      <section className="relative min-h-[88vh] w-full overflow-hidden bg-charcoal text-stone">
-        <Image
-          src={home.heroImageUrl}
-          alt="WestHome furniture interior"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/45 to-charcoal/20" />
-        <div className="container-page relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 md:justify-center md:pb-24 md:pt-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone/70">
-            WestHome Furniture
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] text-stone sm:text-5xl md:text-6xl lg:text-7xl">
-            {home.heroHeadline}
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-stone/85 md:text-lg">
-            {home.heroSupport}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/products" size="lg">
-              Explore Products
-            </ButtonLink>
-            <ButtonLink
-              href="/enquire"
-              size="lg"
-              variant="ghost"
-              className="!text-stone hover:!bg-white/10"
-            >
-              Enquire Now
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel
+        slides={heroSlides}
+        headline={home.heroHeadline}
+        support={home.heroSupport}
+      />
 
       <section className="section-space">
         <div className="container-page grid items-center gap-10 md:grid-cols-2">
@@ -70,14 +68,14 @@ export default async function HomePage() {
             <p className="mt-4 text-muted leading-relaxed">{home.introBody}</p>
             <div className="mt-6">
               <ButtonLink href="/about" variant="wood-outline">
-                About WestHome
+                About West Home
               </ButtonLink>
             </div>
           </div>
           <div className="relative aspect-[5/4] overflow-hidden rounded-sm bg-stone-deep">
             <Image
               src={categories[0]?.imageUrl ?? home.heroImageUrl}
-              alt="WestHome showroom atmosphere"
+              alt="West Home customised sofa showroom"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -113,11 +111,11 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <h2 className="font-display text-3xl text-charcoal md:text-4xl">
-            Shop by room
+            Shop by category
           </h2>
           <p className="mt-2 max-w-xl text-muted">
-            Browse categories managed from our CMS — living, dining, bedroom and
-            workspace.
+            Customised sofas, beds &amp; chaises, chairs and curtains — made for
+            your space.
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((cat) => (
@@ -149,7 +147,7 @@ export default async function HomePage() {
       <section className="bg-stone-deep/60 section-space">
         <div className="container-page">
           <h2 className="font-display text-3xl text-charcoal md:text-4xl">
-            Why WestHome
+            Why West Home
           </h2>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {home.valueProps.map((item) => (

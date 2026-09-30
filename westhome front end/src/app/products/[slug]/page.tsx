@@ -44,7 +44,13 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const related = await cms.getRelatedProducts(product.id, 3);
-  const wa = productWhatsAppMessage(product.name, product.id);
+  const wa = productWhatsAppMessage({
+    id: product.id,
+    name: product.name,
+    categoryName: product.categoryName,
+    shortDescription: product.shortDescription,
+    slug: product.slug,
+  });
 
   return (
     <div className="section-space">
@@ -86,13 +92,17 @@ export default async function ProductDetailPage({
             ) : null}
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={`/enquire?product=${product.slug}&type=product`}>
-                Enquire Now
-              </ButtonLink>
               <WhatsAppButton
                 message={wa}
-                label="WhatsApp about this product"
+                label="Enquire on WhatsApp"
+                variant="primary"
               />
+              <ButtonLink
+                href={`/enquire?product=${product.slug}&type=product`}
+                variant="wood-outline"
+              >
+                Enquiry form
+              </ButtonLink>
             </div>
           </div>
         </div>

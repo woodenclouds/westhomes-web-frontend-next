@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "WestHome Furniture",
-  shortName: "WestHome",
+  name: "West Home Furniture Dubai",
+  shortName: "West Home",
   description:
-    "Premium furniture for Dubai homes — living, dining, bedroom and office pieces from WestHome on Hessa Street, Al Barsha.",
+    "West Home Furniture Dubai — customised sofas, beds, chaises and curtains. Style your home, live better. Hessa Street, Al Barsha. Open daily 9:00 AM – 9:00 PM.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "en_AE",
 };
