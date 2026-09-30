@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f4ef;
+  --foreground: #1c1917;
+  --surface: #ffffff;
+  --muted: #78716c;
+  --border: #e7e0d6;
+  --charcoal: #1c1917;
+  --stone: #f7f4ef;
+  --stone-deep: #ebe4d8;
+  --wood: #8b5e3c;
+  --wood-hover: #734c30;
+  --wood-soft: #c4a484;
+  --success: #3f6b4a;
+  --error: #9b3a2f;
+  --focus-ring: #8b5e3c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-charcoal: var(--charcoal);
+  --color-stone: var(--stone);
+  --color-stone-deep: var(--stone-deep);
+  --color-wood: var(--wood);
+  --color-wood-hover: var(--wood-hover);
+  --color-wood-soft: var(--wood-soft);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-fraunces);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--wood) 28%, white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.container-page {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+.section-space {
+  padding-block: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-space {
+    padding-block: 5.5rem;
+  }
+}
+
+.prose-west a {
+  color: var(--wood);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
