@@ -4,6 +4,8 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ButtonLink } from "@/components/ui/Button";
 import { cms } from "@/lib/cms/client";
 import { contactWhatsAppMessage } from "@/lib/whatsapp";
+import { PageIntro } from "@/components/SectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,16 +22,11 @@ export default async function ContactPage() {
   return (
     <div className="section-space">
       <div className="container-page">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-          Visit &amp; contact
-        </p>
-        <h1 className="mt-3 font-display text-4xl text-charcoal md:text-5xl">
-          Contact
-        </h1>
-        <p className="mt-3 max-w-2xl text-muted">
-          Reach the West Home team by phone, email or WhatsApp — or send a
-          message below. Open daily 9:00 AM – 9:00 PM.
-        </p>
+        <PageIntro
+          eyebrow="Visit"
+          title="Come to the showroom"
+          description="Hessa Street, Al Barsha. Call, email or WhatsApp — or leave a message below. Open daily 9:00 AM – 9:00 PM."
+        />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2">
           <div className="space-y-8">

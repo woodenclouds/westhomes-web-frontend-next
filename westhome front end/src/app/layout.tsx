@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/WhatsAppButton";
@@ -14,8 +14,8 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -51,7 +51,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Header />

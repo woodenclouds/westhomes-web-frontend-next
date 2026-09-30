@@ -6,8 +6,8 @@ type Props = {
   className?: string;
   priority?: boolean;
   onClick?: () => void;
-  /** Light header vs dark footer treatment */
   variant?: "header" | "footer";
+  tone?: "dark" | "light";
 };
 
 export function Logo({
@@ -16,13 +16,18 @@ export function Logo({
   priority,
   onClick,
   variant = "header",
+  tone = "dark",
 }: Props) {
   const isHeader = variant === "header";
-  // Transparent PNGs — no black plate. Header recolors white to charcoal for contrast.
-  const src = isHeader ? "/images/logo-header.png" : "/images/logo.png";
+  const src = !isHeader
+    ? "/images/logo.png"
+    : tone === "light"
+      ? "/images/logo-nav-light.png"
+      : "/images/logo-header.png";
+
   const sizes = isHeader
-    ? "h-[4.75rem] w-auto sm:h-[5.5rem] md:h-24"
-    : "h-[5rem] w-auto sm:h-[5.5rem]";
+    ? "h-12 w-auto sm:h-[3.25rem] lg:h-14"
+    : "h-14 w-auto sm:h-16";
 
   const image = (
     <Image
@@ -31,7 +36,7 @@ export function Logo({
       width={800}
       height={620}
       priority={priority}
-      className={`${sizes} object-contain drop-shadow-sm ${className}`}
+      className={`${sizes} object-contain object-left ${className}`}
     />
   );
 

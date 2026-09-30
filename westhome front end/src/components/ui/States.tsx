@@ -1,27 +1,6 @@
 import Link from "next/link";
 import { Button, ButtonLink } from "./Button";
 
-export function LoadingSkeleton({
-  rows = 3,
-  className = "",
-}: {
-  rows?: number;
-  className?: string;
-}) {
-  return (
-    <div className={`animate-pulse space-y-4 ${className}`} aria-busy="true">
-      {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="space-y-3">
-          <div className="aspect-[4/3] rounded-sm bg-stone-deep" />
-          <div className="h-4 w-2/3 rounded bg-stone-deep" />
-          <div className="h-3 w-1/2 rounded bg-stone-deep" />
-        </div>
-      ))}
-      <span className="sr-only">Loading…</span>
-    </div>
-  );
-}
-
 export function EmptyState({
   title,
   description,

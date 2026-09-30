@@ -32,7 +32,11 @@ export interface Product {
   gallery: string[];
   specs: ProductSpec[];
   featured: boolean;
-  price?: number | null;
+  /** Made-to-order: fabric, size or finish can be chosen with the showroom. */
+  customisable: boolean;
+  /** Showroom price in AED. Null means the piece is quoted after enquiry. */
+  price: number | null;
+  priceNote?: string;
 }
 
 export interface GalleryItem {
@@ -58,7 +62,10 @@ export interface AboutContent {
   intro: string;
   body: string;
   values: { title: string; description: string }[];
+  process: { title: string; description: string }[];
+  offerings: string[];
   imageUrl: string;
+  craftImageUrl: string;
 }
 
 export interface HomeContent {
@@ -95,6 +102,7 @@ export interface CmsAdapter {
     categorySlug?: string;
     search?: string;
     featured?: boolean;
+    customisable?: boolean;
   }): Promise<Product[]>;
   getProductBySlug(slug: string): Promise<Product | null>;
   getRelatedProducts(productId: string, limit?: number): Promise<Product[]>;

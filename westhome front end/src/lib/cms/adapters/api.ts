@@ -58,6 +58,9 @@ export const apiAdapter: CmsAdapter = {
     if (params?.categorySlug) qs.set("category", params.categorySlug);
     if (params?.search) qs.set("search", params.search);
     if (params?.featured) qs.set("featured", "true");
+    if (typeof params?.customisable === "boolean") {
+      qs.set("customisable", String(params.customisable));
+    }
     const query = qs.toString();
     return cmsFetch<Product[]>(`/products${query ? `?${query}` : ""}`);
   },

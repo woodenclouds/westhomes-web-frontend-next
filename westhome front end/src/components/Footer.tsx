@@ -90,7 +90,7 @@ export function Footer({ contact }: { contact: SiteContact }) {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 pb-[4.5rem] sm:pb-0">
         <div className="container-page flex flex-col gap-3 py-5 text-xs text-stone/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {contact.companyName}. All rights reserved.

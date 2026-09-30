@@ -26,6 +26,7 @@ export type ProductWhatsAppDetails = {
   categoryName?: string;
   shortDescription?: string;
   slug?: string;
+  priceLabel?: string;
 };
 
 export function productWhatsAppMessage(product: ProductWhatsAppDetails): string {
@@ -43,6 +44,9 @@ export function productWhatsAppMessage(product: ProductWhatsAppDetails): string 
 
   if (product.categoryName) {
     lines.push(`Category: ${product.categoryName}`);
+  }
+  if (product.priceLabel) {
+    lines.push(`Price: ${product.priceLabel}`);
   }
   if (product.shortDescription) {
     lines.push(`Details: ${product.shortDescription}`);

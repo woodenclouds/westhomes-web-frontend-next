@@ -23,27 +23,32 @@ export function HeroCarousel({
   eyebrow = "West Home Furniture",
 }: Props) {
   const [index, setIndex] = useState(0);
+  const [ready, setReady] = useState(false);
   const count = slides.length;
 
   useEffect(() => {
-    if (count <= 1) return;
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready || count <= 1) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % count);
     }, 5500);
     return () => window.clearInterval(id);
-  }, [count]);
+  }, [count, ready]);
 
   function go(next: number) {
     setIndex((next + count) % count);
   }
 
   return (
-    <section className="relative min-h-[88vh] w-full overflow-hidden bg-charcoal text-stone">
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-charcoal text-stone">
       {slides.map((slide, i) => (
         <div
           key={slide.src}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
-            i === index ? "opacity-100" : "opacity-0"
+          className={`hero-slide absolute inset-0 transition-opacity duration-1000 ease-out ${
+            i === index ? "is-active opacity-100" : "opacity-0"
           }`}
           aria-hidden={i !== index}
         >
@@ -52,77 +57,79 @@ export function HeroCarousel({
             alt={slide.alt}
             fill
             priority={i === 0}
-            className={`object-cover transition-transform duration-[6500ms] ease-out ${
-              i === index ? "scale-105" : "scale-100"
-            }`}
+            className="object-cover"
             sizes="100vw"
           />
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/50 to-charcoal/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/92 via-charcoal/68 to-charcoal/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/15 to-charcoal/30" />
+      <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-charcoal/45 to-transparent md:max-w-4xl" />
 
-      <div className="container-page relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 md:justify-center md:pb-24 md:pt-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone/70">
-          {eyebrow}
-        </p>
-        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] text-stone sm:text-5xl md:text-6xl lg:text-7xl">
-          {headline}
-        </h1>
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-stone/85 md:text-lg">
-          {support}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <ButtonLink href="/products" size="lg">
-            Explore Products
-          </ButtonLink>
-          <ButtonLink
-            href="/enquire"
-            size="lg"
-            variant="ghost"
-            className="!text-stone hover:!bg-white/10"
-          >
-            Enquire Now
-          </ButtonLink>
-        </div>
-
-        {count > 1 ? (
-          <div className="mt-10 flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => go(index - 1)}
-              className="rounded-sm border border-white/25 px-3 py-2 text-xs uppercase tracking-wider text-stone/90 hover:bg-white/10"
-              aria-label="Previous slide"
+      <div className="container-page relative flex min-h-[100svh] flex-col justify-end pb-14 pt-28 md:justify-center md:pb-20 md:pt-32">
+        <div className={ready ? "hero-copy is-ready" : "hero-copy"}>
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-stone/85">
+            {eyebrow}
+          </p>
+          <h1 className="mt-4 max-w-3xl font-display text-[2.15rem] leading-[1.08] text-stone sm:text-4xl md:text-5xl lg:text-[3.75rem]">
+            {headline}
+          </h1>
+          <p className="mt-5 max-w-lg text-[0.95rem] leading-relaxed text-stone/90 md:text-base">
+            {support}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ButtonLink href="/products" size="lg">
+              Explore collection
+            </ButtonLink>
+            <ButtonLink
+              href="/enquire"
+              size="lg"
+              variant="wood-outline"
+              className="!border-stone/55 !text-stone hover:!bg-stone hover:!text-charcoal"
             >
-              Prev
-            </button>
-            <div className="flex gap-2" role="tablist" aria-label="Hero slides">
-              {slides.map((slide, i) => (
-                <button
-                  key={slide.src}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === index}
-                  aria-label={`Show slide ${i + 1}`}
-                  onClick={() => setIndex(i)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === index
-                      ? "w-8 bg-wood-soft"
-                      : "w-3 bg-white/35 hover:bg-white/55"
-                  }`}
-                />
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => go(index + 1)}
-              className="rounded-sm border border-white/25 px-3 py-2 text-xs uppercase tracking-wider text-stone/90 hover:bg-white/10"
-              aria-label="Next slide"
-            >
-              Next
-            </button>
+              Enquire now
+            </ButtonLink>
           </div>
-        ) : null}
+
+          {count > 1 ? (
+            <div className="mt-12 flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => go(index - 1)}
+                className="rounded-sm border border-white/30 bg-charcoal/25 px-3.5 py-2 text-[0.65rem] uppercase tracking-[0.1em] text-stone transition hover:bg-white/15"
+                aria-label="Previous slide"
+              >
+                Prev
+              </button>
+              <div className="flex gap-2" role="tablist" aria-label="Hero slides">
+                {slides.map((slide, i) => (
+                  <button
+                    key={slide.src}
+                    type="button"
+                    role="tab"
+                    aria-selected={i === index}
+                    aria-label={`Show slide ${i + 1}`}
+                    onClick={() => setIndex(i)}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      i === index
+                        ? "w-9 bg-wood-soft"
+                        : "w-2.5 bg-white/40 hover:bg-white/65"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => go(index + 1)}
+                className="rounded-sm border border-white/30 bg-charcoal/25 px-3.5 py-2 text-[0.65rem] uppercase tracking-[0.1em] text-stone transition hover:bg-white/15"
+                aria-label="Next slide"
+              >
+                Next
+              </button>
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );

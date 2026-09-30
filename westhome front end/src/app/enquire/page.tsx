@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { PageIntro } from "@/components/SectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
 import type { EnquiryType } from "@/lib/cms/types";
 
@@ -34,25 +36,21 @@ export default async function EnquirePage({
 
   return (
     <div className="section-space">
-      <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-            Get in touch
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-charcoal md:text-5xl">
-            Enquire or book a visit
-          </h1>
-          <p className="mt-4 max-w-md text-muted leading-relaxed">
-            Tell us what you need — a specific piece, a showroom visit, or
-            general advice. You will receive a reference number after
-            submitting, and can continue the conversation on WhatsApp.
-          </p>
-        </div>
-        <EnquiryForm
-          products={products}
-          defaultProductSlug={params.product ?? ""}
-          defaultType={defaultType}
-        />
+      <div className="container-page grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <ScrollReveal>
+          <PageIntro
+            eyebrow="Get in touch"
+            title="Tell us what you need"
+            description="A specific sofa, a bedroom, curtains, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
+          />
+        </ScrollReveal>
+        <ScrollReveal delay={80}>
+          <EnquiryForm
+            products={products}
+            defaultProductSlug={params.product ?? ""}
+            defaultType={defaultType}
+          />
+        </ScrollReveal>
       </div>
     </div>
   );

@@ -4,35 +4,47 @@ import type { Product } from "@/lib/cms/types";
 import { ButtonLink } from "./ui/Button";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { productWhatsAppMessage } from "@/lib/whatsapp";
+import { formatPrice } from "@/lib/price";
 
 export function ProductCard({ product }: { product: Product }) {
+  const priceLabel = formatPrice(product.price);
   const waMessage = productWhatsAppMessage({
     id: product.id,
     name: product.name,
     categoryName: product.categoryName,
     shortDescription: product.shortDescription,
     slug: product.slug,
+    priceLabel,
   });
 
   return (
-    <article className="group flex flex-col">
+    <article className="group flex h-full flex-col transition duration-500 hover:-translate-y-1">
       <Link
         href={`/products/${product.slug}`}
-        className="relative aspect-[4/3] overflow-hidden rounded-sm bg-stone-deep"
+        className="frame-image relative aspect-[4/3] bg-stone-deep"
       >
         <Image
           src={product.imageUrl}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+          className="object-cover"
         />
+        {product.customisable ? (
+          <span className="absolute left-3 top-3 bg-wood/95 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white">
+            Customisable
+          </span>
+        ) : product.price == null ? (
+          <span className="absolute left-3 top-3 bg-charcoal/85 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-stone">
+            On enquiry
+          </span>
+        ) : null}
       </Link>
       <div className="mt-4 flex flex-1 flex-col">
-        <p className="text-xs uppercase tracking-[0.14em] text-muted">
+        <p className="text-[0.7rem] uppercase tracking-[0.12em] text-muted">
           {product.categoryName}
         </p>
-        <h3 className="mt-1 font-display text-xl text-charcoal">
+        <h3 className="mt-1 font-display text-[1.45rem] leading-snug text-charcoal">
           <Link href={`/products/${product.slug}`} className="hover:text-wood">
             {product.name}
           </Link>
@@ -40,6 +52,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted">
           {product.shortDescription}
         </p>
+        <p className="mt-3 font-display text-lg text-charcoal">{priceLabel}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <ButtonLink
             href={`/products/${product.slug}`}

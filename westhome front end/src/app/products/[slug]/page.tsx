@@ -8,6 +8,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { cms } from "@/lib/cms/client";
 import { absoluteUrl } from "@/lib/site";
 import { productWhatsAppMessage } from "@/lib/whatsapp";
+import { formatPrice, priceNoteFor } from "@/lib/price";
 
 type Params = Promise<{ slug: string }>;
 
@@ -44,12 +45,14 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const related = await cms.getRelatedProducts(product.id, 3);
+  const priceLabel = formatPrice(product.price);
   const wa = productWhatsAppMessage({
     id: product.id,
     name: product.name,
     categoryName: product.categoryName,
     shortDescription: product.shortDescription,
     slug: product.slug,
+    priceLabel,
   });
 
   return (
@@ -70,12 +73,16 @@ export default async function ProductDetailPage({
             <p className="text-xs uppercase tracking-[0.14em] text-muted">
               {product.categoryName}
             </p>
-            <h1 className="mt-2 font-display text-4xl text-charcoal md:text-5xl">
+            <h1 className="mt-2 font-display text-4xl leading-[1.05] text-charcoal md:text-6xl">
               {product.name}
             </h1>
             <p className="mt-4 text-muted leading-relaxed">
               {product.description}
             </p>
+            <p className="mt-6 font-display text-3xl text-charcoal">{priceLabel}</p>
+            {product.price == null || product.priceNote ? (
+              <p className="mt-2 text-sm text-muted">{priceNoteFor(product)}</p>
+            ) : null}
 
             {product.specs.length > 0 ? (
               <dl className="mt-8 space-y-3 border-t border-border pt-6">

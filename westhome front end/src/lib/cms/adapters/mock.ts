@@ -39,6 +39,14 @@ const categories: Category[] = [
     imageUrl: img("armchair-ottoman.jpg"),
   },
   {
+    id: "cat-tables",
+    name: "Tables",
+    slug: "tables",
+    description:
+      "Coffee tables, marble tops and dining tables — ready pieces and made-to-measure options.",
+    imageUrl: img("dining-marble.jpg"),
+  },
+  {
     id: "cat-curtains",
     name: "Curtains",
     slug: "curtains",
@@ -71,6 +79,9 @@ const products: Product[] = [
       { label: "Base", value: "Slim black metal legs" },
     ],
     featured: true,
+    customisable: true,
+    price: null,
+    priceNote: "Custom fabric and size. Price is confirmed after enquiry.",
   },
   {
     id: "prd-002",
@@ -94,6 +105,8 @@ const products: Product[] = [
       { label: "Extras", value: "Matching bolster cushions" },
     ],
     featured: true,
+    customisable: true,
+    price: 12900,
   },
   {
     id: "prd-003",
@@ -113,6 +126,8 @@ const products: Product[] = [
       { label: "Customisation", value: "Fabric and dimensions on request" },
     ],
     featured: true,
+    customisable: true,
+    price: 11500,
   },
   {
     id: "prd-004",
@@ -132,6 +147,8 @@ const products: Product[] = [
       { label: "Customisation", value: "Fabric, size, cushions" },
     ],
     featured: false,
+    customisable: true,
+    price: 9800,
   },
   {
     id: "prd-005",
@@ -151,6 +168,9 @@ const products: Product[] = [
       { label: "Customisation", value: "Full fabric programme" },
     ],
     featured: false,
+    customisable: true,
+    price: null,
+    priceNote: "Styled to your colour story. Price is confirmed after enquiry.",
   },
   {
     id: "prd-006",
@@ -170,6 +190,8 @@ const products: Product[] = [
       { label: "Customisation", value: "Fabric and dimensions" },
     ],
     featured: true,
+    customisable: true,
+    price: 4200,
   },
   {
     id: "prd-007",
@@ -189,6 +211,8 @@ const products: Product[] = [
       { label: "Customisation", value: "Fabric, size, matching curtains" },
     ],
     featured: true,
+    customisable: true,
+    price: 7500,
   },
   {
     id: "prd-008",
@@ -212,6 +236,170 @@ const products: Product[] = [
       { label: "Coordination", value: "Matched to furniture fabrics" },
     ],
     featured: false,
+    customisable: true,
+    price: null,
+    priceNote: "Measured to your windows. Price is confirmed after enquiry.",
+  },
+  {
+    id: "prd-009",
+    slug: "marble-coffee-table",
+    name: "Marble Coffee Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Rectangular marble top with a dark base — a showroom piece with a set price.",
+    description:
+      "A marble coffee table styled with our living collections. The price is for the piece as shown in the showroom. A custom size or stone can be quoted separately.",
+    imageUrl: img("sofa-beige-custom.jpg"),
+    gallery: [img("sofa-beige-custom.jpg"), img("living-beige-sectional.jpg")],
+    specs: [
+      { label: "Top", value: "Marble" },
+      { label: "Style", value: "Rectangular coffee table" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 3450,
+  },
+  {
+    id: "prd-010",
+    slug: "round-marble-coffee-table",
+    name: "Round Marble Coffee Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Round marble top on a fluted base, as styled beside our lounge chair.",
+    description:
+      "A round marble coffee table with a dark fluted base. Showroom price is for this finish. Other diameters and stones are available on enquiry.",
+    imageUrl: img("armchair-ottoman.jpg"),
+    gallery: [img("armchair-ottoman.jpg"), img("showroom-brand-wall.jpg")],
+    specs: [
+      { label: "Top", value: "Marble" },
+      { label: "Base", value: "Fluted" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 2890,
+  },
+  {
+    id: "prd-011",
+    slug: "black-slab-coffee-table",
+    name: "Black Slab Coffee Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Solid dark wood slab coffee table from the white living set.",
+    description:
+      "A low, solid slab coffee table in a charred wood finish. Priced as shown. Custom diameters can be discussed in the showroom.",
+    imageUrl: img("showroom-white-set.jpg"),
+    gallery: [img("showroom-white-set.jpg")],
+    specs: [
+      { label: "Material", value: "Solid wood slab" },
+      { label: "Finish", value: "Charred / black" },
+    ],
+    featured: false,
+    customisable: false,
+    price: 4100,
+  },
+  {
+    id: "prd-012",
+    slug: "glass-oak-coffee-table",
+    name: "Glass & Oak Coffee Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Round glass top over a warm oak drum base.",
+    description:
+      "A two-tier coffee table with a glass top and solid oak base, shown with our bouclé sectional. Price is for the table as displayed.",
+    imageUrl: img("showroom-boucle-sectional.jpg"),
+    gallery: [img("showroom-boucle-sectional.jpg"), img("coffee-round-wood.jpg")],
+    specs: [
+      { label: "Top", value: "Glass" },
+      { label: "Base", value: "Oak" },
+    ],
+    featured: false,
+    customisable: false,
+    price: 2650,
+  },
+  {
+    id: "prd-013",
+    slug: "oak-dining-table",
+    name: "Oak Dining Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Solid oak dining table for everyday meals — showroom price as shown.",
+    description:
+      "A warm oak dining table for family dining. The listed price is for the size and finish in the demo image. Longer tops and matching chairs can be quoted.",
+    imageUrl: img("dining-oak.jpg"),
+    gallery: [img("dining-oak.jpg"), img("dining-set.jpg")],
+    specs: [
+      { label: "Material", value: "Oak" },
+      { label: "Use", value: "Dining" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 6800,
+  },
+  {
+    id: "prd-014",
+    slug: "marble-dining-table",
+    name: "Marble Dining Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Marble dining table with a dark pedestal — priced as shown.",
+    description:
+      "A marble-top dining table for a formal setting. Showroom price covers the piece in the demo photograph. Stone choice and seating count change the quote.",
+    imageUrl: img("dining-marble.jpg"),
+    gallery: [img("dining-marble.jpg"), img("dining-set.jpg")],
+    specs: [
+      { label: "Top", value: "Marble" },
+      { label: "Use", value: "Dining" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 8400,
+  },
+  {
+    id: "prd-015",
+    slug: "custom-dining-table",
+    name: "Custom Dining Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Dining table made to your length, stone or timber. Price on enquiry.",
+    description:
+      "Tell us the room size, how many you seat, and whether you prefer marble, oak or a mixed finish. We confirm the price after that conversation — it is not a fixed showroom tag.",
+    imageUrl: img("dining-set.jpg"),
+    gallery: [img("dining-set.jpg"), img("dining-oak.jpg"), img("dining-marble.jpg")],
+    specs: [
+      { label: "Options", value: "Marble, oak, mixed" },
+      { label: "Sizing", value: "Made to your room" },
+    ],
+    featured: false,
+    customisable: true,
+    price: null,
+    priceNote: "Size and material are chosen with you. Price is confirmed after enquiry.",
+  },
+  {
+    id: "prd-016",
+    slug: "round-wood-coffee-table",
+    name: "Round Wood Coffee Table",
+    categoryId: "cat-tables",
+    categoryName: "Tables",
+    shortDescription:
+      "Low round timber coffee table — a ready showroom piece.",
+    description:
+      "A simple round wood coffee table for smaller living rooms. Priced as shown. A custom diameter or finish is available on enquiry.",
+    imageUrl: img("coffee-round-wood.jpg"),
+    gallery: [img("coffee-round-wood.jpg")],
+    specs: [
+      { label: "Shape", value: "Round" },
+      { label: "Material", value: "Timber" },
+    ],
+    featured: false,
+    customisable: false,
+    price: 1890,
   },
 ];
 
@@ -291,7 +479,7 @@ const gallery: GalleryItem[] = [
 const homeContent: HomeContent = {
   heroHeadline: "Customised sofas, beds & curtains for Dubai homes",
   heroSupport:
-    "West Home Furniture on Hessa Street, Al Barsha — made-to-order seating, beds, chaises and soft furnishings. Visit our showroom or enquire on WhatsApp.",
+    "West Home Furniture on Hessa Street, Al Barsha — sofas, beds, coffee and dining tables, plus made-to-order pieces priced after enquiry.",
   heroImageUrl: img("showroom-brand-wall.jpg"),
   introTitle: "Comfort, style and quality — made for your space",
   introBody:
@@ -334,7 +522,33 @@ const aboutContent: AboutContent = {
       description: "Apartments and villas — we help scale and finish each order to fit.",
     },
   ],
+  process: [
+    {
+      title: "Visit the showroom",
+      description:
+        "Sit with the pieces on Hessa Street, feel the fabrics and talk through room sizes with our team.",
+    },
+    {
+      title: "Choose your finish",
+      description:
+        "Pick upholstery, dimensions and layout — sectionals, beds, chaises, tables and curtains made around how you live.",
+    },
+    {
+      title: "Confirm & deliver",
+      description:
+        "We confirm pricing after enquiry, then craft and deliver your order ready for your home.",
+    },
+  ],
+  offerings: [
+    "Customised sofas & sectionals",
+    "Beds & chaise lounges",
+    "Armchairs & ottomans",
+    "Coffee & dining tables",
+    "Floor-to-ceiling curtains",
+    "Fabric & finish guidance",
+  ],
   imageUrl: img("showroom-boucle-sectional.jpg"),
+  craftImageUrl: img("sofa-custom-swatches.jpg"),
 };
 
 const contact: SiteContact = {
@@ -392,6 +606,9 @@ export const mockAdapter: CmsAdapter = {
     let list = [...products];
     if (params?.featured) {
       list = list.filter((p) => p.featured);
+    }
+    if (typeof params?.customisable === "boolean") {
+      list = list.filter((p) => p.customisable === params.customisable);
     }
     if (params?.categorySlug) {
       const cat = categories.find((c) => c.slug === params.categorySlug);

@@ -16,13 +16,13 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes: Record<Size, string> = {
-  sm: "px-3.5 py-2 text-sm",
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-6 py-3.5 text-base",
+  sm: "px-3.5 py-2.5",
+  md: "px-5 py-3",
+  lg: "px-7 py-3.5 text-[0.82rem]",
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-sm font-medium transition-colors duration-200 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood";
+  "inline-flex items-center justify-center gap-2 rounded-sm font-medium tracking-[0.04em] uppercase text-[0.78rem] transition-all duration-300 hover:-translate-y-px active:translate-y-0 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
