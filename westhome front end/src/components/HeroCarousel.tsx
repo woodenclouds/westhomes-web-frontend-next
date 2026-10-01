@@ -93,14 +93,22 @@ export function HeroCarousel({
           </div>
 
           {count > 1 ? (
-            <div className="mt-12 flex items-center gap-4">
+            <div className="mt-12 flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => go(index - 1)}
-                className="rounded-sm border border-white/30 bg-charcoal/25 px-3.5 py-2 text-[0.65rem] uppercase tracking-[0.1em] text-stone transition hover:bg-white/15"
+                className="flex h-6 w-6 items-center justify-center text-stone/70 transition hover:text-stone"
                 aria-label="Previous slide"
               >
-                Prev
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path
+                    d="M7.5 2.5 4 6l3.5 3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
               <div className="flex gap-2" role="tablist" aria-label="Hero slides">
                 {slides.map((slide, i) => (
@@ -122,10 +130,18 @@ export function HeroCarousel({
               <button
                 type="button"
                 onClick={() => go(index + 1)}
-                className="rounded-sm border border-white/30 bg-charcoal/25 px-3.5 py-2 text-[0.65rem] uppercase tracking-[0.1em] text-stone transition hover:bg-white/15"
+                className="flex h-6 w-6 items-center justify-center text-stone/70 transition hover:text-stone"
                 aria-label="Next slide"
               >
-                Next
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path
+                    d="M4.5 2.5 8 6l-3.5 3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
             </div>
           ) : null}

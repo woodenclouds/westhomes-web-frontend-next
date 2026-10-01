@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import type { Product } from "@/lib/cms/types";
-import { ButtonLink } from "./ui/Button";
+import { Pagination } from "./Pagination";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { productWhatsAppMessage } from "@/lib/whatsapp";
 import { formatPrice } from "@/lib/price";
+
+const PAGE_SIZE = 6;
 
 export function ProductCard({ product }: { product: Product }) {
   const priceLabel = formatPrice(product.price);
@@ -53,15 +58,28 @@ export function ProductCard({ product }: { product: Product }) {
           {product.shortDescription}
         </p>
         <p className="mt-3 font-display text-lg text-charcoal">{priceLabel}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <ButtonLink
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <Link
             href={`/products/${product.slug}`}
-            variant="ghost"
-            size="sm"
-            className="!px-0"
+            className="inline-flex items-center gap-1.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:text-wood"
           >
             View details
-          </ButtonLink>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.5 6h7M6.5 3.5 9 6l-2.5 2.5"
+                stroke="currentColor"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
           <WhatsAppButton
             message={waMessage}
             label="Enquire"
@@ -74,12 +92,48 @@ export function ProductCard({ product }: { product: Product }) {
   );
 }
 
-export function ProductGrid({ products }: { products: Product[] }) {
+export function ProductGrid({
+  products,
+  pageSize = PAGE_SIZE,
+}: {
+  products: Product[];
+  pageSize?: number;
+}) {
+  const [page, setPage] = useState(1);
+  const productKey = products.map((p) => p.id).join(",");
+
+  useEffect(() => {
+    setPage(1);
+  }, [productKey]);
+
+  const totalPages = Math.max(1, Math.ceil(products.length / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const pageItems = products.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize,
+  );
+
+  function goToPage(next: number) {
+    const clamped = Math.min(Math.max(1, next), totalPages);
+    setPage(clamped);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {pageItems.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+      <Pagination
+        page={currentPage}
+        totalPages={totalPages}
+        totalItems={products.length}
+        itemLabel="products"
+        onPageChange={goToPage}
+        label="Product pagination"
+      />
     </div>
   );
 }

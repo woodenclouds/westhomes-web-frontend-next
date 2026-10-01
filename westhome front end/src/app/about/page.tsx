@@ -21,18 +21,42 @@ export default async function AboutPage() {
           alt="WestHome interiors"
           fill
           priority
-          className="object-cover opacity-70"
+          className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-charcoal/30" />
-        <div className="container-page relative flex min-h-[100svh] items-end pb-10 pt-28 md:pb-14 md:pt-32">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-stone/70">
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/92 via-charcoal/68 to-charcoal/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-charcoal/35" />
+
+        <div className="container-page relative flex min-h-[100svh] flex-col justify-end pb-14 pt-28 md:justify-center md:pb-20 md:pt-32">
+          <div className="max-w-2xl">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-stone/85">
               Our story
             </p>
-            <h1 className="mt-3 font-display text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-display text-[2.15rem] leading-[1.08] sm:text-4xl md:text-5xl lg:text-[3.75rem]">
               {about.title}
             </h1>
+            <blockquote className="mt-7 border-l border-wood-soft/70 pl-5">
+              <p className="font-display text-xl leading-snug text-stone/95 md:text-2xl">
+                “Furniture that completes a beautiful home.”
+              </p>
+            </blockquote>
+            <p className="mt-5 max-w-lg text-[0.95rem] leading-relaxed text-stone/80 md:text-base">
+              Customised sofas, beds, chaises and curtains from our showroom on
+              Hessa Street, Al Barsha.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href="/enquire" size="lg">
+                Enquire now
+              </ButtonLink>
+              <ButtonLink
+                href="/contact"
+                size="lg"
+                variant="wood-outline"
+                className="!border-stone/55 !text-stone hover:!bg-stone hover:!text-charcoal"
+              >
+                Visit showroom
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </section>
