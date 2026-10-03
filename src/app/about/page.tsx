@@ -7,7 +7,7 @@ import { cms } from "@/lib/cms/client";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about West Home Furniture Dubai — customised sofas, beds, chaises and curtains on Hessa Street, Al Barsha.",
+    "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes. Visit our Al Barsha showroom — we customise sofas, beds, club chairs and more.",
 };
 
 export default async function AboutPage() {
@@ -37,22 +37,23 @@ export default async function AboutPage() {
             </h1>
             <blockquote className="mt-7 border-l border-wood-soft/70 pl-5">
               <p className="font-display text-xl leading-snug text-stone/95 md:text-2xl">
-                “Furniture that completes a beautiful home.”
+                “Furniture that brings comfort and elegance to your home.”
               </p>
             </blockquote>
             <p className="mt-5 max-w-lg text-[0.95rem] leading-relaxed text-stone/80 md:text-base">
-              Customised sofas, beds, chaises and curtains from our showroom on
-              Hessa Street, Al Barsha.
+              Stylish sofas, beds, mattresses, dining and coffee tables — and
+              custom sofas, beds, club chairs and more from our Al Barsha
+              showroom.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/enquire" size="lg">
+            <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap">
+              <ButtonLink href="/enquire" size="lg" className="w-full sm:w-auto">
                 Enquire now
               </ButtonLink>
               <ButtonLink
                 href="/contact"
                 size="lg"
                 variant="wood-outline"
-                className="!border-stone/55 !text-stone hover:!bg-stone hover:!text-charcoal"
+                className="w-full !border-stone/55 !text-stone hover:!bg-stone hover:!text-charcoal sm:w-auto"
               >
                 Visit showroom
               </ButtonLink>
@@ -109,9 +110,9 @@ export default async function AboutPage() {
                 From showroom to your rooms
               </h2>
               <p className="mt-4 text-muted leading-relaxed">
-                Every piece can be tailored — we guide you through fabric, size
-                and layout so the furniture feels made for your home, not the
-                other way around.
+                Choose ready pieces from the showroom, or customise sofas, beds,
+                club chairs and more — we guide you through fabric, size and
+                layout so the furniture fits your home.
               </p>
               <ol className="mt-8 space-y-6">
                 {about.process.map((step, i) => (
@@ -134,9 +135,9 @@ export default async function AboutPage() {
           </div>
 
           <ScrollReveal className="mt-10 border-t border-border pt-8 md:mt-12">
-            <p className="eyebrow">In the atelier</p>
+            <p className="eyebrow">Our collection</p>
             <h2 className="mt-3 font-display text-3xl text-charcoal">
-              What you can customise
+              What you will find
             </h2>
             <ul className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
               {about.offerings.map((item) => (
@@ -160,7 +161,7 @@ export default async function AboutPage() {
           <ScrollReveal>
             <p className="eyebrow">What we stand for</p>
             <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl">
-              Comfort, made personal
+              Comfort and elegance
             </h2>
           </ScrollReveal>
           <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-10">

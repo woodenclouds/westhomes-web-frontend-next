@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useEffectEvent, useState } from "react";
 import type { GalleryItem } from "@/lib/cms/types";
+import { Pagination } from "./Pagination";
 
 const PAGE_SIZE = 9;
 
@@ -54,7 +55,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
         {pageItems.map((item, i) => {
           const globalIndex = (currentPage - 1) * PAGE_SIZE + i;
           return (
@@ -69,7 +70,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 alt={item.alt}
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 1024px) 50vw, 33vw"
               />
               <span className="sr-only">Open {item.title}</span>
             </button>
@@ -77,55 +78,18 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         })}
       </div>
 
-      {totalPages > 1 ? (
-        <nav
-          className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8"
-          aria-label="Gallery pagination"
-        >
-          <p className="text-sm text-muted">
-            Page {currentPage} of {totalPages}
-            <span className="mx-2 text-border">·</span>
-            {items.length} photos
-          </p>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage <= 1}
-              className="rounded-sm border border-border px-3.5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              Previous
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-              <button
-                key={n}
-                type="button"
-                onClick={() => goToPage(n)}
-                aria-current={n === currentPage ? "page" : undefined}
-                className={`min-w-10 rounded-sm px-3.5 py-2.5 text-[0.78rem] font-medium tracking-[0.04em] transition ${
-                  n === currentPage
-                    ? "bg-charcoal text-stone"
-                    : "border border-border text-charcoal hover:border-charcoal"
-                }`}
-              >
-                {n}
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage >= totalPages}
-              className="rounded-sm border border-border px-3.5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              Next
-            </button>
-          </div>
-        </nav>
-      ) : null}
+      <Pagination
+        page={currentPage}
+        totalPages={totalPages}
+        totalItems={items.length}
+        itemLabel="photos"
+        onPageChange={goToPage}
+        label="Gallery pagination"
+      />
 
       {active && activeIndex !== null ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/90 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/90 p-3 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-4"
           role="dialog"
           aria-modal="true"
           aria-label={active.title}
@@ -133,7 +97,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         >
           <button
             type="button"
-            className="absolute right-4 top-4 z-10 rounded-sm bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20"
+            className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10 min-h-11 rounded-sm bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 sm:right-4 sm:top-4"
             onClick={() => setActiveIndex(null)}
           >
             Close
@@ -148,7 +112,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                   e.stopPropagation();
                   showPrev();
                 }}
-                className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:left-6"
+                className="absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:left-6 sm:h-11 sm:w-11"
               >
                 <Chevron direction="left" />
               </button>
@@ -159,7 +123,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                   e.stopPropagation();
                   showNext();
                 }}
-                className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:right-6"
+                className="absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:right-6 sm:h-11 sm:w-11"
               >
                 <Chevron direction="right" />
               </button>

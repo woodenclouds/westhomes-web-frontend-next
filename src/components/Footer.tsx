@@ -18,15 +18,16 @@ export function Footer({ contact }: { contact: SiteContact }) {
 
   return (
     <footer className="mt-auto border-t border-border bg-charcoal text-stone">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-3">
+      <div className="container-page grid gap-8 py-10 sm:gap-10 sm:py-14 md:grid-cols-3">
         <div>
           <Logo href="/" variant="footer" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-stone/70">
-            Customised sofas, beds, chaises and curtains — from our Hessa Street
-            showroom in Al Barsha. Open daily 9:00 AM – 9:00 PM.
+            Stylish and comfortable furniture for modern homes — sofas, beds,
+            mattresses, dining and coffee tables and more. Visit our Al Barsha
+            showroom. Open daily 9:00 AM – 9:00 PM.
           </p>
           <p className="mt-2 text-xs uppercase tracking-[0.14em] text-stone/45">
-            Style your home, live better
+            Comfort and elegance for your home
           </p>
           <div className="mt-5">
             <WhatsAppButton
@@ -90,7 +91,7 @@ export function Footer({ contact }: { contact: SiteContact }) {
         </div>
       </div>
 
-      <div className="border-t border-white/10 pb-[4.5rem] sm:pb-0">
+      <div className="border-t border-white/10 pb-[max(4.5rem,calc(env(safe-area-inset-bottom)+3.5rem))] sm:pb-[env(safe-area-inset-bottom)]">
         <div className="container-page flex flex-col gap-3 py-5 text-xs text-stone/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {contact.companyName}. All rights reserved.

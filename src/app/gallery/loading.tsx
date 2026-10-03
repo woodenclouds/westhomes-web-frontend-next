@@ -5,7 +5,7 @@ export default function GalleryLoading() {
     <div className="section-space" aria-busy="true" aria-label="Loading gallery">
       <div className="container-page">
         <PageIntroSkeleton titleWidth="w-48" />
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}

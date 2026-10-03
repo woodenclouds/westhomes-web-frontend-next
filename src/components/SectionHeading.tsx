@@ -13,15 +13,15 @@ export function SectionHeading({
     <div className="max-w-2xl">
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
       <h2
-        className={`font-display text-3xl md:text-[2.75rem] ${
+        className={`font-display text-[1.75rem] leading-[1.1] sm:text-3xl md:text-[2.75rem] ${
           light ? "text-stone" : "text-charcoal"
-        } ${eyebrow ? "mt-3" : ""}`}
+        } ${eyebrow ? "mt-2.5 sm:mt-3" : ""}`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-4 text-base leading-relaxed md:text-lg ${
+          className={`mt-3 text-[0.95rem] leading-relaxed sm:mt-4 sm:text-base md:text-lg ${
             light ? "text-stone/75" : "text-muted"
           }`}
         >
@@ -44,11 +44,11 @@ export function PageIntro({
   return (
     <div className="max-w-2xl">
       <p className="eyebrow">{eyebrow}</p>
-      <h1 className="mt-3 font-display text-4xl text-charcoal md:text-6xl">
+      <h1 className="mt-2.5 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-3 sm:text-4xl md:text-6xl">
         {title}
       </h1>
       {description ? (
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+        <p className="mt-3 max-w-xl text-[0.95rem] leading-relaxed text-muted sm:mt-4 sm:text-base md:text-lg">
           {description}
         </p>
       ) : null}

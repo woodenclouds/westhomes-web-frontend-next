@@ -9,7 +9,7 @@ import { cms } from "@/lib/cms/client";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Browse customised sofas, beds, chaises, chairs and curtains from West Home Furniture Dubai.",
+    "Browse sofas, beds, mattresses, living and bedroom furniture, dining tables, coffee tables and more from West Home Furniture Dubai. Custom sofas, beds and club chairs available.",
 };
 
 type SearchParams = Promise<{
@@ -45,7 +45,7 @@ export default async function ProductsPage({
           description={
             activeCategory
               ? activeCategory.description
-              : "Browse sofas, beds, seating and curtains — then enquire on WhatsApp with the piece you love."
+              : "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love."
           }
         />
 
@@ -77,7 +77,7 @@ export default async function ProductsPage({
                 <SectionHeading
                   eyebrow="Made to order"
                   title="Customisable products"
-                  description="Choose fabric, size and finish with our team. Many pieces are priced after enquiry."
+                  description="We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry."
                 />
               </ScrollReveal>
               <ScrollReveal delay={80} className="mt-10">
@@ -97,7 +97,7 @@ export default async function ProductsPage({
                 <SectionHeading
                   eyebrow="Showroom floor"
                   title="Ready pieces"
-                  description="Priced as shown in the showroom — a clear starting point, with custom options if you need them."
+                  description="Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them."
                 />
               </ScrollReveal>
               <ScrollReveal delay={80} className="mt-10">

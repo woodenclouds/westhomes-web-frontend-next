@@ -8,7 +8,7 @@ import type { EnquiryType } from "@/lib/cms/types";
 export const metadata: Metadata = {
   title: "Enquire / Book",
   description:
-    "Submit a product enquiry or booking request to WestHome Furniture in Dubai.",
+    "Enquire about sofas, beds, mattresses, tables or custom furniture at West Home Furniture Dubai — Al Barsha showroom.",
 };
 
 type SearchParams = Promise<{
@@ -41,7 +41,7 @@ export default async function EnquirePage({
           <PageIntro
             eyebrow="Get in touch"
             title="Tell us what you need"
-            description="A specific sofa, a bedroom, curtains, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
+            description="A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
           />
         </ScrollReveal>
         <ScrollReveal delay={80}>

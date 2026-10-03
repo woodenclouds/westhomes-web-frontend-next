@@ -16,42 +16,42 @@ const img = (file: string) => `/images/${file}`;
 const categories: Category[] = [
   {
     id: "cat-sofas",
-    name: "Customised Sofas",
+    name: "Sofas",
     slug: "sofas",
     description:
-      "Sectionals, chaise sofas and lounge seating made to your fabric, size and layout.",
+      "Stylish, comfortable sofas and sectionals for modern living rooms — ready looks and full customisation.",
     imageUrl: img("sofa-beige-custom.jpg"),
   },
   {
     id: "cat-beds",
-    name: "Beds & Chaises",
+    name: "Beds & Mattresses",
     slug: "beds",
     description:
-      "Upholstered beds, chaise lounges and bedroom seating tailored for restful spaces.",
+      "Beds, mattresses and bedroom furniture that bring comfort and elegance to restful spaces.",
     imageUrl: img("bedroom-taupe.jpg"),
   },
   {
     id: "cat-seating",
-    name: "Chairs & Ottomans",
+    name: "Club Chairs & Seating",
     slug: "chairs",
     description:
-      "Armchairs, ottomans and accent seating to complete your living room.",
+      "Club chairs, armchairs, ottomans and accent seating for living rooms and lounges.",
     imageUrl: img("armchair-ottoman.jpg"),
   },
   {
     id: "cat-tables",
-    name: "Tables",
+    name: "Dining & Coffee Tables",
     slug: "tables",
     description:
-      "Coffee tables, marble tops and dining tables — ready pieces and made-to-measure options.",
+      "Dining tables, coffee tables and living-room tables for modern Dubai homes.",
     imageUrl: img("dining-marble.jpg"),
   },
   {
     id: "cat-curtains",
-    name: "Curtains",
+    name: "Living & Soft Furnishings",
     slug: "curtains",
     description:
-      "Floor-to-ceiling curtains and soft furnishings coordinated with your furniture.",
+      "Living-room finishing touches and soft furnishings to complete your home.",
     imageUrl: img("living-beige-sectional.jpg"),
   },
 ];
@@ -477,28 +477,28 @@ const gallery: GalleryItem[] = [
 ];
 
 const homeContent: HomeContent = {
-  heroHeadline: "Customised sofas, beds & curtains for Dubai homes",
+  heroHeadline: "Stylish, comfortable furniture for modern homes",
   heroSupport:
-    "West Home Furniture on Hessa Street, Al Barsha — sofas, beds, coffee and dining tables, plus made-to-order pieces priced after enquiry.",
-  heroImageUrl: img("showroom-brand-wall.jpg"),
-  introTitle: "Comfort, style and quality — made for your space",
+    "Quality sofas, beds, mattresses, bedroom and living room furniture, dining tables, coffee tables and more — visit our Al Barsha showroom in Dubai. We customise sofas, beds, club chairs and more.",
+  heroImageUrl: img("living-white-sectional-hero.jpg"),
+  introTitle: "Comfort and elegance for your home",
   introBody:
-    "From customised sectionals and chaise sofas to upholstered beds and coordinated curtains, we help you choose fabrics, sizes and finishes that complete your home. Open daily 9:00 AM – 9:00 PM at our Al Barsha showroom.",
+    "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes. Discover quality pieces for every room, visit our showroom in Al Barsha, and find furniture that brings comfort and elegance to your space. Open daily 9:00 AM – 9:00 PM.",
   valueProps: [
     {
-      title: "Fully customised",
+      title: "Custom sofas, beds & club chairs",
       description:
-        "Sofas, beds and chaises tailored in fabric, colour and dimensions to your room.",
+        "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you.",
     },
     {
-      title: "Showroom guidance",
+      title: "Al Barsha showroom",
       description:
-        "See pieces in person on Hessa Street, Al Barsha — browse swatches and layouts with our team.",
+        "See living room and bedroom furniture in person at our Dubai showroom and plan your rooms with our team.",
     },
     {
-      title: "Curtains & finishing",
+      title: "Complete home collections",
       description:
-        "Coordinate curtains and soft furnishings with your furniture for a complete look.",
+        "Sofas, beds, mattresses, dining tables, coffee tables and more for modern Dubai homes.",
     },
   ],
 };
@@ -506,46 +506,49 @@ const homeContent: HomeContent = {
 const aboutContent: AboutContent = {
   title: "About West Home",
   intro:
-    "West Home Furniture Dubai specialises in customised sofas, beds, chaises and curtains — furniture that completes a beautiful home.",
-  body: "Based on Hessa Street in Al Barsha, our showroom presents modern living and bedroom collections you can adapt to your space. Choose fabrics, sizes and configurations with our team, then follow up by WhatsApp, call or an online enquiry. We focus on premium quality, modern designs and pieces that work for everyday Dubai living.",
+    "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes — quality pieces that bring comfort and elegance to every room.",
+  body: "Visit our showroom in Al Barsha, Dubai, to discover sofas, beds, mattresses, bedroom furniture, living room furniture, dining tables, coffee tables and more. We also customise sofas, beds, club chairs and other pieces so your furniture fits how you live. Enquire by WhatsApp, call or online — we focus on quality, modern style and everyday comfort.",
   values: [
     {
-      title: "Premium quality",
-      description: "Comfortable, durable pieces built for daily use and lasting style.",
+      title: "Comfort first",
+      description:
+        "Stylish, comfortable furniture built for daily living and lasting ease.",
     },
     {
-      title: "Modern designs",
-      description: "Clean silhouettes, soft neutrals and bold options when you want them.",
+      title: "Modern elegance",
+      description:
+        "Clean, contemporary designs that bring elegance to apartments and villas.",
     },
     {
-      title: "Perfect for every home",
-      description: "Apartments and villas — we help scale and finish each order to fit.",
+      title: "Made for your home",
+      description:
+        "Ready collections plus custom sofas, beds, club chairs and more to suit your space.",
     },
   ],
   process: [
     {
       title: "Visit the showroom",
       description:
-        "Sit with the pieces on Hessa Street, feel the fabrics and talk through room sizes with our team.",
+        "Explore living and bedroom furniture in Al Barsha — sit with the pieces and talk through your rooms.",
     },
     {
-      title: "Choose your finish",
+      title: "Choose or customise",
       description:
-        "Pick upholstery, dimensions and layout — sectionals, beds, chaises, tables and curtains made around how you live.",
+        "Pick ready pieces, or customise sofas, beds, club chairs and more in fabric, size and finish.",
     },
     {
       title: "Confirm & deliver",
       description:
-        "We confirm pricing after enquiry, then craft and deliver your order ready for your home.",
+        "We confirm details after enquiry, then deliver furniture ready for your Dubai home.",
     },
   ],
   offerings: [
-    "Customised sofas & sectionals",
-    "Beds & chaise lounges",
-    "Armchairs & ottomans",
-    "Coffee & dining tables",
-    "Floor-to-ceiling curtains",
-    "Fabric & finish guidance",
+    "Sofas & sectionals",
+    "Beds & mattresses",
+    "Bedroom furniture",
+    "Living room furniture",
+    "Dining & coffee tables",
+    "Custom sofas, beds & club chairs",
   ],
   imageUrl: img("showroom-boucle-sectional.jpg"),
   craftImageUrl: img("sofa-custom-swatches.jpg"),

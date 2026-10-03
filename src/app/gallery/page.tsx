@@ -8,7 +8,7 @@ import { cms } from "@/lib/cms/client";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Visual portfolio of WestHome Furniture interiors, materials and installations.",
+    "See stylish living room and bedroom furniture from West Home Furniture Dubai — sofas, beds, tables and custom pieces from our Al Barsha showroom.",
 };
 
 export default async function GalleryPage() {
@@ -20,7 +20,7 @@ export default async function GalleryPage() {
         <PageIntro
           eyebrow="Portfolio"
           title="Gallery"
-          description="Showroom settings, fabrics and finished rooms. New images appear here as they are added."
+          description="Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added."
         />
 
         <ScrollReveal className="mt-12">

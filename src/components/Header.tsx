@@ -68,11 +68,11 @@ export function Header() {
             aria-modal="true"
             aria-label="Mobile navigation"
           >
-            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-border/80 sm:h-[4.25rem]">
+            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-border/80 pt-[env(safe-area-inset-top)] sm:h-[4.25rem]">
               <Logo href="/" onClick={closeMenu} variant="header" />
               <button
                 type="button"
-                className="relative inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-surface"
+                className="tap-target relative inline-flex items-center justify-center rounded-sm border border-border bg-surface"
                 aria-label="Close menu"
                 onClick={closeMenu}
               >
@@ -81,7 +81,7 @@ export function Header() {
               </button>
             </div>
             <nav
-              className="container-page flex flex-1 flex-col gap-1 overflow-y-auto py-6"
+              className="container-page flex flex-1 flex-col overflow-y-auto py-4"
               aria-label="Mobile"
             >
               {nav.map((item) => {
@@ -93,7 +93,7 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`border-b border-border/70 py-3.5 font-display text-2xl ${
+                    className={`border-b border-border/70 py-4 font-display text-[1.75rem] leading-none transition active:opacity-70 ${
                       active ? "text-wood" : "text-charcoal"
                     }`}
                     onClick={closeMenu}
@@ -102,16 +102,17 @@ export function Header() {
                   </Link>
                 );
               })}
-              <div className="mt-6 flex flex-col gap-3">
-                <ButtonLink href="/enquire" onClick={closeMenu}>
-                  Enquire now
-                </ButtonLink>
-                <WhatsAppButton
-                  message={generalEnquiryMessage()}
-                  label="WhatsApp us"
-                />
-              </div>
             </nav>
+            <div className="container-page flex flex-col gap-3 border-t border-border/80 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+              <ButtonLink href="/enquire" onClick={closeMenu} className="w-full">
+                Enquire now
+              </ButtonLink>
+              <WhatsAppButton
+                message={generalEnquiryMessage()}
+                label="WhatsApp us"
+                className="w-full"
+              />
+            </div>
           </div>,
           document.body,
         )
@@ -186,7 +187,7 @@ export function Header() {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
-              className={`relative inline-flex h-10 w-10 items-center justify-center rounded-sm border transition ${
+              className={`tap-target relative inline-flex items-center justify-center rounded-sm border transition ${
                 transparent
                   ? "border-white/35 bg-white/10"
                   : "border-border bg-surface"

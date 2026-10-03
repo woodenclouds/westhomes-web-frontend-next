@@ -31,7 +31,7 @@ export function ProductsToolbar({
   return (
     <form
       onSubmit={apply}
-      className="flex flex-col gap-3 rounded-sm border border-border bg-surface p-4 md:flex-row md:items-end"
+      className="flex flex-col gap-3 rounded-sm border border-border bg-surface p-3.5 sm:p-4 md:flex-row md:items-end"
     >
       <div className="flex-1">
         <Input
@@ -57,7 +57,7 @@ export function ProductsToolbar({
           ))}
         </Select>
       </div>
-      <Button type="submit" className="md:mb-0.5">
+      <Button type="submit" className="w-full md:mb-0.5 md:w-auto">
         Apply
       </Button>
     </form>

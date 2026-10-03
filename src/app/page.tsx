@@ -13,7 +13,7 @@ import { generalEnquiryMessage } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Home",
   description:
-    "West Home Furniture Dubai — customised sofas, beds, chaises and curtains. Hessa Street, Al Barsha. Open daily 9:00 AM – 9:00 PM.",
+    "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes — sofas, beds, mattresses, dining and coffee tables and more. Al Barsha showroom. We customise sofas, beds, club chairs and more.",
 };
 
 export default async function HomePage() {
@@ -35,13 +35,22 @@ export default async function HomePage() {
     .slice(0, 3);
 
   const heroSlides = [
-    { src: home.heroImageUrl, alt: "West Home Luxury Living showroom" },
+    {
+      src: "/images/living-white-sectional-hero.jpg",
+      alt: "White sectional sofa with marble coffee table in a modern living room",
+    },
+    {
+      src: "/images/living-grey-sectional-hero.jpg",
+      alt: "Light grey sectional sofa with marble table and warm accent lighting",
+    },
+    { src: "/images/showroom-brand-wall.jpg", alt: "West Home Luxury Living showroom" },
     { src: "/images/showroom-boucle-sectional.jpg", alt: "Customised bouclé sectional sofa" },
     { src: "/images/sofa-beige-custom.jpg", alt: "Custom beige sectional with fabric options" },
     { src: "/images/bedroom-taupe.jpg", alt: "Customised upholstered bed and curtains" },
-    { src: "/images/sofa-powder-blue.jpg", alt: "Powder blue cloud sofa" },
-    { src: "/images/showroom-white-set.jpg", alt: "White living set in the showroom" },
-  ];
+  ].filter(
+    (slide, index, list) =>
+      list.findIndex((entry) => entry.src === slide.src) === index,
+  );
 
   return (
     <>
@@ -82,13 +91,13 @@ export default async function HomePage() {
       <section className="border-y border-border bg-surface section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Made to order"
                 title="Customisable pieces"
-                description="Fabric, size and finish chosen with you — sofas, beds, curtains and more, priced after enquiry or as a starting showroom tag."
+                description="We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
               />
-              <Link href="/products#customisable" className="text-link">
+              <Link href="/products#customisable" className="text-link self-start sm:self-auto">
                 View customisable
               </Link>
             </div>
@@ -102,13 +111,13 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Showroom"
                 title="Featured pieces"
                 description="Ready looks from the floor — priced as shown, with custom options available when you need them."
               />
-              <Link href="/products#showroom" className="text-link">
+              <Link href="/products#showroom" className="text-link self-start sm:self-auto">
                 View all
               </Link>
             </div>
@@ -131,10 +140,10 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Atelier"
               title="Made for your rooms"
-              description="Sofas, beds and chaises, chairs, and curtains — chosen and finished around how you live."
+              description="Sofas, beds, mattresses, living room and bedroom furniture, dining tables, coffee tables and more."
             />
           </ScrollReveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 md:grid-cols-3 xl:grid-cols-5">
             {categories.map((cat, i) => (
               <ScrollReveal key={cat.id} delay={i * 80}>
                 <Link
@@ -146,12 +155,14 @@ export default async function HomePage() {
                     alt={cat.name}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, 20vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/15 to-transparent transition duration-500 group-hover:from-charcoal/85" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 transition duration-500 group-hover:-translate-y-1">
-                    <p className="font-display text-2xl text-stone">{cat.name}</p>
-                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-stone/75">
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent transition duration-500 [@media(hover:hover)_and_(pointer:fine)]:group-hover:from-charcoal/90" />
+                  <div className="absolute inset-x-0 bottom-0 p-3 transition duration-500 sm:p-5 [@media(hover:hover)_and_(pointer:fine)]:group-hover:-translate-y-1">
+                    <p className="font-display text-lg leading-tight text-stone sm:text-2xl">
+                      {cat.name}
+                    </p>
+                    <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-stone/75 sm:mt-2 sm:text-sm">
                       {cat.description}
                     </p>
                   </div>
@@ -184,13 +195,13 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Portfolio"
                 title="From the showroom"
                 description="Rooms, fabrics and details from recent West Home settings."
               />
-              <Link href="/gallery" className="text-link">
+              <Link href="/gallery" className="text-link self-start sm:self-auto">
                 Open gallery
               </Link>
             </div>
@@ -214,25 +225,25 @@ export default async function HomePage() {
       </section>
 
       <section className="border-t border-border bg-charcoal text-stone section-space">
-        <div className="container-page flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+        <div className="container-page flex flex-col items-stretch justify-between gap-8 md:flex-row md:items-center">
           <ScrollReveal>
             <SectionHeading
               light
               eyebrow="Visit us"
               title="Come sit with the pieces"
-              description="Hessa Street, Al Barsha — open daily 9:00 AM to 9:00 PM. Enquire online or message us on WhatsApp."
+              description="Visit our Al Barsha showroom — open daily 9:00 AM to 9:00 PM. Enquire online or message us on WhatsApp."
             />
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink href="/enquire" size="lg">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
+              <ButtonLink href="/enquire" size="lg" className="w-full sm:w-auto">
                 Start an enquiry
               </ButtonLink>
               <WhatsAppButton
                 message={generalEnquiryMessage()}
                 label="WhatsApp"
                 size="lg"
-                className="!border-stone/40 !text-stone hover:!bg-stone hover:!text-charcoal"
+                className="w-full !border-stone/40 !text-stone hover:!bg-stone hover:!text-charcoal sm:w-auto"
               />
             </div>
           </ScrollReveal>

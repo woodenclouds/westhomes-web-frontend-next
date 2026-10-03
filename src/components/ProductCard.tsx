@@ -23,7 +23,7 @@ export function ProductCard({ product }: { product: Product }) {
   });
 
   return (
-    <article className="group flex h-full flex-col transition duration-500 hover:-translate-y-1">
+    <article className="group flex h-full flex-col transition duration-500 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1">
       <Link
         href={`/products/${product.slug}`}
         className="frame-image relative aspect-[4/3] bg-stone-deep"
@@ -32,24 +32,24 @@ export function ProductCard({ product }: { product: Product }) {
           src={product.imageUrl}
           alt={product.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover"
         />
         {product.customisable ? (
-          <span className="absolute left-3 top-3 bg-wood/95 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white">
+          <span className="absolute left-2.5 top-2.5 bg-wood/95 px-2 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white sm:left-3 sm:top-3 sm:px-2.5 sm:text-[0.65rem]">
             Customisable
           </span>
         ) : product.price == null ? (
-          <span className="absolute left-3 top-3 bg-charcoal/85 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-stone">
+          <span className="absolute left-2.5 top-2.5 bg-charcoal/85 px-2 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-stone sm:left-3 sm:top-3 sm:px-2.5 sm:text-[0.65rem]">
             On enquiry
           </span>
         ) : null}
       </Link>
-      <div className="mt-4 flex flex-1 flex-col">
-        <p className="text-[0.7rem] uppercase tracking-[0.12em] text-muted">
+      <div className="mt-3 flex flex-1 flex-col sm:mt-4">
+        <p className="text-[0.65rem] uppercase tracking-[0.12em] text-muted sm:text-[0.7rem]">
           {product.categoryName}
         </p>
-        <h3 className="mt-1 font-display text-[1.45rem] leading-snug text-charcoal">
+        <h3 className="mt-1 font-display text-[1.25rem] leading-snug text-charcoal sm:text-[1.45rem]">
           <Link href={`/products/${product.slug}`} className="hover:text-wood">
             {product.name}
           </Link>
@@ -57,11 +57,13 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted">
           {product.shortDescription}
         </p>
-        <p className="mt-3 font-display text-lg text-charcoal">{priceLabel}</p>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
+        <p className="mt-3 font-display text-base text-charcoal sm:text-lg">
+          {priceLabel}
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 sm:mt-4">
           <Link
             href={`/products/${product.slug}`}
-            className="inline-flex items-center gap-1.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:text-wood"
+            className="inline-flex min-h-10 items-center gap-1.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:text-wood"
           >
             View details
             <svg
@@ -121,7 +123,7 @@ export function ProductGrid({
 
   return (
     <div>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-7 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         {pageItems.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

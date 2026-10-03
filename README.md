@@ -1,6 +1,6 @@
 # WestHome Furniture
 
-Corporate furniture website for West Home Furniture (Hessa Street, Al Barsha, Dubai). Built with **Next.js App Router**, TypeScript, and Tailwind CSS. Dynamic content loads through a typed CMS client with a **mock adapter** today and an **API adapter** for the Woodenclouds CMS later.
+Corporate furniture website for West Home Furniture Dubai (Al Barsha) — stylish, comfortable furniture for modern homes, including custom sofas, beds, club chairs and more. Built with **Next.js App Router**, TypeScript, and Tailwind CSS. Dynamic content loads through a typed CMS client with a **mock adapter** today and an **API adapter** for the Woodenclouds CMS later.
 
 The Next.js app lives at the **repository root** so Vercel can deploy from `main` with Root Directory set to `.` (repo root). No nested app folder is required.
 

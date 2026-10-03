@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.shortName,
   title: {
-    default: `${siteConfig.name} | Style your home, live better`,
+    default: `${siteConfig.name} | Comfort and elegance for modern homes`,
     template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
@@ -57,6 +57,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${fraunces.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
