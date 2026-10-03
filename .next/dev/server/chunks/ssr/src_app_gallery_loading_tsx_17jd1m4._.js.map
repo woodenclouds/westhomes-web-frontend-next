@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/alan/Documents/Projects/westhomes/src/app/gallery/loading.tsx"],"sourcesContent":["import { PageIntroSkeleton } from \"@/components/skeletons\";\n\nexport default function GalleryLoading() {\n  return (\n    <div className=\"section-space\" aria-busy=\"true\" aria-label=\"Loading gallery\">\n      <div className=\"container-page\">\n        <PageIntroSkeleton titleWidth=\"w-48\" />\n        <div className=\"mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3\">\n          {Array.from({ length: 6 }).map((_, i) => (\n            <div\n              key={i}\n              className=\"aspect-[4/5] w-full animate-pulse rounded-sm bg-stone-deep\"\n            />\n          ))}\n        </div>\n      </div>\n      <span className=\"sr-only\">Loading gallery…</span>\n    </div>\n  );\n}\n"],"names":["GalleryLoading","className","titleWidth","Array","from","length","map","_","i"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;QAAgB,aAAU;QAAO,cAAW;;0BACzD,8OAAC;gBAAIA,WAAU;;kCACb,8OAAC,oJAAiB;wBAACC,YAAW;;;;;;kCAC9B,8OAAC;wBAAID,WAAU;kCACZE,MAAMC,IAAI,CAAC;4BAAEC,QAAQ;wBAAE,GAAGC,GAAG,CAAC,CAACC,GAAGC,kBACjC,8OAAC;gCAECP,WAAU;+BADLO;;;;;;;;;;;;;;;;0BAMb,8OAAC;gBAAKP,WAAU;0BAAU;;;;;;;;;;;;AAGhC"}}]
+}
