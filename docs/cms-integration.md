@@ -2,42 +2,86 @@
 
 The frontend never hard-codes product or gallery data in page components. All reads/writes go through `src/lib/cms/client.ts`.
 
+Content is managed in **WoQuick CMS** via MCP (schema/entries) and the tenant **public API** (site runtime).
+
 ## Modes
 
 Set in `.env.local`:
 
 ```bash
 CMS_MODE=mock   # local seed data (default)
-CMS_MODE=api    # real Woodenclouds CMS
+CMS_MODE=api    # WoQuick tenant public API
 ```
 
-When `CMS_MODE=api`, also set:
+When `CMS_MODE=api`, set:
 
 ```bash
-NEXT_PUBLIC_CMS_API_URL=https://your-cms.example.com/api
+CMS_API_BASE=https://west-homes.api.woquick.in/api/v1/cms/public
 ```
 
-Do **not** put private admin tokens or WhatsApp Business API secrets in `NEXT_PUBLIC_*` variables. If the CMS requires authenticated public reads, prefer Next.js Route Handlers as a server-side proxy.
+Optional server-only token (private GET / MCP — do not put in `NEXT_PUBLIC_*`):
+
+```bash
+WOQUICK_CMS_TOKEN=wqcms_...
+# or
+CMS_API_TOKEN=wqcms_...
+```
+
+Catalogue pages use **public GET** (no token). Enquiries use **public POST**. Prefer `CMS_API_BASE` over `NEXT_PUBLIC_CMS_API_URL`. Do **not** attach `Authorization` on public requests — an invalid Bearer token makes WoQuick return `403` even for public GETs.
+
+## Cursor MCP
+
+Project config: `.cursor/mcp.json`
+
+- URL: `https://west-homes.api.woquick.in/api/v1/cms/mcp/`
+- Auth: `Authorization: Bearer ${env:WOQUICK_CMS_TOKEN}` (bare token returns `401`)
+- Useful tools: `cms_status`, `list_content_types`, `create_content_type`, `upsert_entry`, `publish_entry`, `get_public_api_spec`, `list_lead_forms`
+
+Export `WOQUICK_CMS_TOKEN` in the Cursor/shell environment. Never commit the token.
+
+## Content types
+
+| Slug | Kind | Public | Notes |
+|------|------|--------|-------|
+| `categories` | collection | GET | Product categories |
+| `products` | collection | GET | Catalogue; JSON strings for `gallery` / `specs` |
+| `gallery` | collection | GET | Gallery images |
+| `home` | single | GET | Hero + intro + value props |
+| `about` | single | GET | About copy + process/values |
+| `contact` | single | GET | Address, phone, WhatsApp, social |
+| `enquiries` | collection | POST | Form submissions (`create_crm_lead` off until CRM is enabled) |
+
+Field keys in WoQuick are **snake_case**. The API adapter maps them to UI camelCase types in `src/lib/cms/types.ts`. Image fields use `url` type with site-relative paths (`/images/...`) so Next can serve them from `/public`.
+
+## Public URL pattern
+
+```
+GET  https://west-homes.api.woquick.in/api/v1/cms/public/{contentTypeSlug}/
+GET  https://west-homes.api.woquick.in/api/v1/cms/public/{contentTypeSlug}/{entrySlug}/
+POST https://west-homes.api.woquick.in/api/v1/cms/public/enquiries/
+```
+
+Responses use `{ data, meta? }` envelopes. Collections may paginate (`meta.pagination`); the adapter fetches all pages.
+
+`get_public_api_spec` may document `api.woquick.in`; the **tenant host** (`west-homes.api.woquick.in`) is what the site should call.
 
 ## Adapter contract
 
-Both adapters implement `CmsAdapter` in `src/lib/cms/types.ts`:
-
-| Method | Expected CMS shape (conceptual) |
-|--------|----------------------------------|
-| `getHomeContent()` | `GET /content/home` |
-| `getAboutContent()` | `GET /content/about` |
-| `getContact()` | `GET /content/contact` |
-| `getCategories()` | `GET /categories` |
-| `getProducts(params)` | `GET /products?category=&search=&featured=` |
-| `getProductBySlug(slug)` | `GET /products/{slug}` |
-| `getRelatedProducts(id)` | `GET /products/{id}/related` |
-| `getGallery()` | `GET /gallery` |
-| `submitEnquiry(payload)` | `POST /enquiries` → `{ reference, status }` |
-
-Update path names in `src/lib/cms/adapters/api.ts` to match the real CMS documentation once available. Keep TypeScript types as the source of truth for field names used by the UI.
+| Method | WoQuick path |
+|--------|----------------|
+| `getHomeContent()` | `GET /home/` |
+| `getAboutContent()` | `GET /about/` |
+| `getContact()` | `GET /contact/` |
+| `getCategories()` | `GET /categories/` |
+| `getProducts(params)` | `GET /products/` (+ client-side filters) |
+| `getProductBySlug(slug)` | `GET /products/{slug}/` |
+| `getRelatedProducts(id)` | Derived from products list by category |
+| `getGallery()` | `GET /gallery/` |
+| `submitEnquiry(payload)` | `POST /enquiries/` → `{ reference, status: "NEW" }` |
 
 ## Enquiry payload
+
+Website → `POST /api/enquiries` → adapter → WoQuick:
 
 ```ts
 {
@@ -45,23 +89,26 @@ Update path names in `src/lib/cms/adapters/api.ts` to match the real CMS documen
   phone: string;
   email?: string;
   type: "product" | "booking" | "general";
-  productId?: string;
-  productName?: string;
-  preferredDate?: string; // ISO date for bookings
+  product_id?: string;      // snake_case on the wire
+  product_name?: string;
+  preferred_date?: string;
   message: string;
 }
 ```
 
-The website posts to `/api/enquiries`, which calls `cms.submitEnquiry`. That keeps private CMS credentials off the browser if you later add a server-only API key in the route handler.
+Reference is taken from the created entry `slug` (or `WH-{id}` fallback).
+
+## Bootstrap / seed notes
+
+1. Create types via MCP (`create_content_type`) with snake_case field keys.
+2. Seed from mock data with `upsert_entry` + `publish_entry` (categories → products → gallery → singles).
+3. Prefer `url` fields for site images; `media` fields require WoQuick media IDs.
+4. Call `get_public_api_spec` before changing `src/lib/cms/adapters/api.ts`.
 
 ## Pre-switch checklist
 
-1. Confirm CMS base URL, CORS and auth rules
-2. Map real response fields to `Product`, `Category`, `GalleryItem`, etc.
-3. Confirm enquiry POST returns a reference number
-4. Set `CMS_MODE=api` and `NEXT_PUBLIC_CMS_API_URL`
-5. Smoke-test products list/detail, gallery, and enquiry success UI
-
-## Audit gaps
-
-If a required capability is missing from the CMS, document the gap before building a separate backend, database or admin module.
+1. Confirm `CMS_API_BASE` and that public GETs return published entries
+2. Confirm enquiry POST returns `201` with `data.slug` / `data.id`
+3. Set `CMS_MODE=api` in `.env.local` (and Vercel)
+4. Smoke-test home, products list/detail, gallery, about/contact, enquiry success UI
+5. Keep `CMS_MODE=mock` available if the API is down during local work

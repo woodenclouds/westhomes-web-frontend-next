@@ -1,9 +1,25 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Client photography is served from /public/images
+  // Local photography is under /public/images; remotePatterns cover WoQuick media hosts.
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "west-homes.api.woquick.in",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.woquick.in",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.woquick.in",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
