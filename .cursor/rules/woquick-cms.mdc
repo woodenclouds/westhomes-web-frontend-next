@@ -1,0 +1,14 @@
+---
+description: WoQuick CMS MCP usage for West Home content and API wiring
+alwaysApply: true
+---
+
+# WoQuick CMS
+
+- Manage CMS schema and entries through the `woquick-cms` MCP server (not by hardcoding catalogue data in page components).
+- MCP URL: `https://west-homes.api.woquick.in/api/v1/cms/mcp/`
+- Auth header must be `Authorization: Bearer <token>` via env `WOQUICK_CMS_TOKEN`.
+- Before changing [`src/lib/cms/adapters/api.ts`](src/lib/cms/adapters/api.ts), call `get_public_api_spec` for the relevant content type slug.
+- Public website reads/posts use `https://west-homes.api.woquick.in/api/v1/cms/public/{slug}/`.
+- Keep UI types in [`src/lib/cms/types.ts`](src/lib/cms/types.ts) as the contract; normalize WoQuick payloads in the API adapter.
+- Never commit API tokens. Prefer `CMS_MODE=mock` locally only when the API is unavailable.

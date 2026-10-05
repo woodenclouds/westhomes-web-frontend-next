@@ -1,24 +1,7 @@
 {
-  "folders": [
-    {
-      "name": "WestHome",
-      "path": "."
-    },
-    {
-      "name": "Frontend",
-      "path": "westhome front end"
-    }
-  ],
-  "settings": {
-    "terminal.integrated.cwd": "${workspaceFolder:Frontend}",
-    "files.exclude": {
-      "**/.next": true,
-      "**/node_modules": true
-    },
-    "search.exclude": {
-      "**/.next": true,
-      "**/node_modules": true,
-      "**/package-lock.json": true
-    }
-  }
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }
