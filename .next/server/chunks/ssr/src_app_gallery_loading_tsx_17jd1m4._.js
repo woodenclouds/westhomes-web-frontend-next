@@ -1,0 +1,3 @@
+module.exports=[33551,a=>{"use strict";var b=a.i(7997),c=a.i(85563);a.s(["default",0,function(){return(0,b.jsxs)("div",{className:"section-space","aria-busy":"true","aria-label":"Loading gallery",children:[(0,b.jsxs)("div",{className:"container-page",children:[(0,b.jsx)(c.PageIntroSkeleton,{titleWidth:"w-48"}),(0,b.jsx)("div",{className:"mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3",children:Array.from({length:6}).map((a,c)=>(0,b.jsx)("div",{className:"aspect-[4/5] w-full animate-pulse rounded-sm bg-stone-deep"},c))})]}),(0,b.jsx)("span",{className:"sr-only",children:"Loading gallery…"})]})}])},95258,function(a){a.n(a.i(33551))}];
+
+//# sourceMappingURL=src_app_gallery_loading_tsx_17jd1m4._.js.map

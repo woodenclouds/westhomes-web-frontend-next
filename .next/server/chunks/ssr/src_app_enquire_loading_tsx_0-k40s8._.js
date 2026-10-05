@@ -1,0 +1,3 @@
+module.exports=[40519,a=>{"use strict";var b=a.i(7997),c=a.i(85563);a.s(["default",0,function(){return(0,b.jsxs)("div",{className:"section-space","aria-busy":"true","aria-label":"Loading enquiry",children:[(0,b.jsxs)("div",{className:"container-page grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]",children:[(0,b.jsx)(c.PageIntroSkeleton,{titleWidth:"w-80"}),(0,b.jsx)(c.EnquiryFormSkeleton,{})]}),(0,b.jsx)("span",{className:"sr-only",children:"Loading enquiry form…"})]})}])},8714,function(a){a.n(a.i(40519))}];
+
+//# sourceMappingURL=src_app_enquire_loading_tsx_0-k40s8._.js.map
