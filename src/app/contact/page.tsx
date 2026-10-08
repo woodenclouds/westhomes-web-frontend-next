@@ -24,8 +24,11 @@ export default async function ContactPage() {
       <div className="container-page">
         <PageIntro
           eyebrow="Visit"
-          title="Come to the showroom"
-          description="Visit our Al Barsha showroom for sofas, beds, tables and more. Call, email or WhatsApp — or leave a message below. Open daily 9:00 AM – 9:00 PM."
+          title={contact.pageTitle || "Come to the showroom"}
+          description={
+            contact.pageIntro ||
+            "Visit our Al Barsha showroom for sofas, beds, tables and more. Call, email or WhatsApp — or leave a message below. Open daily 9:00 AM – 9:00 PM."
+          }
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2">

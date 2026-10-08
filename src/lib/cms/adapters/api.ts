@@ -4,9 +4,12 @@ import type {
   CmsAdapter,
   EnquiryPayload,
   EnquiryResult,
+  EnquirePageContent,
   GalleryItem,
+  GalleryPageContent,
   HomeContent,
   Product,
+  ProductsPageContent,
   ProductSpec,
   SiteContact,
 } from "../types";
@@ -180,6 +183,7 @@ function mapProduct(entry: WoQuickEntry): Product {
     description: asString(entry.description),
     imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
     gallery: Array.isArray(gallery) ? gallery.map((u) => asString(u)) : [],
+    morePhotoSlugs: relationSlugs(entry.more_photos),
     specs: Array.isArray(specs)
       ? specs.map((s) => ({
           label: asString(s.label),
@@ -196,6 +200,7 @@ function mapProduct(entry: WoQuickEntry): Product {
 function mapGalleryItem(entry: WoQuickEntry): GalleryItem {
   return {
     id: asString(entry.id) || asString(entry.slug),
+    slug: asString(entry.slug) || asString(entry.id),
     title: asString(entry.title),
     imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
     category: asString(entry.category) || undefined,
@@ -236,20 +241,52 @@ function mapHome(entry: WoQuickEntry): HomeContent {
     customisableTitle: asString(entry.customisable_title) || undefined,
     customisableText: asString(entry.customisable_text) || undefined,
     customisableProductSlugs: relationSlugs(entry.customisable_products),
+    bannerPhotoSlugs: relationSlugs(entry.banner_photos),
+    previewImageSlugs: relationSlugs(entry.preview_images),
     valueProps: mapHomeValueProps(entry),
   };
 }
 
+function titledCards(
+  entry: WoQuickEntry,
+  prefix: string,
+  count: number,
+): { title: string; description: string }[] {
+  const cards: { title: string; description: string }[] = [];
+  for (let index = 1; index <= count; index += 1) {
+    const title = asString(entry[`${prefix}_${index}_title`]);
+    const description = asString(entry[`${prefix}_${index}_text`]);
+    if (title || description) cards.push({ title, description });
+  }
+  return cards;
+}
+
 function mapAbout(entry: WoQuickEntry): AboutContent {
+  const valueCards = titledCards(entry, "value", 3);
+  const processCards = titledCards(entry, "process", 3);
+  const offerings = [1, 2, 3, 4, 5, 6]
+    .map((index) => asString(entry[`offering_${index}`]))
+    .filter(Boolean);
   return {
     title: asString(entry.title),
     intro: asString(entry.intro),
     body: asString(entry.body),
-    values: parseJsonField(entry.values, []),
-    process: parseJsonField(entry.process, []),
-    offerings: parseJsonField(entry.offerings, []),
-    imageUrl: asString(entry.image_url),
-    craftImageUrl: asString(entry.craft_image_url),
+    values: valueCards.length ? valueCards : parseJsonField(entry.values, []),
+    process: processCards.length
+      ? processCards
+      : parseJsonField(entry.process, []),
+    offerings: offerings.length ? offerings : parseJsonField(entry.offerings, []),
+    imageUrl: mediaUrl(entry.hero_image) || asString(entry.image_url),
+    craftImageUrl: mediaUrl(entry.craft_image) || asString(entry.craft_image_url),
+    quote: asString(entry.quote) || undefined,
+    heroText: asString(entry.hero_text) || undefined,
+    showroomTitle: asString(entry.showroom_title) || undefined,
+    showroomHours: asString(entry.showroom_hours) || undefined,
+    showroomText: asString(entry.showroom_text) || undefined,
+    processTitle: asString(entry.process_title) || undefined,
+    processIntro: asString(entry.process_intro) || undefined,
+    valuesTitle: asString(entry.values_title) || undefined,
+    offeringsTitle: asString(entry.offerings_title) || undefined,
   };
 }
 
@@ -266,6 +303,9 @@ function mapContact(entry: WoQuickEntry): SiteContact {
       asString(entry.whatsapp_number),
     mapEmbedUrl: asString(entry.map_embed_url) || undefined,
     socialLinks: parseJsonField(entry.social_links, []),
+    pageTitle: asString(entry.page_title) || undefined,
+    pageIntro: asString(entry.page_intro) || undefined,
+    hours: asString(entry.hours) || undefined,
   };
 }
 
@@ -345,6 +385,78 @@ export const apiAdapter: CmsAdapter = {
   async getGallery() {
     const entries = await fetchAllEntries("gallery");
     return entries.map(mapGalleryItem);
+  },
+
+  async getProductsPage() {
+    try {
+      const res = await cmsFetch<WoQuickSingleResponse>("/products-page/");
+      const entry = res.data;
+      return {
+        title: asString(entry.title) || "Products",
+        intro:
+          asString(entry.intro) ||
+          "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love.",
+        customisableTitle:
+          asString(entry.customisable_title) || "Customisable products",
+        customisableText:
+          asString(entry.customisable_text) ||
+          "We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry.",
+        showroomTitle: asString(entry.showroom_title) || "Ready pieces",
+        showroomText:
+          asString(entry.showroom_text) ||
+          "Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them.",
+      } satisfies ProductsPageContent;
+    } catch {
+      return {
+        title: "Products",
+        intro:
+          "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love.",
+        customisableTitle: "Customisable products",
+        customisableText:
+          "We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry.",
+        showroomTitle: "Ready pieces",
+        showroomText:
+          "Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them.",
+      };
+    }
+  },
+
+  async getGalleryPage() {
+    try {
+      const res = await cmsFetch<WoQuickSingleResponse>("/gallery-page/");
+      const entry = res.data;
+      return {
+        title: asString(entry.title) || "Gallery",
+        intro:
+          asString(entry.intro) ||
+          "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added.",
+      } satisfies GalleryPageContent;
+    } catch {
+      return {
+        title: "Gallery",
+        intro:
+          "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added.",
+      };
+    }
+  },
+
+  async getEnquirePage() {
+    try {
+      const res = await cmsFetch<WoQuickSingleResponse>("/enquire-page/");
+      const entry = res.data;
+      return {
+        title: asString(entry.title) || "Tell us what you need",
+        intro:
+          asString(entry.intro) ||
+          "A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly.",
+      } satisfies EnquirePageContent;
+    } catch {
+      return {
+        title: "Tell us what you need",
+        intro:
+          "A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly.",
+      };
+    }
   },
 
   async submitEnquiry(payload: EnquiryPayload) {

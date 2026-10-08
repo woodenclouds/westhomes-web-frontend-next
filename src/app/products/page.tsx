@@ -27,9 +27,10 @@ export default async function ProductsPage({
   const search = params.q;
   const isFiltered = Boolean(categorySlug || search);
 
-  const [categories, products] = await Promise.all([
+  const [categories, products, page] = await Promise.all([
     cms.getCategories(),
     cms.getProducts({ categorySlug, search }),
+    cms.getProductsPage(),
   ]);
 
   const activeCategory = categories.find((c) => c.slug === categorySlug);
@@ -41,11 +42,9 @@ export default async function ProductsPage({
       <div className="container-page">
         <PageIntro
           eyebrow="Catalogue"
-          title="Products"
+          title={page.title || "Products"}
           description={
-            activeCategory
-              ? activeCategory.description
-              : "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love."
+            activeCategory ? activeCategory.description : page.intro
           }
         />
 
@@ -76,8 +75,8 @@ export default async function ProductsPage({
               <ScrollReveal>
                 <SectionHeading
                   eyebrow="Made to order"
-                  title="Customisable products"
-                  description="We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry."
+                  title={page.customisableTitle}
+                  description={page.customisableText}
                 />
               </ScrollReveal>
               <ScrollReveal delay={80} className="mt-10">
@@ -96,8 +95,8 @@ export default async function ProductsPage({
               <ScrollReveal>
                 <SectionHeading
                   eyebrow="Showroom floor"
-                  title="Ready pieces"
-                  description="Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them."
+                  title={page.showroomTitle}
+                  description={page.showroomText}
                 />
               </ScrollReveal>
               <ScrollReveal delay={80} className="mt-10">

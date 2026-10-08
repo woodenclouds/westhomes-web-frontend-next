@@ -406,6 +406,7 @@ const products: Product[] = [
 const gallery: GalleryItem[] = [
   {
     id: "gal-1",
+    slug: "gal-1",
     title: "Showroom — Luxury Living",
     imageUrl: img("showroom-brand-wall.jpg"),
     category: "Showroom",
@@ -413,6 +414,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-2",
+    slug: "gal-2",
     title: "Bouclé sectional vignette",
     imageUrl: img("showroom-boucle-sectional.jpg"),
     category: "Sofas",
@@ -420,6 +422,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-3",
+    slug: "gal-3",
     title: "White living set",
     imageUrl: img("showroom-white-set.jpg"),
     category: "Sofas",
@@ -427,6 +430,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-4",
+    slug: "gal-4",
     title: "Custom fabric selection",
     imageUrl: img("sofa-custom-swatches.jpg"),
     category: "Customisation",
@@ -434,6 +438,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-5",
+    slug: "gal-5",
     title: "Beige living room",
     imageUrl: img("living-beige-sectional.jpg"),
     category: "Living",
@@ -441,6 +446,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-6",
+    slug: "gal-6",
     title: "Powder blue sofa",
     imageUrl: img("sofa-powder-blue.jpg"),
     category: "Sofas",
@@ -448,6 +454,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-7",
+    slug: "gal-7",
     title: "Grey chaise living",
     imageUrl: img("sofa-grey-chaise.jpg"),
     category: "Sofas",
@@ -455,6 +462,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-8",
+    slug: "gal-8",
     title: "Armchair and ottoman",
     imageUrl: img("armchair-ottoman.jpg"),
     category: "Seating",
@@ -462,6 +470,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-9",
+    slug: "gal-9",
     title: "Custom bedroom",
     imageUrl: img("bedroom-taupe.jpg"),
     category: "Beds",
@@ -469,6 +478,7 @@ const gallery: GalleryItem[] = [
   },
   {
     id: "gal-10",
+    slug: "gal-10",
     title: "Green accent living",
     imageUrl: img("sofa-grey-green.jpg"),
     category: "Living",
@@ -493,6 +503,8 @@ const homeContent: HomeContent = {
   customisableText:
     "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag.",
   customisableProductSlugs: [],
+  bannerPhotoSlugs: [],
+  previewImageSlugs: [],
   valueProps: [
     {
       title: "Custom sofas, beds & club chairs",
@@ -655,6 +667,39 @@ export const mockAdapter: CmsAdapter = {
   async getGallery() {
     await delay();
     return gallery;
+  },
+
+  async getProductsPage() {
+    await delay();
+    return {
+      title: "Products",
+      intro:
+        "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love.",
+      customisableTitle: "Customisable products",
+      customisableText:
+        "We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry.",
+      showroomTitle: "Ready pieces",
+      showroomText:
+        "Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them.",
+    };
+  },
+
+  async getGalleryPage() {
+    await delay();
+    return {
+      title: "Gallery",
+      intro:
+        "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added.",
+    };
+  },
+
+  async getEnquirePage() {
+    await delay();
+    return {
+      title: "Tell us what you need",
+      intro:
+        "A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly.",
+    };
   },
 
   async submitEnquiry(payload): Promise<EnquiryResult> {

@@ -35,7 +35,11 @@ export default async function HomePage() {
     cms.getGallery(),
   ]);
 
-  const galleryPreview = gallery.slice(0, 4);
+  const orderedPreview = home.previewImageSlugs
+    .map((slug) => gallery.find((item) => item.slug === slug))
+    .filter((item): item is (typeof gallery)[number] => Boolean(item));
+  const galleryPreview =
+    orderedPreview.length > 0 ? orderedPreview : gallery.slice(0, 4);
   const selectedCustomisable = pickProductsBySlugs(
     allProducts,
     home.customisableProductSlugs,
@@ -75,12 +79,25 @@ export default async function HomePage() {
     { src: "/images/sofa-beige-custom.jpg", alt: "Custom beige sectional with fabric options" },
     { src: "/images/bedroom-taupe.jpg", alt: "Customised upholstered bed and curtains" },
   ];
-  const heroSlides = [
-    ...(home.heroImageUrl
-      ? [{ src: home.heroImageUrl, alt: home.heroHeadline }]
-      : []),
-    ...defaultHeroSlides,
-  ].filter(
+  const bannerSlides = home.bannerPhotoSlugs
+    .map((slug) => gallery.find((item) => item.slug === slug))
+    .filter((item): item is (typeof gallery)[number] => Boolean(item))
+    .map((item) => ({ src: item.imageUrl, alt: item.alt || item.title }));
+  const heroSlides = (
+    bannerSlides.length > 0
+      ? [
+          ...(home.heroImageUrl
+            ? [{ src: home.heroImageUrl, alt: home.heroHeadline }]
+            : []),
+          ...bannerSlides,
+        ]
+      : [
+          ...(home.heroImageUrl
+            ? [{ src: home.heroImageUrl, alt: home.heroHeadline }]
+            : []),
+          ...defaultHeroSlides,
+        ]
+  ).filter(
     (slide, index, list) =>
       list.findIndex((entry) => entry.src === slide.src) === index,
   );
