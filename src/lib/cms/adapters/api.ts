@@ -137,6 +137,24 @@ function relationSlug(value: unknown): string {
   return "";
 }
 
+function relationSlugs(value: unknown): string[] {
+  if (value == null || value === "") return [];
+  if (Array.isArray(value)) {
+    return value.map(relationSlug).filter(Boolean);
+  }
+  const one = relationSlug(value);
+  return one ? [one] : [];
+}
+
+function mediaUrl(value: unknown): string {
+  if (!value) return "";
+  if (typeof value === "string") return value;
+  if (typeof value === "object" && value !== null && "url" in value) {
+    return asString((value as { url?: unknown }).url);
+  }
+  return "";
+}
+
 function mapCategory(entry: WoQuickEntry): Category {
   return {
     id: asString(entry.id) || asString(entry.slug),
@@ -160,7 +178,7 @@ function mapProduct(entry: WoQuickEntry): Product {
     categoryName: asString(entry.category_name),
     shortDescription: asString(entry.short_description),
     description: asString(entry.description),
-    imageUrl: asString(entry.image_url),
+    imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
     gallery: Array.isArray(gallery) ? gallery.map((u) => asString(u)) : [],
     specs: Array.isArray(specs)
       ? specs.map((s) => ({
@@ -179,24 +197,46 @@ function mapGalleryItem(entry: WoQuickEntry): GalleryItem {
   return {
     id: asString(entry.id) || asString(entry.slug),
     title: asString(entry.title),
-    imageUrl: asString(entry.image_url),
+    imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
     category: asString(entry.category) || undefined,
     alt: asString(entry.alt) || asString(entry.title),
   };
 }
 
-function mapHome(entry: WoQuickEntry): HomeContent {
+function mapHomeValueProps(entry: WoQuickEntry): HomeContent["valueProps"] {
+  const fromCards: HomeContent["valueProps"] = [];
+  for (const index of [1, 2, 3] as const) {
+    const title = asString(entry[`value_${index}_title`]);
+    const description = asString(entry[`value_${index}_text`]);
+    if (title || description) {
+      fromCards.push({ title, description });
+    }
+  }
+  if (fromCards.length > 0) return fromCards;
+
   const valueProps = parseJsonField<HomeContent["valueProps"]>(
     entry.value_props,
     [],
   );
+  return Array.isArray(valueProps) ? valueProps : [];
+}
+
+function mapHome(entry: WoQuickEntry): HomeContent {
   return {
     heroHeadline: asString(entry.hero_headline),
     heroSupport: asString(entry.hero_support),
-    heroImageUrl: asString(entry.hero_image_url),
+    heroImageUrl:
+      mediaUrl(entry.banner_image) || asString(entry.hero_image_url),
     introTitle: asString(entry.intro_title),
     introBody: asString(entry.intro_body),
-    valueProps: Array.isArray(valueProps) ? valueProps : [],
+    introImageUrl: mediaUrl(entry.intro_image) || undefined,
+    featuredTitle: asString(entry.featured_title) || undefined,
+    featuredText: asString(entry.featured_text) || undefined,
+    featuredProductSlugs: relationSlugs(entry.featured_products),
+    customisableTitle: asString(entry.customisable_title) || undefined,
+    customisableText: asString(entry.customisable_text) || undefined,
+    customisableProductSlugs: relationSlugs(entry.customisable_products),
+    valueProps: mapHomeValueProps(entry),
   };
 }
 

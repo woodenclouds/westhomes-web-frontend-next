@@ -16,25 +16,52 @@ export const metadata: Metadata = {
     "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes — sofas, beds, mattresses, dining and coffee tables and more. Al Barsha showroom. We customise sofas, beds, club chairs and more.",
 };
 
+function pickProductsBySlugs(
+  products: Awaited<ReturnType<typeof cms.getProducts>>,
+  slugs: string[],
+) {
+  if (!slugs.length) return [];
+  const bySlug = new Map(products.map((p) => [p.slug, p]));
+  return slugs
+    .map((slug) => bySlug.get(slug))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+}
+
 export default async function HomePage() {
-  const [home, featured, customisable, categories, gallery] = await Promise.all([
+  const [home, allProducts, categories, gallery] = await Promise.all([
     cms.getHomeContent(),
-    cms.getProducts({ featured: true }),
-    cms.getProducts({ customisable: true }),
+    cms.getProducts(),
     cms.getCategories(),
     cms.getGallery(),
   ]);
 
   const galleryPreview = gallery.slice(0, 4);
-  const customisablePreview = customisable.slice(0, 3);
-  const featuredShowroom = featured
-    .filter((p) => !p.customisable)
+  const selectedCustomisable = pickProductsBySlugs(
+    allProducts,
+    home.customisableProductSlugs,
+  );
+  const selectedFeatured = pickProductsBySlugs(
+    allProducts,
+    home.featuredProductSlugs,
+  );
+  const customisableFallback = allProducts
+    .filter((p) => p.customisable)
     .slice(0, 3);
-  const featuredFallback = featured
-    .filter((p) => !customisablePreview.some((c) => c.id === p.id))
+  const featuredFallback = allProducts
+    .filter((p) => p.featured && !p.customisable)
     .slice(0, 3);
+  const customisablePreview =
+    selectedCustomisable.length > 0
+      ? selectedCustomisable.slice(0, 6)
+      : customisableFallback;
+  const featuredShowroom =
+    selectedFeatured.length > 0
+      ? selectedFeatured.slice(0, 6)
+      : featuredFallback.length > 0
+        ? featuredFallback
+        : allProducts.filter((p) => p.featured).slice(0, 3);
 
-  const heroSlides = [
+  const defaultHeroSlides = [
     {
       src: "/images/living-white-sectional-hero.jpg",
       alt: "White sectional sofa with marble coffee table in a modern living room",
@@ -47,6 +74,12 @@ export default async function HomePage() {
     { src: "/images/showroom-boucle-sectional.jpg", alt: "Customised bouclé sectional sofa" },
     { src: "/images/sofa-beige-custom.jpg", alt: "Custom beige sectional with fabric options" },
     { src: "/images/bedroom-taupe.jpg", alt: "Customised upholstered bed and curtains" },
+  ];
+  const heroSlides = [
+    ...(home.heroImageUrl
+      ? [{ src: home.heroImageUrl, alt: home.heroHeadline }]
+      : []),
+    ...defaultHeroSlides,
   ].filter(
     (slide, index, list) =>
       list.findIndex((entry) => entry.src === slide.src) === index,
@@ -77,7 +110,11 @@ export default async function HomePage() {
           <ScrollReveal delay={120}>
             <div className="frame-image relative aspect-[5/4] bg-stone-deep">
               <Image
-                src={categories[0]?.imageUrl ?? home.heroImageUrl}
+                src={
+                  home.introImageUrl ||
+                  categories[0]?.imageUrl ||
+                  home.heroImageUrl
+                }
                 alt="West Home customised sofa showroom"
                 fill
                 className="object-cover"
@@ -94,8 +131,11 @@ export default async function HomePage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Made to order"
-                title="Customisable pieces"
-                description="We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
+                title={home.customisableTitle || "Customisable pieces"}
+                description={
+                  home.customisableText ||
+                  "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
+                }
               />
               <Link href="/products#customisable" className="text-link self-start sm:self-auto">
                 View customisable
@@ -114,8 +154,11 @@ export default async function HomePage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Showroom"
-                title="Featured pieces"
-                description="Ready looks from the floor — priced as shown, with custom options available when you need them."
+                title={home.featuredTitle || "Featured pieces"}
+                description={
+                  home.featuredText ||
+                  "Ready looks from the floor — priced as shown, with custom options available when you need them."
+                }
               />
               <Link href="/products#showroom" className="text-link self-start sm:self-auto">
                 View all
@@ -123,13 +166,7 @@ export default async function HomePage() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={80} className="mt-12">
-            <ProductGrid
-              products={
-                featuredShowroom.length > 0
-                  ? featuredShowroom
-                  : featuredFallback
-              }
-            />
+            <ProductGrid products={featuredShowroom} />
           </ScrollReveal>
         </div>
       </section>
