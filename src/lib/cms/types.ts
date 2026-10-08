@@ -74,6 +74,15 @@ export interface HomeContent {
   heroImageUrl: string;
   introTitle: string;
   introBody: string;
+  introImageUrl?: string;
+  featuredTitle?: string;
+  featuredText?: string;
+  /** Product slugs chosen in CMS for the Featured section. Empty = fall back to featured flag. */
+  featuredProductSlugs: string[];
+  customisableTitle?: string;
+  customisableText?: string;
+  /** Product slugs chosen in CMS for the Customisable section. Empty = fall back to customisable flag. */
+  customisableProductSlugs: string[];
   valueProps: { title: string; description: string }[];
 }
 
