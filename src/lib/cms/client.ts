@@ -16,6 +16,9 @@ export const cms: CmsAdapter = {
   getProductBySlug: (...args) => resolveAdapter().getProductBySlug(...args),
   getRelatedProducts: (...args) => resolveAdapter().getRelatedProducts(...args),
   getGallery: (...args) => resolveAdapter().getGallery(...args),
+  getProductsPage: (...args) => resolveAdapter().getProductsPage(...args),
+  getGalleryPage: (...args) => resolveAdapter().getGalleryPage(...args),
+  getEnquirePage: (...args) => resolveAdapter().getEnquirePage(...args),
   submitEnquiry: (...args) => resolveAdapter().submitEnquiry(...args),
 };
 

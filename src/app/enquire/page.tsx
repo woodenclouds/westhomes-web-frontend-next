@@ -29,7 +29,10 @@ export default async function EnquirePage({
   searchParams: SearchParams;
 }) {
   const params = await searchParams;
-  const products = await cms.getProducts();
+  const [products, page] = await Promise.all([
+    cms.getProducts(),
+    cms.getEnquirePage(),
+  ]);
   const defaultType = params.product
     ? parseType(params.type ?? "product")
     : parseType(params.type);
@@ -40,8 +43,8 @@ export default async function EnquirePage({
         <ScrollReveal>
           <PageIntro
             eyebrow="Get in touch"
-            title="Tell us what you need"
-            description="A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
+            title={page.title}
+            description={page.intro}
           />
         </ScrollReveal>
         <ScrollReveal delay={80}>

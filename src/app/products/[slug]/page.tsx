@@ -44,7 +44,20 @@ export default async function ProductDetailPage({
   const product = await cms.getProductBySlug(slug);
   if (!product) notFound();
 
-  const related = await cms.getRelatedProducts(product.id, 3);
+  const [related, gallery] = await Promise.all([
+    cms.getRelatedProducts(product.id, 3),
+    cms.getGallery(),
+  ]);
+  const extraPhotos = (product.morePhotoSlugs ?? [])
+    .map((slug) => gallery.find((item) => item.slug === slug)?.imageUrl)
+    .filter((src): src is string => Boolean(src));
+  const productImages = [
+    product.imageUrl,
+    ...product.gallery,
+    ...extraPhotos,
+  ].filter(
+    (src, index, list) => Boolean(src) && list.indexOf(src) === index,
+  );
   const priceLabel = formatPrice(product.price);
   const wa = productWhatsAppMessage({
     id: product.id,
@@ -67,7 +80,7 @@ export default async function ProductDetailPage({
         </nav>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-2">
-          <ProductGallery name={product.name} images={product.gallery} />
+          <ProductGallery name={product.name} images={productImages} />
 
           <div>
             <p className="text-xs uppercase tracking-[0.14em] text-muted">

@@ -37,13 +37,12 @@ export default async function AboutPage() {
             </h1>
             <blockquote className="mt-7 border-l border-wood-soft/70 pl-5">
               <p className="font-display text-xl leading-snug text-stone/95 md:text-2xl">
-                “Furniture that brings comfort and elegance to your home.”
+                “{about.quote || "Furniture that brings comfort and elegance to your home."}”
               </p>
             </blockquote>
             <p className="mt-5 max-w-lg text-[0.95rem] leading-relaxed text-stone/80 md:text-base">
-              Stylish sofas, beds, mattresses, dining and coffee tables — and
-              custom sofas, beds, club chairs and more from our Al Barsha
-              showroom.
+              {about.heroText ||
+                "Stylish sofas, beds, mattresses, dining and coffee tables — and custom sofas, beds, club chairs and more from our Al Barsha showroom."}
             </p>
             <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap">
               <ButtonLink href="/enquire" size="lg" className="w-full sm:w-auto">
@@ -77,12 +76,14 @@ export default async function AboutPage() {
                 Showroom
               </p>
               <p className="mt-3 font-display text-2xl text-charcoal">
-                Al Barsha, Hessa Street
+                {about.showroomTitle || "Al Barsha, Hessa Street"}
               </p>
-              <p className="mt-2 text-muted">Open daily, 9:00 AM – 9:00 PM</p>
+              <p className="mt-2 text-muted">
+                {about.showroomHours || "Open daily, 9:00 AM – 9:00 PM"}
+              </p>
               <p className="mt-4 text-sm leading-relaxed text-muted">
-                Come sit with the pieces, browse fabrics and plan your rooms
-                with our team.
+                {about.showroomText ||
+                  "Come sit with the pieces, browse fabrics and plan your rooms with our team."}
               </p>
               <div className="mt-5">
                 <ButtonLink href="/contact" variant="wood-outline" size="sm">
@@ -107,12 +108,11 @@ export default async function AboutPage() {
             <ScrollReveal delay={80}>
               <p className="eyebrow">How we work</p>
               <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl">
-                From showroom to your rooms
+                {about.processTitle || "From showroom to your rooms"}
               </h2>
               <p className="mt-4 text-muted leading-relaxed">
-                Choose ready pieces from the showroom, or customise sofas, beds,
-                club chairs and more — we guide you through fabric, size and
-                layout so the furniture fits your home.
+                {about.processIntro ||
+                  "Choose ready pieces from the showroom, or customise sofas, beds, club chairs and more — we guide you through fabric, size and layout so the furniture fits your home."}
               </p>
               <ol className="mt-8 space-y-6">
                 {about.process.map((step, i) => (
@@ -137,7 +137,7 @@ export default async function AboutPage() {
           <ScrollReveal className="mt-10 border-t border-border pt-8 md:mt-12">
             <p className="eyebrow">Our collection</p>
             <h2 className="mt-3 font-display text-3xl text-charcoal">
-              What you will find
+              {about.offeringsTitle || "What you will find"}
             </h2>
             <ul className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
               {about.offerings.map((item) => (
@@ -161,7 +161,7 @@ export default async function AboutPage() {
           <ScrollReveal>
             <p className="eyebrow">What we stand for</p>
             <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl">
-              Comfort and elegance
+              {about.valuesTitle || "Comfort and elegance"}
             </h2>
           </ScrollReveal>
           <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-10">

@@ -30,6 +30,8 @@ export interface Product {
   description: string;
   imageUrl: string;
   gallery: string[];
+  /** Image slugs chosen in CMS as extra product photos. */
+  morePhotoSlugs?: string[];
   specs: ProductSpec[];
   featured: boolean;
   /** Made-to-order: fabric, size or finish can be chosen with the showroom. */
@@ -41,6 +43,7 @@ export interface Product {
 
 export interface GalleryItem {
   id: string;
+  slug: string;
   title: string;
   imageUrl: string;
   category?: string;
@@ -55,6 +58,9 @@ export interface SiteContact {
   whatsappNumber: string;
   mapEmbedUrl?: string;
   socialLinks: { label: string; href: string }[];
+  pageTitle?: string;
+  pageIntro?: string;
+  hours?: string;
 }
 
 export interface AboutContent {
@@ -66,6 +72,15 @@ export interface AboutContent {
   offerings: string[];
   imageUrl: string;
   craftImageUrl: string;
+  quote?: string;
+  heroText?: string;
+  showroomTitle?: string;
+  showroomHours?: string;
+  showroomText?: string;
+  processTitle?: string;
+  processIntro?: string;
+  valuesTitle?: string;
+  offeringsTitle?: string;
 }
 
 export interface HomeContent {
@@ -83,7 +98,30 @@ export interface HomeContent {
   customisableText?: string;
   /** Product slugs chosen in CMS for the Customisable section. Empty = fall back to customisable flag. */
   customisableProductSlugs: string[];
+  /** Gallery image slugs for the home banner carousel. Empty = built-in slides. */
+  bannerPhotoSlugs: string[];
+  /** Gallery image slugs for the home showroom strip. Empty = first gallery images. */
+  previewImageSlugs: string[];
   valueProps: { title: string; description: string }[];
+}
+
+export interface ProductsPageContent {
+  title: string;
+  intro: string;
+  customisableTitle: string;
+  customisableText: string;
+  showroomTitle: string;
+  showroomText: string;
+}
+
+export interface GalleryPageContent {
+  title: string;
+  intro: string;
+}
+
+export interface EnquirePageContent {
+  title: string;
+  intro: string;
 }
 
 export interface EnquiryPayload {
@@ -116,5 +154,8 @@ export interface CmsAdapter {
   getProductBySlug(slug: string): Promise<Product | null>;
   getRelatedProducts(productId: string, limit?: number): Promise<Product[]>;
   getGallery(): Promise<GalleryItem[]>;
+  getProductsPage(): Promise<ProductsPageContent>;
+  getGalleryPage(): Promise<GalleryPageContent>;
+  getEnquirePage(): Promise<EnquirePageContent>;
   submitEnquiry(payload: EnquiryPayload): Promise<EnquiryResult>;
 }

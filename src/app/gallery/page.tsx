@@ -12,15 +12,18 @@ export const metadata: Metadata = {
 };
 
 export default async function GalleryPage() {
-  const items = await cms.getGallery();
+  const [items, page] = await Promise.all([
+    cms.getGallery(),
+    cms.getGalleryPage(),
+  ]);
 
   return (
     <div className="section-space">
       <div className="container-page">
         <PageIntro
           eyebrow="Portfolio"
-          title="Gallery"
-          description="Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added."
+          title={page.title}
+          description={page.intro}
         />
 
         <ScrollReveal className="mt-12">
