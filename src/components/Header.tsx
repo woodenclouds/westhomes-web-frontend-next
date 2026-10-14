@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { ButtonLink } from "./ui/Button";
 import { Logo } from "./Logo";
@@ -18,23 +18,26 @@ const nav = [
 ];
 
 const HERO_ROUTES = new Set(["/", "/about"]);
+const emptySubscribe = () => () => {};
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [scrolled, setScrolled] = useState(false);
 
-  const overHero = HERO_ROUTES.has(pathname);
-  const transparent = overHero && !scrolled && !open;
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setOpen(false);
+  }
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const overHero = HERO_ROUTES.has(pathname);
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 24);
+      const top = window.scrollY || document.documentElement.scrollTop || 0;
+      setScrolled(top > 20);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -50,10 +53,6 @@ export function Header() {
     };
   }, [open]);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   function closeMenu() {
     setOpen(false);
   }
@@ -63,21 +62,21 @@ export function Header() {
       ? createPortal(
           <div
             id="mobile-nav"
-            className="fixed inset-0 z-[60] flex flex-col bg-stone lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-charcoal text-stone lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
           >
-            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-border/80 pt-[env(safe-area-inset-top)] sm:h-[4.25rem]">
-              <Logo href="/" onClick={closeMenu} variant="header" />
+            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-white/10 pt-[env(safe-area-inset-top)] sm:h-[4.25rem]">
+              <Logo href="/" onClick={closeMenu} variant="header" tone="light" />
               <button
                 type="button"
-                className="tap-target relative inline-flex items-center justify-center rounded-sm border border-border bg-surface"
+                className="tap-target relative inline-flex items-center justify-center rounded-sm border border-white/25 bg-white/10 text-stone"
                 aria-label="Close menu"
                 onClick={closeMenu}
               >
-                <span className="absolute h-0.5 w-5 rotate-45 bg-charcoal" />
-                <span className="absolute h-0.5 w-5 -rotate-45 bg-charcoal" />
+                <span className="absolute h-0.5 w-5 rotate-45 bg-stone" />
+                <span className="absolute h-0.5 w-5 -rotate-45 bg-stone" />
               </button>
             </div>
             <nav
@@ -93,8 +92,8 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`border-b border-border/70 py-4 font-display text-[1.75rem] leading-none transition active:opacity-70 ${
-                      active ? "text-wood" : "text-charcoal"
+                    className={`border-b border-white/10 py-4 font-display text-[1.75rem] leading-none transition active:opacity-70 ${
+                      active ? "text-wood" : "text-stone"
                     }`}
                     onClick={closeMenu}
                   >
@@ -103,7 +102,7 @@ export function Header() {
                 );
               })}
             </nav>
-            <div className="container-page flex flex-col gap-3 border-t border-border/80 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+            <div className="container-page flex flex-col gap-3 border-t border-white/10 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
               <ButtonLink href="/enquire" onClick={closeMenu} className="w-full">
                 Enquire now
               </ButtonLink>
@@ -121,11 +120,9 @@ export function Header() {
   return (
     <>
       <header
-        data-tone={transparent ? "light" : "dark"}
-        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
-          transparent
-            ? "border-b border-transparent bg-transparent"
-            : "border-b border-border/80 bg-stone/95 backdrop-blur-md"
+        data-tone="light"
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled ? "nav-glass-scrolled" : "nav-glass-base"
         }`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-3 sm:h-[4.25rem] lg:h-[4.75rem]">
@@ -134,7 +131,7 @@ export function Header() {
             priority
             onClick={closeMenu}
             variant="header"
-            tone={transparent ? "light" : "dark"}
+            tone="light"
           />
 
           <nav
@@ -164,21 +161,13 @@ export function Header() {
               label="WhatsApp"
               size="sm"
               variant="ghost"
-              className={
-                transparent
-                  ? "!text-stone hover:!bg-white/10"
-                  : undefined
-              }
+              className="!text-stone hover:!bg-white/10"
             />
             <ButtonLink
               href="/enquire"
               size="sm"
-              variant={transparent ? "wood-outline" : "primary"}
-              className={
-                transparent
-                  ? "!border-stone/70 !text-stone hover:!bg-stone hover:!text-charcoal"
-                  : undefined
-              }
+              variant="wood-outline"
+              className="!border-stone/70 !text-stone hover:!bg-stone hover:!text-charcoal"
             >
               Enquire
             </ButtonLink>
@@ -187,11 +176,7 @@ export function Header() {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
-              className={`tap-target relative inline-flex items-center justify-center rounded-sm border transition ${
-                transparent
-                  ? "border-white/35 bg-white/10"
-                  : "border-border bg-surface"
-              }`}
+              className="tap-target relative inline-flex items-center justify-center rounded-sm border border-white/35 bg-white/10 transition hover:bg-white/20"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -199,19 +184,19 @@ export function Header() {
             >
               <span className="sr-only">Menu</span>
               <span
-                className={`absolute h-0.5 w-5 transition duration-300 ${
-                  transparent ? "bg-stone" : "bg-charcoal"
-                } ${open ? "rotate-45" : "-translate-y-1.5"}`}
+                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
+                  open ? "rotate-45" : "-translate-y-1.5"
+                }`}
               />
               <span
-                className={`absolute h-0.5 w-5 transition duration-300 ${
-                  transparent ? "bg-stone" : "bg-charcoal"
-                } ${open ? "opacity-0" : "opacity-100"}`}
+                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
+                  open ? "opacity-0" : "opacity-100"
+                }`}
               />
               <span
-                className={`absolute h-0.5 w-5 transition duration-300 ${
-                  transparent ? "bg-stone" : "bg-charcoal"
-                } ${open ? "-rotate-45" : "translate-y-1.5"}`}
+                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
+                  open ? "-rotate-45" : "translate-y-1.5"
+                }`}
               />
             </button>
           </div>

@@ -67,7 +67,10 @@ const metadata = {
     description: "See stylish living room and bedroom furniture from West Home Furniture Dubai — sofas, beds, tables and custom pieces from our Al Barsha showroom."
 };
 async function GalleryPage() {
-    const items = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cms$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cms"].getGallery();
+    const [items, page] = await Promise.all([
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cms$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cms"].getGallery(),
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cms$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cms"].getGalleryPage()
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "section-space",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -75,11 +78,11 @@ async function GalleryPage() {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SectionHeading$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["PageIntro"], {
                     eyebrow: "Portfolio",
-                    title: "Gallery",
-                    description: "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added."
+                    title: page.title,
+                    description: page.intro
                 }, void 0, false, {
                     fileName: "[project]/src/app/gallery/page.tsx",
-                    lineNumber: 20,
+                    lineNumber: 23,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ScrollReveal$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ScrollReveal"], {
@@ -89,29 +92,29 @@ async function GalleryPage() {
                         description: "New images will appear here once added in the CMS."
                     }, void 0, false, {
                         fileName: "[project]/src/app/gallery/page.tsx",
-                        lineNumber: 28,
+                        lineNumber: 31,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$GalleryGrid$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GalleryGrid"], {
                         items: items
                     }, void 0, false, {
                         fileName: "[project]/src/app/gallery/page.tsx",
-                        lineNumber: 33,
+                        lineNumber: 36,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/gallery/page.tsx",
-                    lineNumber: 26,
+                    lineNumber: 29,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/gallery/page.tsx",
-            lineNumber: 19,
+            lineNumber: 22,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/gallery/page.tsx",
-        lineNumber: 18,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }

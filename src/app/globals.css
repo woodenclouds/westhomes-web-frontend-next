@@ -173,6 +173,21 @@ header[data-tone="light"] .nav-link::after {
   background: var(--wood-soft);
 }
 
+.nav-glass-base {
+  background-color: color-mix(in srgb, var(--charcoal) 60%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-glass-scrolled {
+  background-color: color-mix(in srgb, var(--charcoal) 85%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
 html[data-nav-open="true"] .floating-wa {
   opacity: 0;
   pointer-events: none;

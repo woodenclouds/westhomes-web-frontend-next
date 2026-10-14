@@ -3633,6 +3633,24 @@ function relationSlug(value) {
     }
     return "";
 }
+function relationSlugs(value) {
+    if (value == null || value === "") return [];
+    if (Array.isArray(value)) {
+        return value.map(relationSlug).filter(Boolean);
+    }
+    const one = relationSlug(value);
+    return one ? [
+        one
+    ] : [];
+}
+function mediaUrl(value) {
+    if (!value) return "";
+    if (typeof value === "string") return value;
+    if (typeof value === "object" && value !== null && "url" in value) {
+        return asString(value.url);
+    }
+    return "";
+}
 function mapCategory(entry) {
     return {
         id: asString(entry.id) || asString(entry.slug),
@@ -3654,8 +3672,9 @@ function mapProduct(entry) {
         categoryName: asString(entry.category_name),
         shortDescription: asString(entry.short_description),
         description: asString(entry.description),
-        imageUrl: asString(entry.image_url),
+        imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
         gallery: Array.isArray(gallery) ? gallery.map((u)=>asString(u)) : [],
+        morePhotoSlugs: relationSlugs(entry.more_photos),
         specs: Array.isArray(specs) ? specs.map((s)=>({
                 label: asString(s.label),
                 value: asString(s.value)
@@ -3669,33 +3688,93 @@ function mapProduct(entry) {
 function mapGalleryItem(entry) {
     return {
         id: asString(entry.id) || asString(entry.slug),
+        slug: asString(entry.slug) || asString(entry.id),
         title: asString(entry.title),
-        imageUrl: asString(entry.image_url),
+        imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
         category: asString(entry.category) || undefined,
         alt: asString(entry.alt) || asString(entry.title)
     };
 }
-function mapHome(entry) {
+function mapHomeValueProps(entry) {
+    const fromCards = [];
+    for (const index of [
+        1,
+        2,
+        3
+    ]){
+        const title = asString(entry[`value_${index}_title`]);
+        const description = asString(entry[`value_${index}_text`]);
+        if (title || description) {
+            fromCards.push({
+                title,
+                description
+            });
+        }
+    }
+    if (fromCards.length > 0) return fromCards;
     const valueProps = parseJsonField(entry.value_props, []);
+    return Array.isArray(valueProps) ? valueProps : [];
+}
+function mapHome(entry) {
     return {
         heroHeadline: asString(entry.hero_headline),
         heroSupport: asString(entry.hero_support),
-        heroImageUrl: asString(entry.hero_image_url),
+        heroImageUrl: mediaUrl(entry.banner_image) || asString(entry.hero_image_url),
         introTitle: asString(entry.intro_title),
         introBody: asString(entry.intro_body),
-        valueProps: Array.isArray(valueProps) ? valueProps : []
+        introImageUrl: mediaUrl(entry.intro_image) || undefined,
+        featuredTitle: asString(entry.featured_title) || undefined,
+        featuredText: asString(entry.featured_text) || undefined,
+        featuredProductSlugs: relationSlugs(entry.featured_products),
+        customisableTitle: asString(entry.customisable_title) || undefined,
+        customisableText: asString(entry.customisable_text) || undefined,
+        customisableProductSlugs: relationSlugs(entry.customisable_products),
+        bannerPhotoSlugs: relationSlugs(entry.banner_photos),
+        previewImageSlugs: relationSlugs(entry.preview_images),
+        valueProps: mapHomeValueProps(entry)
     };
 }
+function titledCards(entry, prefix, count) {
+    const cards = [];
+    for(let index = 1; index <= count; index += 1){
+        const title = asString(entry[`${prefix}_${index}_title`]);
+        const description = asString(entry[`${prefix}_${index}_text`]);
+        if (title || description) cards.push({
+            title,
+            description
+        });
+    }
+    return cards;
+}
 function mapAbout(entry) {
+    const valueCards = titledCards(entry, "value", 3);
+    const processCards = titledCards(entry, "process", 3);
+    const offerings = [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ].map((index)=>asString(entry[`offering_${index}`])).filter(Boolean);
     return {
         title: asString(entry.title),
         intro: asString(entry.intro),
         body: asString(entry.body),
-        values: parseJsonField(entry.values, []),
-        process: parseJsonField(entry.process, []),
-        offerings: parseJsonField(entry.offerings, []),
-        imageUrl: asString(entry.image_url),
-        craftImageUrl: asString(entry.craft_image_url)
+        values: valueCards.length ? valueCards : parseJsonField(entry.values, []),
+        process: processCards.length ? processCards : parseJsonField(entry.process, []),
+        offerings: offerings.length ? offerings : parseJsonField(entry.offerings, []),
+        imageUrl: mediaUrl(entry.hero_image) || asString(entry.image_url),
+        craftImageUrl: mediaUrl(entry.craft_image) || asString(entry.craft_image_url),
+        quote: asString(entry.quote) || undefined,
+        heroText: asString(entry.hero_text) || undefined,
+        showroomTitle: asString(entry.showroom_title) || undefined,
+        showroomHours: asString(entry.showroom_hours) || undefined,
+        showroomText: asString(entry.showroom_text) || undefined,
+        processTitle: asString(entry.process_title) || undefined,
+        processIntro: asString(entry.process_intro) || undefined,
+        valuesTitle: asString(entry.values_title) || undefined,
+        offeringsTitle: asString(entry.offerings_title) || undefined
     };
 }
 function mapContact(entry) {
@@ -3706,7 +3785,10 @@ function mapContact(entry) {
         email: ("TURBOPACK compile-time value", "hello@westhomedubai.ae") ?? asString(entry.email),
         whatsappNumber: ("TURBOPACK compile-time value", "971558708760") ?? asString(entry.whatsapp_number),
         mapEmbedUrl: asString(entry.map_embed_url) || undefined,
-        socialLinks: parseJsonField(entry.social_links, [])
+        socialLinks: parseJsonField(entry.social_links, []),
+        pageTitle: asString(entry.page_title) || undefined,
+        pageIntro: asString(entry.page_intro) || undefined,
+        hours: asString(entry.hours) || undefined
     };
 }
 const apiAdapter = {
@@ -3760,6 +3842,59 @@ const apiAdapter = {
     async getGallery () {
         const entries = await fetchAllEntries("gallery");
         return entries.map(mapGalleryItem);
+    },
+    async getProductsPage () {
+        try {
+            const res = await cmsFetch("/products-page/");
+            const entry = res.data;
+            return {
+                title: asString(entry.title) || "Products",
+                intro: asString(entry.intro) || "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love.",
+                customisableTitle: asString(entry.customisable_title) || "Customisable products",
+                customisableText: asString(entry.customisable_text) || "We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry.",
+                showroomTitle: asString(entry.showroom_title) || "Ready pieces",
+                showroomText: asString(entry.showroom_text) || "Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them."
+            };
+        } catch  {
+            return {
+                title: "Products",
+                intro: "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love.",
+                customisableTitle: "Customisable products",
+                customisableText: "We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry.",
+                showroomTitle: "Ready pieces",
+                showroomText: "Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them."
+            };
+        }
+    },
+    async getGalleryPage () {
+        try {
+            const res = await cmsFetch("/gallery-page/");
+            const entry = res.data;
+            return {
+                title: asString(entry.title) || "Gallery",
+                intro: asString(entry.intro) || "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added."
+            };
+        } catch  {
+            return {
+                title: "Gallery",
+                intro: "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added."
+            };
+        }
+    },
+    async getEnquirePage () {
+        try {
+            const res = await cmsFetch("/enquire-page/");
+            const entry = res.data;
+            return {
+                title: asString(entry.title) || "Tell us what you need",
+                intro: asString(entry.intro) || "A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
+            };
+        } catch  {
+            return {
+                title: "Tell us what you need",
+                intro: "A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
+            };
+        }
     },
     async submitEnquiry (payload) {
         const body = {
@@ -4304,6 +4439,7 @@ const products = [
 const gallery = [
     {
         id: "gal-1",
+        slug: "gal-1",
         title: "Showroom — Luxury Living",
         imageUrl: img("showroom-brand-wall.jpg"),
         category: "Showroom",
@@ -4311,6 +4447,7 @@ const gallery = [
     },
     {
         id: "gal-2",
+        slug: "gal-2",
         title: "Bouclé sectional vignette",
         imageUrl: img("showroom-boucle-sectional.jpg"),
         category: "Sofas",
@@ -4318,6 +4455,7 @@ const gallery = [
     },
     {
         id: "gal-3",
+        slug: "gal-3",
         title: "White living set",
         imageUrl: img("showroom-white-set.jpg"),
         category: "Sofas",
@@ -4325,6 +4463,7 @@ const gallery = [
     },
     {
         id: "gal-4",
+        slug: "gal-4",
         title: "Custom fabric selection",
         imageUrl: img("sofa-custom-swatches.jpg"),
         category: "Customisation",
@@ -4332,6 +4471,7 @@ const gallery = [
     },
     {
         id: "gal-5",
+        slug: "gal-5",
         title: "Beige living room",
         imageUrl: img("living-beige-sectional.jpg"),
         category: "Living",
@@ -4339,6 +4479,7 @@ const gallery = [
     },
     {
         id: "gal-6",
+        slug: "gal-6",
         title: "Powder blue sofa",
         imageUrl: img("sofa-powder-blue.jpg"),
         category: "Sofas",
@@ -4346,6 +4487,7 @@ const gallery = [
     },
     {
         id: "gal-7",
+        slug: "gal-7",
         title: "Grey chaise living",
         imageUrl: img("sofa-grey-chaise.jpg"),
         category: "Sofas",
@@ -4353,6 +4495,7 @@ const gallery = [
     },
     {
         id: "gal-8",
+        slug: "gal-8",
         title: "Armchair and ottoman",
         imageUrl: img("armchair-ottoman.jpg"),
         category: "Seating",
@@ -4360,6 +4503,7 @@ const gallery = [
     },
     {
         id: "gal-9",
+        slug: "gal-9",
         title: "Custom bedroom",
         imageUrl: img("bedroom-taupe.jpg"),
         category: "Beds",
@@ -4367,6 +4511,7 @@ const gallery = [
     },
     {
         id: "gal-10",
+        slug: "gal-10",
         title: "Green accent living",
         imageUrl: img("sofa-grey-green.jpg"),
         category: "Living",
@@ -4379,6 +4524,15 @@ const homeContent = {
     heroImageUrl: img("living-white-sectional-hero.jpg"),
     introTitle: "Comfort and elegance for your home",
     introBody: "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes. Discover quality pieces for every room, visit our showroom in Al Barsha, and find furniture that brings comfort and elegance to your space. Open daily 9:00 AM – 9:00 PM.",
+    introImageUrl: img("sofa-custom-swatches.jpg"),
+    featuredTitle: "Featured pieces",
+    featuredText: "Ready looks from the floor — priced as shown, with custom options available when you need them.",
+    featuredProductSlugs: [],
+    customisableTitle: "Customisable pieces",
+    customisableText: "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag.",
+    customisableProductSlugs: [],
+    bannerPhotoSlugs: [],
+    previewImageSlugs: [],
     valueProps: [
         {
             title: "Custom sofas, beds & club chairs",
@@ -4519,6 +4673,31 @@ const mockAdapter = {
         await delay();
         return gallery;
     },
+    async getProductsPage () {
+        await delay();
+        return {
+            title: "Products",
+            intro: "Browse sofas, beds, mattresses, living room and bedroom furniture, dining and coffee tables — then enquire on WhatsApp with the piece you love.",
+            customisableTitle: "Customisable products",
+            customisableText: "We customise sofas, beds, club chairs and more — choose fabric, size and finish with our team. Many pieces are priced after enquiry.",
+            showroomTitle: "Ready pieces",
+            showroomText: "Living room and bedroom furniture priced as shown in our Al Barsha showroom — with custom options when you need them."
+        };
+    },
+    async getGalleryPage () {
+        await delay();
+        return {
+            title: "Gallery",
+            intro: "Modern living and bedroom settings from our Al Barsha showroom. New images appear here as they are added."
+        };
+    },
+    async getEnquirePage () {
+        await delay();
+        return {
+            title: "Tell us what you need",
+            intro: "A sofa, bed, club chair, dining set, or a showroom visit. After you send this, WhatsApp opens with your details so we can reply quickly."
+        };
+    },
     async submitEnquiry (payload) {
         await delay(400);
         const reference = makeReference();
@@ -4557,6 +4736,9 @@ const cms = {
     getProductBySlug: (...args)=>resolveAdapter().getProductBySlug(...args),
     getRelatedProducts: (...args)=>resolveAdapter().getRelatedProducts(...args),
     getGallery: (...args)=>resolveAdapter().getGallery(...args),
+    getProductsPage: (...args)=>resolveAdapter().getProductsPage(...args),
+    getGalleryPage: (...args)=>resolveAdapter().getGalleryPage(...args),
+    getEnquirePage: (...args)=>resolveAdapter().getEnquirePage(...args),
     submitEnquiry: (...args)=>resolveAdapter().submitEnquiry(...args)
 };
 }),
