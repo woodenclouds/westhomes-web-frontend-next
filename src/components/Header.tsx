@@ -6,8 +6,6 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { ButtonLink } from "./ui/Button";
 import { Logo } from "./Logo";
-import { WhatsAppButton } from "./WhatsAppButton";
-import { generalEnquiryMessage } from "@/lib/whatsapp";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -106,11 +104,6 @@ export function Header() {
               <ButtonLink href="/enquire" onClick={closeMenu} className="w-full">
                 Enquire now
               </ButtonLink>
-              <WhatsAppButton
-                message={generalEnquiryMessage()}
-                label="WhatsApp us"
-                className="w-full"
-              />
             </div>
           </div>,
           document.body,
@@ -156,13 +149,6 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <WhatsAppButton
-              message={generalEnquiryMessage()}
-              label="WhatsApp"
-              size="sm"
-              variant="ghost"
-              className="!text-stone hover:!bg-white/10"
-            />
             <ButtonLink
               href="/enquire"
               size="sm"
