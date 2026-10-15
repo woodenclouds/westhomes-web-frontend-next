@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -66,7 +68,30 @@ export default async function HomePage() {
         ? featuredFallback
         : allProducts.filter((p) => p.featured).slice(0, 3);
 
-  const defaultHeroSlides = [
+  const candidateBannerFiles = [
+    { name: "B1", alt: "Minimalist Japandi living room with wooden fluted accent wall and woven lounge chair" },
+    { name: "B2", alt: "Luxury modern living room with warm cove ceiling lighting and beige sectional sofa" },
+    { name: "B3", alt: "Warm Scandinavian dining room with solid wood table and organic pendant fixtures" },
+    { name: "B4", alt: "Contemporary living room with cream sectional sofa, marble coffee table, and warm lighting" },
+    { name: "B5", alt: "Elegant dining room with walnut table, contemporary artwork, and chandelier" },
+    { name: "B6", alt: "Bespoke handcrafted furniture collection for modern Dubai homes" },
+  ];
+
+  const publicDir = path.join(process.cwd(), "public");
+  const publicBannerSlides = candidateBannerFiles
+    .map((candidate) => {
+      const extensions = [".png", ".jpg", ".jpeg", ".webp", ".PNG", ".JPG", ".JPEG", ".WEBP"];
+      for (const ext of extensions) {
+        const filename = `${candidate.name}${ext}`;
+        if (fs.existsSync(path.join(publicDir, filename))) {
+          return { src: `/${filename}`, alt: candidate.alt };
+        }
+      }
+      return null;
+    })
+    .filter((slide): slide is { src: string; alt: string } => Boolean(slide));
+
+  const fallbackHeroSlides = [
     {
       src: "/images/living-white-sectional-hero.jpg",
       alt: "White sectional sofa with marble coffee table in a modern living room",
@@ -75,33 +100,10 @@ export default async function HomePage() {
       src: "/images/living-grey-sectional-hero.jpg",
       alt: "Light grey sectional sofa with marble table and warm accent lighting",
     },
-    { src: "/images/showroom-brand-wall.jpg", alt: "West Home Luxury Living showroom" },
-    { src: "/images/showroom-boucle-sectional.jpg", alt: "Customised bouclé sectional sofa" },
-    { src: "/images/sofa-beige-custom.jpg", alt: "Custom beige sectional with fabric options" },
-    { src: "/images/bedroom-taupe.jpg", alt: "Customised upholstered bed and curtains" },
   ];
-  const bannerSlides = home.bannerPhotoSlugs
-    .map((slug) => gallery.find((item) => item.slug === slug))
-    .filter((item): item is (typeof gallery)[number] => Boolean(item))
-    .map((item) => ({ src: item.imageUrl, alt: item.alt || item.title }));
-  const heroSlides = (
-    bannerSlides.length > 0
-      ? [
-          ...(home.heroImageUrl
-            ? [{ src: home.heroImageUrl, alt: home.heroHeadline }]
-            : []),
-          ...bannerSlides,
-        ]
-      : [
-          ...(home.heroImageUrl
-            ? [{ src: home.heroImageUrl, alt: home.heroHeadline }]
-            : []),
-          ...defaultHeroSlides,
-        ]
-  ).filter(
-    (slide, index, list) =>
-      list.findIndex((entry) => entry.src === slide.src) === index,
-  );
+
+  const heroSlides =
+    publicBannerSlides.length > 0 ? publicBannerSlides : fallbackHeroSlides;
 
   return (
     <div className="relative">
