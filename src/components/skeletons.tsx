@@ -85,16 +85,16 @@ export function HomeSkeleton() {
       <Bone className="min-h-[100svh] w-full !bg-charcoal/15" />
 
       <section className="section-space">
-        <div className="container-page grid items-center gap-12 md:grid-cols-2">
-          <div>
-            <Bone className="h-3 w-24" />
+        <div className="container-page flex flex-col items-center">
+          <div className="flex w-full max-w-3xl flex-col items-center text-center">
+            <Bone className="h-3 w-20" />
             <Bone className="mt-4 h-12 w-4/5" />
             <Bone className="mt-4 h-4 w-full" />
-            <Bone className="mt-2 h-4 w-full" />
+            <Bone className="mt-2 h-4 w-5/6" />
             <Bone className="mt-2 h-4 w-3/4" />
-            <Bone className="mt-8 h-11 w-32" />
+            <Bone className="mt-8 h-10 w-28 !rounded-full" />
           </div>
-          <Bone className="aspect-[5/4]" />
+          <Bone className="mt-12 aspect-[16/10] w-full !rounded-[24px] sm:aspect-[16/8] md:aspect-[21/9] lg:aspect-[2.35/1]" />
         </div>
       </section>
 

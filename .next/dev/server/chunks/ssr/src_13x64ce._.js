@@ -300,12 +300,13 @@ function HomeSkeleton() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 className: "section-space",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "container-page grid items-center gap-12 md:grid-cols-2",
+                    className: "container-page flex flex-col items-center",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex w-full max-w-3xl flex-col items-center text-center",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(Bone, {
-                                    className: "h-3 w-24"
+                                    className: "h-3 w-20"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/skeletons.tsx",
                                     lineNumber: 90,
@@ -326,7 +327,7 @@ function HomeSkeleton() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(Bone, {
-                                    className: "mt-2 h-4 w-full"
+                                    className: "mt-2 h-4 w-5/6"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/skeletons.tsx",
                                     lineNumber: 93,
@@ -340,7 +341,7 @@ function HomeSkeleton() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(Bone, {
-                                    className: "mt-8 h-11 w-32"
+                                    className: "mt-8 h-10 w-28 !rounded-full"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/skeletons.tsx",
                                     lineNumber: 95,
@@ -353,7 +354,7 @@ function HomeSkeleton() {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(Bone, {
-                            className: "aspect-[5/4]"
+                            className: "mt-12 aspect-[16/10] w-full !rounded-[24px] sm:aspect-[16/8] md:aspect-[21/9] lg:aspect-[2.35/1]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/skeletons.tsx",
                             lineNumber: 97,

@@ -119,36 +119,43 @@ export default async function HomePage() {
         <TickerBanner />
 
         <section className="section-space">
-        <div className="container-page grid items-center gap-12 md:grid-cols-2">
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="The house"
-              title={home.introTitle}
-              description={home.introBody}
-            />
-            <div className="mt-8">
-              <ButtonLink href="/about" variant="wood-outline">
-                Our story
-              </ButtonLink>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={120}>
-            <div className="frame-image relative aspect-[5/4] bg-stone-deep">
-              <Image
-                src={
-                  home.introImageUrl ||
-                  categories[0]?.imageUrl ||
-                  home.heroImageUrl
-                }
-                alt="West Home customised sofa showroom"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+          <div className="container-page flex flex-col items-center">
+            {/* Centered Editorial Header */}
+            <ScrollReveal className="max-w-3xl text-center">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-wood sm:text-[0.75rem]">
+                The house
+              </p>
+              <h2 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight">
+                {home.introTitle}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-muted sm:mt-5 sm:text-base md:text-[1.05rem]">
+                {home.introBody}
+              </p>
+              <div className="mt-7 flex justify-center sm:mt-8">
+                <ButtonLink href="/about" variant="wood-outline">
+                  Our story
+                </ButtonLink>
+              </div>
+            </ScrollReveal>
+
+            {/* Expansive Wide Showcase Image */}
+            <ScrollReveal delay={120} className="mt-10 w-full sm:mt-12 md:mt-14">
+              <div className="frame-image relative aspect-[16/10] w-full overflow-hidden bg-stone-deep rounded-[24px] shadow-sm sm:aspect-[16/8] md:aspect-[21/9] lg:aspect-[2.35/1]">
+                <Image
+                  src={
+                    home.introImageUrl ||
+                    categories[0]?.imageUrl ||
+                    home.heroImageUrl
+                  }
+                  alt="West Home customised sofa showroom"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
 
       <section className="border-y border-border bg-surface section-space">
         <div className="container-page">
