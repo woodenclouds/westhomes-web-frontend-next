@@ -31,6 +31,18 @@ export function TickerBanner({
       aria-label="Announcements and offers"
       className={`ticker-container relative flex h-[56px] w-full items-center overflow-hidden bg-[#151515] select-none ${className}`}
     >
+      {/* Left side gradient fade mask */}
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 sm:w-32 md:w-44 bg-gradient-to-r from-[#151515] to-transparent"
+        aria-hidden="true"
+      />
+
+      {/* Right side gradient fade mask */}
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 sm:w-32 md:w-44 bg-gradient-to-l from-[#151515] to-transparent"
+        aria-hidden="true"
+      />
+
       {/* Accessible list for screen readers */}
       <div className="sr-only">
         <h2>Announcements and offers</h2>
