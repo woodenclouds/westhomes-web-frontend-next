@@ -120,16 +120,16 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-3.5 sm:px-6 pointer-events-none">
+      <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <div
-          className={`pointer-events-auto flex items-center justify-between w-full max-w-4xl lg:max-w-5xl rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] transition-all duration-300 px-4 sm:px-6 py-2 sm:py-2.5 ${
+          className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-[76px] px-8 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] transition-all duration-300 ${
             scrolled
               ? "shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-black/[0.12] bg-white"
               : "shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
           }`}
         >
-          {/* Brand Logo */}
-          <div className="flex items-center">
+          {/* Column 1: Logo */}
+          <div className="justify-self-start flex items-center">
             <Logo
               href="/"
               priority
@@ -140,9 +140,9 @@ export function Header() {
             />
           </div>
 
-          {/* Desktop Nav Links */}
+          {/* Column 2: Nav Links mathematically centered */}
           <nav
-            className="hidden items-center gap-7 xl:gap-9 lg:flex"
+            className="hidden md:flex items-center gap-10 justify-self-center"
             aria-label="Primary"
           >
             {nav.map((item) => {
@@ -154,30 +154,31 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-[0.925rem] font-medium transition-colors duration-200 ${
+                  data-label={item.label}
+                  className={`relative inline-flex flex-col items-center justify-center text-[0.925rem] leading-none tracking-normal transition-colors duration-200 after:content-[attr(data-label)] after:block after:h-0 after:invisible after:overflow-hidden after:font-semibold after:select-none ${
                     active
                       ? "text-black font-semibold"
-                      : "text-neutral-700 hover:text-black"
+                      : "text-neutral-700 hover:text-black font-medium"
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          {/* Action Button & Mobile Toggle */}
-          <div className="flex items-center gap-2">
+          {/* Column 3: CTA Button (desktop) & Mobile Toggle */}
+          <div className="justify-self-end flex items-center">
             <Link
               href="/enquire"
-              className="inline-flex items-center justify-center rounded-full bg-[#171717] hover:bg-black text-white text-[0.82rem] sm:text-[0.875rem] font-medium px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+              className="hidden md:inline-flex items-center justify-center rounded-full bg-[#171717] hover:bg-black text-white text-[0.875rem] font-medium px-6 py-2.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
             >
               Enquire Now
             </Link>
 
             <button
               type="button"
-              className="relative inline-flex items-center justify-center w-9 h-9 rounded-full text-neutral-800 hover:bg-black/5 active:bg-black/10 transition lg:hidden"
+              className="relative inline-flex md:hidden items-center justify-center w-10 h-10 rounded-full text-neutral-800 hover:bg-black/5 active:bg-black/10 transition"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -209,7 +210,7 @@ export function Header() {
       {/* Keeps page content clear of the fixed bar on non-hero pages */}
       {!overHero ? (
         <div
-          className="h-20 shrink-0 sm:h-24 lg:h-28"
+          className="h-28 shrink-0 sm:h-32"
           aria-hidden="true"
         />
       ) : null}

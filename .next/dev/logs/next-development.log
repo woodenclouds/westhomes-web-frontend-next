@@ -22,3 +22,11 @@
 {"timestamp":"00:28:41.490","source":"Server","level":"LOG","message":"✓ Compiled in 146ms"}
 {"timestamp":"00:52:41.904","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"00:57:32.573","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"01:02:44.003","source":"Server","level":"LOG","message":"✓ Compiled in 231ms"}
+{"timestamp":"01:03:53.700","source":"Server","level":"LOG","message":"✓ Compiled in 78ms"}
+{"timestamp":"01:05:07.596","source":"Server","level":"LOG","message":"✓ Compiled in 53ms"}
+{"timestamp":"01:05:07.759","source":"Browser","level":"ERROR","message":"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\n    at Set.forEach (<anonymous>) (src/app/error.tsx:14:13)"}
+{"timestamp":"01:05:07.760","source":"Server","level":"ERROR","message":"[browser] \"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\\n    at Set.forEach (<anonymous>)\" \"(src/app/error.tsx:14:13)\""}
+{"timestamp":"01:05:07.813","source":"Browser","level":"ERROR","message":"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\n    at Set.forEach (<anonymous>) (src/app/error.tsx:14:13)"}
+{"timestamp":"01:05:07.814","source":"Server","level":"ERROR","message":"[browser] \"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\\n    at Set.forEach (<anonymous>)\" \"(src/app/error.tsx:14:13)\""}
+{"timestamp":"01:05:57.856","source":"Server","level":"LOG","message":"✓ Compiled in 40ms"}
