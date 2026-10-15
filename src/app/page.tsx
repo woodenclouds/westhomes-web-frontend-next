@@ -142,16 +142,15 @@ export default async function HomePage() {
 
             {/* Expansive Wide Showcase Image */}
             <ScrollReveal delay={120} className="mt-10 w-full sm:mt-12 md:mt-14">
-              <div className="frame-image relative aspect-[16/10] w-full overflow-hidden bg-stone-deep rounded-[24px] shadow-sm sm:aspect-[16/8] md:aspect-[21/9] lg:aspect-[2.35/1]">
+              <div className="frame-image relative aspect-[16/11] w-full overflow-hidden bg-stone-deep rounded-[24px] shadow-sm sm:aspect-[16/9] md:aspect-[1.95/1] lg:aspect-[2.1/1]">
                 <Image
                   src={
                     home.introImageUrl ||
-                    categories[0]?.imageUrl ||
-                    home.heroImageUrl
+                    "/images/nature-chair-hill.png"
                   }
-                  alt="West Home customised sofa showroom"
+                  alt="West Home handcrafted armchair on scenic nature hill at sunset"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-bottom"
                   sizes="(max-width: 1200px) 100vw, 1200px"
                 />
               </div>
