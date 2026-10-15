@@ -123,8 +123,10 @@ export function Header() {
         <div
           className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-14 md:h-[68px] pl-6 pr-2 rounded-full backdrop-blur-2xl backdrop-saturate-180 transition-all duration-300 ${
             scrolled
-              ? "bg-white/72 border border-white/50 shadow-[0_16px_44px_rgba(0,0,0,0.14),inset_0_1px_1.5px_rgba(255,255,255,0.8)] ring-1 ring-black/[0.06]"
-              : "bg-white/55 border border-white/40 shadow-[0_12px_40px_rgba(0,0,0,0.12),inset_0_1px_1.5px_rgba(255,255,255,0.75)] ring-1 ring-black/[0.05]"
+              ? "bg-white/84 border border-white/60 shadow-[0_16px_44px_rgba(0,0,0,0.14),inset_0_1px_1.5px_rgba(255,255,255,0.85)] ring-1 ring-black/[0.06]"
+              : overHero
+                ? "bg-white/78 border border-white/50 shadow-[0_12px_40px_rgba(0,0,0,0.16),inset_0_1px_1.5px_rgba(255,255,255,0.85)] ring-1 ring-black/[0.05]"
+                : "bg-white/72 border border-white/45 shadow-[0_12px_40px_rgba(0,0,0,0.10),inset_0_1px_1.5px_rgba(255,255,255,0.75)] ring-1 ring-black/[0.05]"
           }`}
         >
           {/* Column 1: Logo */}
