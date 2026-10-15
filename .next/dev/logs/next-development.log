@@ -2,3 +2,9 @@
 {"timestamp":"00:00:01.930","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"00:02:57.091","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"00:07:53.658","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"01:09:57.025","source":"Server","level":"LOG","message":"✓ Compiled in 141ms"}
+{"timestamp":"01:10:40.507","source":"Server","level":"LOG","message":"✓ Compiled in 73ms"}
+{"timestamp":"01:22:51.866","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"01:22:57.955","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"01:23:01.964","source":"Browser","level":"WARN","message":"Image with src \"/images/sofa-grey-green.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"01:23:01.997","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/sofa-grey-green.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}

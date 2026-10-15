@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Product } from "@/lib/cms/types";
 import { Pagination } from "./Pagination";
 import { WhatsAppButton } from "./WhatsAppButton";
@@ -60,7 +60,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-3 font-display text-base text-charcoal sm:text-lg">
           {priceLabel}
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 sm:mt-4">
+        <div className="mt-3 flex items-center justify-between gap-x-4 gap-y-2 sm:mt-4">
           <Link
             href={`/products/${product.slug}`}
             className="inline-flex min-h-10 items-center gap-1.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:text-wood"
@@ -87,6 +87,7 @@ export function ProductCard({ product }: { product: Product }) {
             label="Enquire"
             variant="wood-outline"
             size="sm"
+            className="ml-auto shrink-0"
           />
         </div>
       </div>
@@ -103,10 +104,12 @@ export function ProductGrid({
 }) {
   const [page, setPage] = useState(1);
   const productKey = products.map((p) => p.id).join(",");
+  const [prevProductKey, setPrevProductKey] = useState(productKey);
 
-  useEffect(() => {
+  if (prevProductKey !== productKey) {
+    setPrevProductKey(productKey);
     setPage(1);
-  }, [productKey]);
+  }
 
   const totalPages = Math.max(1, Math.ceil(products.length / pageSize));
   const currentPage = Math.min(page, totalPages);
