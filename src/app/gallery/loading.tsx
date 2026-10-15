@@ -9,7 +9,7 @@ export default function GalleryLoading() {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="aspect-[4/5] w-full animate-pulse rounded-sm bg-stone-deep"
+              className="aspect-[4/5] w-full animate-pulse rounded-[24px] bg-stone-deep"
             />
           ))}
         </div>

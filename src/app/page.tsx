@@ -104,16 +104,21 @@ export default async function HomePage() {
   );
 
   return (
-    <>
-      <HeroCarousel
-        slides={heroSlides}
-        headline={home.heroHeadline}
-        support={home.heroSupport}
-      />
+    <div className="relative">
+      {/* Sticky Hero section: pinned at top while rest of page scrolls over it */}
+      <div className="sticky top-0 z-0 h-[100svh] w-full overflow-hidden">
+        <HeroCarousel
+          slides={heroSlides}
+          headline={home.heroHeadline}
+          support={home.heroSupport}
+        />
+      </div>
 
-      <TickerBanner />
+      {/* Content wrapper: scrolls over the hero section */}
+      <div className="relative z-10 bg-background shadow-[0_-16px_40px_rgba(0,0,0,0.3)]">
+        <TickerBanner />
 
-      <section className="section-space">
+        <section className="section-space">
         <div className="container-page grid items-center gap-12 md:grid-cols-2">
           <ScrollReveal>
             <SectionHeading
@@ -306,6 +311,7 @@ export default async function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-    </>
+      </div>
+    </div>
   );
 }

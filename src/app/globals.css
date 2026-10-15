@@ -19,6 +19,7 @@
   --font-sans: var(--font-inter);
   --font-fraunces: var(--font-neue-montreal);
   --font-outfit: var(--font-inter);
+  --card-radius: 24px;
 }
 
 @theme inline {
@@ -37,6 +38,7 @@
   --color-error: var(--error);
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-neue-montreal), system-ui, sans-serif;
+  --radius-card: 24px;
 }
 
 * {
@@ -252,6 +254,13 @@ html[data-nav-open="true"] .floating-wa {
 
 .frame-image {
   overflow: hidden;
+  border-radius: var(--card-radius);
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.card-radius {
+  border-radius: var(--card-radius);
 }
 
 .frame-image img {

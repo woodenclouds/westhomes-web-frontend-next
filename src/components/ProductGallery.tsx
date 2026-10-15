@@ -17,7 +17,7 @@ export function ProductGallery({
 
   return (
     <div>
-      <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-stone-deep">
+      <div className="frame-image relative aspect-[4/3] bg-stone-deep">
         <Image
           src={current}
           alt={`${name} — image ${active + 1}`}
@@ -34,7 +34,7 @@ export function ProductGallery({
               key={src + i}
               type="button"
               onClick={() => setActive(i)}
-              className={`relative h-20 w-24 shrink-0 overflow-hidden rounded-sm border-2 ${
+              className={`relative h-20 w-24 shrink-0 overflow-hidden rounded-[14px] border-2 ${
                 i === active ? "border-wood" : "border-transparent"
               }`}
               aria-label={`Show image ${i + 1}`}

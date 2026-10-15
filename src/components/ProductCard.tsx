@@ -36,11 +36,11 @@ export function ProductCard({ product }: { product: Product }) {
           className="object-cover"
         />
         {product.customisable ? (
-          <span className="absolute left-2.5 top-2.5 bg-wood/95 px-2 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white sm:left-3 sm:top-3 sm:px-2.5 sm:text-[0.65rem]">
+          <span className="absolute left-3 top-3 rounded-full bg-wood/95 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white shadow-sm sm:left-3.5 sm:top-3.5 sm:px-3 sm:text-[0.65rem]">
             Customisable
           </span>
         ) : product.price == null ? (
-          <span className="absolute left-2.5 top-2.5 bg-charcoal/85 px-2 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-stone sm:left-3 sm:top-3 sm:px-2.5 sm:text-[0.65rem]">
+          <span className="absolute left-3 top-3 rounded-full bg-charcoal/85 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-stone shadow-sm sm:left-3.5 sm:top-3.5 sm:px-3 sm:text-[0.65rem]">
             On enquiry
           </span>
         ) : null}

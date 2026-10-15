@@ -41,7 +41,7 @@ export function HeroCarousel({
   }
 
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden bg-charcoal text-stone">
+    <section className="relative h-full min-h-[100svh] w-full overflow-hidden bg-charcoal text-stone">
       {slides.map((slide, i) => (
         <div
           key={`${slide.src}-${i}`}

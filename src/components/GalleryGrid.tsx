@@ -63,7 +63,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
               key={item.id}
               type="button"
               onClick={() => setActiveIndex(globalIndex)}
-              className="frame-image relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-stone-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood"
+              className="frame-image relative aspect-[4/5] w-full overflow-hidden bg-stone-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood"
             >
               <Image
                 src={item.imageUrl}
