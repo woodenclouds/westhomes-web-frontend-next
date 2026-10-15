@@ -29,7 +29,7 @@ export function TickerBanner({
   return (
     <aside
       aria-label="Announcements and offers"
-      className={`ticker-container relative flex h-[48px] w-full items-center overflow-hidden bg-[#151515] select-none ${className}`}
+      className={`ticker-container relative flex h-[56px] w-full items-center overflow-hidden bg-[#151515] select-none ${className}`}
     >
       {/* Accessible list for screen readers */}
       <div className="sr-only">
