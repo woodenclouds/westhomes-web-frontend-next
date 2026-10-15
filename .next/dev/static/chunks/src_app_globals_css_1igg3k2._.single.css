@@ -112,6 +112,7 @@
     --leading-relaxed: 1.625;
     --radius-sm: .25rem;
     --radius-xl: .75rem;
+    --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
     --ease-out: cubic-bezier(0, 0, .2, 1);
     --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
@@ -1136,6 +1137,10 @@
 
   .rounded {
     border-radius: .25rem;
+  }
+
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
   }
 
   .rounded-3xl {

@@ -51,7 +51,7 @@ export function PageIntroSkeleton({
 
 export function EnquiryFormSkeleton() {
   return (
-    <div className="space-y-5 rounded-sm border border-border bg-surface p-6 md:p-8">
+    <div className="space-y-5 rounded-[24px] border border-border bg-surface p-6 md:p-8">
       <div className="grid gap-5 md:grid-cols-2">
         <FieldSkeleton />
         <FieldSkeleton />
@@ -65,7 +65,7 @@ export function EnquiryFormSkeleton() {
         <Bone className="h-4 w-20" />
         <Bone className="mt-2 h-28 w-full" />
       </div>
-      <Bone className="h-11 w-40" />
+      <Bone className="h-11 w-40 rounded-full" />
     </div>
   );
 }

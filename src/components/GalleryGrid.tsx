@@ -97,7 +97,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         >
           <button
             type="button"
-            className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10 min-h-11 rounded-sm bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 sm:right-4 sm:top-4"
+            className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10 min-h-11 rounded-full bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20 sm:right-4 sm:top-4"
             onClick={() => setActiveIndex(null)}
           >
             Close
@@ -112,7 +112,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                   e.stopPropagation();
                   showPrev();
                 }}
-                className="absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:left-6 sm:h-11 sm:w-11"
+                className="absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:left-6 sm:h-11 sm:w-11"
               >
                 <Chevron direction="left" />
               </button>
@@ -123,7 +123,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                   e.stopPropagation();
                   showNext();
                 }}
-                className="absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:right-6 sm:h-11 sm:w-11"
+                className="absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:right-6 sm:h-11 sm:w-11"
               >
                 <Chevron direction="right" />
               </button>

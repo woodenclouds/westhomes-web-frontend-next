@@ -13,7 +13,7 @@ export function EmptyState({
   actionLabel?: string;
 }) {
   return (
-    <div className="rounded-sm border border-dashed border-border bg-surface px-6 py-14 text-center">
+    <div className="rounded-[24px] border border-dashed border-border bg-surface px-6 py-14 text-center">
       <h2 className="font-display text-2xl text-charcoal">{title}</h2>
       <p className="mx-auto mt-3 max-w-md text-muted">{description}</p>
       {actionHref && actionLabel ? (
@@ -40,7 +40,7 @@ export function ErrorState({
 }) {
   return (
     <div
-      className="rounded-sm border border-error/30 bg-surface px-6 py-12 text-center"
+      className="rounded-[24px] border border-error/30 bg-surface px-6 py-12 text-center"
       role="alert"
     >
       <h2 className="font-display text-2xl text-charcoal">{title}</h2>
