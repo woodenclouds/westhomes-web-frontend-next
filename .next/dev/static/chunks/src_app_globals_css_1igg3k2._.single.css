@@ -2092,6 +2092,10 @@
     font-size: 1.75rem;
   }
 
+  .text-\[2\.5rem\] {
+    font-size: 2.5rem;
+  }
+
   .text-\[2\.15rem\] {
     font-size: 2.15rem;
   }
@@ -2112,6 +2116,11 @@
   .leading-\[1\.05\] {
     --tw-leading: 1.05;
     line-height: 1.05;
+  }
+
+  .leading-\[1\.06\] {
+    --tw-leading: 1.06;
+    line-height: 1.06;
   }
 
   .leading-\[1\.08\] {
@@ -3015,6 +3024,11 @@
       line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
 
+    .sm\:text-5xl {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+    }
+
     .sm\:text-base {
       font-size: var(--text-base);
       line-height: var(--tw-leading, var(--text-base--line-height));
@@ -3278,6 +3292,10 @@
       font-size: 2.75rem;
     }
 
+    .md\:text-\[3\.5rem\] {
+      font-size: 3.5rem;
+    }
+
     .md\:text-\[12\.5px\] {
       font-size: 12.5px;
     }
@@ -3298,6 +3316,10 @@
 
     .lg\:max-w-4xl {
       max-width: var(--container-4xl);
+    }
+
+    .lg\:max-w-5xl {
+      max-width: var(--container-5xl);
     }
 
     .lg\:grid-cols-2 {
@@ -3330,6 +3352,10 @@
 
     .lg\:text-\[3\.75rem\] {
       font-size: 3.75rem;
+    }
+
+    .lg\:text-\[4\.25rem\] {
+      font-size: 4.25rem;
     }
   }
 
