@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { ButtonLink } from "./ui/Button";
 import { Logo } from "./Logo";
 
 const nav = [
@@ -60,50 +59,59 @@ export function Header() {
       ? createPortal(
           <div
             id="mobile-nav"
-            className="fixed inset-0 z-[60] flex flex-col bg-charcoal text-stone lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col p-3.5 sm:p-6 lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
           >
-            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-white/10 pt-[env(safe-area-inset-top)] sm:h-[4.25rem]">
-              <Logo href="/" onClick={closeMenu} variant="header" tone="light" />
-              <button
-                type="button"
-                className="tap-target relative inline-flex items-center justify-center rounded-sm border border-white/25 bg-white/10 text-stone"
-                aria-label="Close menu"
-                onClick={closeMenu}
-              >
-                <span className="absolute h-0.5 w-5 rotate-45 bg-stone" />
-                <span className="absolute h-0.5 w-5 -rotate-45 bg-stone" />
-              </button>
-            </div>
-            <nav
-              className="container-page flex flex-1 flex-col overflow-y-auto py-4"
-              aria-label="Mobile"
-            >
-              {nav.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`border-b border-white/10 py-4 font-display text-[1.75rem] leading-none transition active:opacity-70 ${
-                      active ? "text-wood" : "text-stone"
-                    }`}
-                    onClick={closeMenu}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-            <div className="container-page flex flex-col gap-3 border-t border-white/10 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-              <ButtonLink href="/enquire" onClick={closeMenu} className="w-full">
-                Enquire now
-              </ButtonLink>
+            <div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+              onClick={closeMenu}
+              aria-hidden="true"
+            />
+            <div className="relative z-10 w-full rounded-3xl bg-white p-5 shadow-2xl border border-black/[0.08] flex flex-col gap-4 mt-1">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
+                <Logo href="/" onClick={closeMenu} variant="header" tone="dark" compact />
+                <button
+                  type="button"
+                  className="w-8 h-8 inline-flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition"
+                  aria-label="Close menu"
+                  onClick={closeMenu}
+                >
+                  <span className="text-xl leading-none">&times;</span>
+                </button>
+              </div>
+              <nav className="flex flex-col py-1 gap-1" aria-label="Mobile">
+                {nav.map((item) => {
+                  const active =
+                    item.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`py-2.5 px-3 rounded-xl font-medium text-base transition ${
+                        active
+                          ? "bg-neutral-100 text-black font-semibold"
+                          : "text-neutral-700 hover:bg-neutral-50 hover:text-black"
+                      }`}
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+              <div className="pt-2 border-t border-neutral-100">
+                <Link
+                  href="/enquire"
+                  onClick={closeMenu}
+                  className="w-full flex items-center justify-center rounded-full bg-[#171717] hover:bg-black text-white text-sm font-medium py-3 transition shadow-sm"
+                >
+                  Enquire Now
+                </Link>
+              </div>
             </div>
           </div>,
           document.body,
@@ -112,23 +120,29 @@ export function Header() {
 
   return (
     <>
-      <header
-        data-tone="light"
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled ? "nav-glass-scrolled" : "nav-glass-base"
-        }`}
-      >
-        <div className="container-page flex h-16 items-center justify-between gap-3 sm:h-[4.25rem] lg:h-[4.75rem]">
-          <Logo
-            href="/"
-            priority
-            onClick={closeMenu}
-            variant="header"
-            tone="light"
-          />
+      <header className="fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-3.5 sm:px-6 pointer-events-none">
+        <div
+          className={`pointer-events-auto flex items-center justify-between w-full max-w-4xl lg:max-w-5xl rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] transition-all duration-300 px-4 sm:px-6 py-2 sm:py-2.5 ${
+            scrolled
+              ? "shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-black/[0.12] bg-white"
+              : "shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
+          }`}
+        >
+          {/* Brand Logo */}
+          <div className="flex items-center">
+            <Logo
+              href="/"
+              priority
+              onClick={closeMenu}
+              variant="header"
+              tone="dark"
+              compact
+            />
+          </div>
 
+          {/* Desktop Nav Links */}
           <nav
-            className="hidden items-center gap-6 xl:gap-7 lg:flex"
+            className="hidden items-center gap-7 xl:gap-9 lg:flex"
             aria-label="Primary"
           >
             {nav.map((item) => {
@@ -140,7 +154,11 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`nav-link ${active ? "is-active" : ""}`}
+                  className={`text-[0.925rem] font-medium transition-colors duration-200 ${
+                    active
+                      ? "text-black font-semibold"
+                      : "text-neutral-700 hover:text-black"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -148,42 +166,41 @@ export function Header() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
-            <ButtonLink
+          {/* Action Button & Mobile Toggle */}
+          <div className="flex items-center gap-2">
+            <Link
               href="/enquire"
-              size="sm"
-              variant="wood-outline"
-              className="!border-stone/70 !text-stone hover:!bg-stone hover:!text-charcoal"
+              className="inline-flex items-center justify-center rounded-full bg-[#171717] hover:bg-black text-white text-[0.82rem] sm:text-[0.875rem] font-medium px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
             >
-              Enquire
-            </ButtonLink>
-          </div>
+              Enquire Now
+            </Link>
 
-          <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
-              className="tap-target relative inline-flex items-center justify-center rounded-sm border border-white/35 bg-white/10 transition hover:bg-white/20"
+              className="relative inline-flex items-center justify-center w-9 h-9 rounded-full text-neutral-800 hover:bg-black/5 active:bg-black/10 transition lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((v) => !v)}
             >
               <span className="sr-only">Menu</span>
-              <span
-                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
-                  open ? "rotate-45" : "-translate-y-1.5"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
-                  open ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
-                  open ? "-rotate-45" : "translate-y-1.5"
-                }`}
-              />
+              <div className="w-4 h-3 flex flex-col justify-between">
+                <span
+                  className={`h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${
+                    open ? "rotate-45 translate-y-[5px]" : ""
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-full bg-current rounded-full transition-all duration-300 ${
+                    open ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${
+                    open ? "-rotate-45 -translate-y-[5px]" : ""
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -192,7 +209,7 @@ export function Header() {
       {/* Keeps page content clear of the fixed bar on non-hero pages */}
       {!overHero ? (
         <div
-          className="h-16 shrink-0 sm:h-[4.25rem] lg:h-[4.75rem]"
+          className="h-20 shrink-0 sm:h-24 lg:h-28"
           aria-hidden="true"
         />
       ) : null}
