@@ -1481,6 +1481,16 @@
     }
   }
 
+  .bg-charcoal\/60 {
+    background-color: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-charcoal\/60 {
+      background-color: color-mix(in oklab, var(--charcoal) 60%, transparent);
+    }
+  }
+
   .bg-charcoal\/85 {
     background-color: var(--charcoal);
   }
@@ -1761,6 +1771,21 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
 
+  .via-charcoal\/35 {
+    --tw-gradient-via: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .via-charcoal\/35 {
+      --tw-gradient-via: color-mix(in oklab, var(--charcoal) 35%, transparent);
+    }
+  }
+
+  .via-charcoal\/35 {
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+
   .via-charcoal\/68 {
     --tw-gradient-via: var(--charcoal);
   }
@@ -1833,6 +1858,20 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
+  .to-charcoal\/65 {
+    --tw-gradient-to: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .to-charcoal\/65 {
+      --tw-gradient-to: color-mix(in oklab, var(--charcoal) 65%, transparent);
+    }
+  }
+
+  .to-charcoal\/65 {
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
   .to-transparent {
     --tw-gradient-to: transparent;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1852,6 +1891,10 @@
 
   .object-left {
     object-position: left;
+  }
+
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
 
   .p-3 {
@@ -3009,6 +3052,10 @@
       padding-inline: calc(var(--spacing) * 7);
     }
 
+    .sm\:px-8 {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+
     .sm\:py-2\.5 {
       padding-block: calc(var(--spacing) * 2.5);
     }
@@ -3302,6 +3349,10 @@
 
     .lg\:h-\[4\.75rem\] {
       height: 4.75rem;
+    }
+
+    .lg\:max-w-4xl {
+      max-width: var(--container-4xl);
     }
 
     .lg\:max-w-5xl {

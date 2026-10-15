@@ -61,23 +61,22 @@ export function HeroCarousel({
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/94 via-charcoal/72 to-charcoal/30 sm:from-charcoal/92 sm:via-charcoal/68" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/25 to-charcoal/35 sm:from-charcoal/60 sm:via-charcoal/15" />
-      <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-charcoal/50 to-transparent md:max-w-4xl" />
+      <div className="absolute inset-0 bg-charcoal/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/35 to-charcoal/65" />
 
-      <div className="relative flex min-h-[100svh] w-full flex-col justify-end pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-28 sm:pb-16 md:justify-center md:pb-20 md:pt-32 px-4">
-        <div className="mx-auto w-full max-w-[1200px] px-8">
-          <div className={`max-w-2xl ${ready ? "hero-copy is-ready" : "hero-copy"}`}>
+      <div className="relative flex min-h-[100svh] w-full flex-col justify-center items-center pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-28 sm:pb-16 md:pb-20 md:pt-32 px-4">
+        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-8 flex justify-center">
+          <div className={`flex flex-col items-center text-center max-w-3xl lg:max-w-4xl ${ready ? "hero-copy is-ready" : "hero-copy"}`}>
             <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-stone/85 sm:text-[0.7rem]">
               {eyebrow}
             </p>
-            <h1 className="mt-3 max-w-3xl font-display text-[2rem] leading-[1.08] text-stone sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem]">
+            <h1 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-stone sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem]">
               {headline}
             </h1>
-            <p className="mt-4 max-w-lg text-[0.95rem] leading-relaxed text-stone/90 sm:mt-5 md:text-base">
+            <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-stone/90 sm:mt-5 md:text-base">
               {support}
             </p>
-            <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap">
+            <div className="mt-7 flex w-full flex-col items-center justify-center gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap">
               <ButtonLink href="/products" size="lg" className="w-full sm:w-auto">
                 Explore collection
               </ButtonLink>
@@ -92,14 +91,14 @@ export function HeroCarousel({
             </div>
 
             {count > 1 ? (
-              <div className="mt-10 flex items-center gap-3 sm:mt-12">
+              <div className="mt-10 flex items-center justify-center gap-3 sm:mt-12">
                 <button
                   type="button"
                   onClick={() => go(index - 1)}
-                  className="group inline-flex items-center text-stone/70 transition hover:text-stone py-2 pr-2"
+                  className="group inline-flex items-center justify-center text-stone/70 transition hover:text-stone p-2"
                   aria-label="Previous slide"
                 >
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" className="-ml-1" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path
                       d="M7.5 2.5 4 6l3.5 3.5"
                       stroke="currentColor"
@@ -129,7 +128,7 @@ export function HeroCarousel({
                 <button
                   type="button"
                   onClick={() => go(index + 1)}
-                  className="group inline-flex items-center text-stone/70 transition hover:text-stone py-2 pl-2"
+                  className="group inline-flex items-center justify-center text-stone/70 transition hover:text-stone p-2"
                   aria-label="Next slide"
                 >
                   <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
