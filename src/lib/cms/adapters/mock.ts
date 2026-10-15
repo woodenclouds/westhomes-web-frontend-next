@@ -494,7 +494,7 @@ const homeContent: HomeContent = {
   introTitle: "Comfort and elegance for your home",
   introBody:
     "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes. Discover quality pieces for every room, visit our showroom in Al Barsha, and find furniture that brings comfort and elegance to your space. Open daily 9:00 AM – 9:00 PM.",
-  introImageUrl: "/images/nature-chair-hill.png",
+  introImageUrl: img("sofa-custom-swatches.jpg"),
   featuredTitle: "Featured pieces",
   featuredText:
     "Ready looks from the floor — priced as shown, with custom options available when you need them.",

@@ -354,7 +354,7 @@ function HomeSkeleton() {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(Bone, {
-                            className: "mt-12 aspect-[16/11] w-full !rounded-[24px] sm:aspect-[16/9] md:aspect-[1.95/1] lg:aspect-[2.1/1]"
+                            className: "mt-12 aspect-[16/10] w-full !rounded-[24px] sm:aspect-[16/8] md:aspect-[21/9] lg:aspect-[2.35/1]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/skeletons.tsx",
                             lineNumber: 97,

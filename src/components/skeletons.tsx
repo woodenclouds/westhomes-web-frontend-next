@@ -94,7 +94,7 @@ export function HomeSkeleton() {
             <Bone className="mt-2 h-4 w-3/4" />
             <Bone className="mt-8 h-10 w-28 !rounded-full" />
           </div>
-          <Bone className="mt-12 aspect-[16/11] w-full !rounded-[24px] sm:aspect-[16/9] md:aspect-[1.95/1] lg:aspect-[2.1/1]" />
+          <Bone className="mt-12 aspect-[16/10] w-full !rounded-[24px] sm:aspect-[16/8] md:aspect-[21/9] lg:aspect-[2.35/1]" />
         </div>
       </section>
 
