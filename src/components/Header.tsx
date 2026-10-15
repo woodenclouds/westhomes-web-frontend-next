@@ -122,10 +122,10 @@ export function Header() {
     <>
       <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <div
-          className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-14 md:h-[68px] pl-6 pr-2 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] transition-all duration-300 ${
+          className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-14 md:h-[68px] pl-6 pr-2 rounded-full backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 ${
             scrolled
-              ? "shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-black/[0.12] bg-white"
-              : "shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
+              ? "bg-white/88 border border-white/60 shadow-[0_12px_36px_rgba(0,0,0,0.12),inset_0_1px_1px_rgba(255,255,255,0.9)] ring-1 ring-black/[0.06]"
+              : "bg-white/78 border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.8)] ring-1 ring-black/[0.05]"
           }`}
         >
           {/* Column 1: Logo */}
