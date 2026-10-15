@@ -533,6 +533,10 @@
     top: calc(var(--spacing) * 3);
   }
 
+  .top-4 {
+    top: calc(var(--spacing) * 4);
+  }
+
   .top-6 {
     top: calc(var(--spacing) * 6);
   }
@@ -780,12 +784,20 @@
     height: calc(var(--spacing) * 20);
   }
 
+  .h-24 {
+    height: calc(var(--spacing) * 24);
+  }
+
   .h-28 {
     height: calc(var(--spacing) * 28);
   }
 
   .h-64 {
     height: calc(var(--spacing) * 64);
+  }
+
+  .h-\[52px\] {
+    height: 52px;
   }
 
   .h-\[76px\] {
@@ -1941,6 +1953,10 @@
     padding-inline: calc(var(--spacing) * 6);
   }
 
+  .px-7 {
+    padding-inline: calc(var(--spacing) * 7);
+  }
+
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
@@ -2071,6 +2087,10 @@
 
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
+  }
+
+  .pl-6 {
+    padding-left: calc(var(--spacing) * 6);
   }
 
   .text-center {
@@ -2258,6 +2278,10 @@
   .tracking-normal {
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
+  }
+
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
 
   .\!text-stone {
@@ -2874,6 +2898,10 @@
       height: calc(var(--spacing) * 24);
     }
 
+    .sm\:h-28 {
+      height: calc(var(--spacing) * 28);
+    }
+
     .sm\:h-32 {
       height: calc(var(--spacing) * 32);
     }
@@ -3163,6 +3191,10 @@
 
     .md\:h-80 {
       height: calc(var(--spacing) * 80);
+    }
+
+    .md\:h-\[68px\] {
+      height: 68px;
     }
 
     .md\:min-h-\[40vh\] {

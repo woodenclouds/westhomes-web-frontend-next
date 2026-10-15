@@ -120,9 +120,9 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <div
-          className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-[76px] px-8 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] transition-all duration-300 ${
+          className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-14 md:h-[68px] pl-6 pr-2 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] transition-all duration-300 ${
             scrolled
               ? "shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-black/[0.12] bg-white"
               : "shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
@@ -142,7 +142,7 @@ export function Header() {
 
           {/* Column 2: Nav Links mathematically centered */}
           <nav
-            className="hidden md:flex items-center gap-10 justify-self-center"
+            className="hidden md:flex items-center gap-10 justify-self-center leading-none"
             aria-label="Primary"
           >
             {nav.map((item) => {
@@ -171,7 +171,7 @@ export function Header() {
           <div className="justify-self-end flex items-center">
             <Link
               href="/enquire"
-              className="hidden md:inline-flex items-center justify-center rounded-full bg-[#171717] hover:bg-black text-white text-[0.875rem] font-medium px-6 py-2.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+              className="hidden md:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#171717] hover:bg-black text-white text-[0.875rem] font-medium px-7 h-[52px] transition-all duration-200 active:scale-[0.98] shadow-sm"
             >
               Enquire Now
             </Link>
@@ -210,7 +210,7 @@ export function Header() {
       {/* Keeps page content clear of the fixed bar on non-hero pages */}
       {!overHero ? (
         <div
-          className="h-28 shrink-0 sm:h-32"
+          className="h-24 shrink-0 sm:h-28"
           aria-hidden="true"
         />
       ) : null}

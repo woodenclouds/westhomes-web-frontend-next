@@ -41,3 +41,6 @@
 {"timestamp":"01:27:43.347","source":"Server","level":"ERROR","message":"[browser] \"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\\n    at Set.forEach (<anonymous>)\" \"(src/app/error.tsx:14:13)\""}
 {"timestamp":"01:27:43.349","source":"Browser","level":"ERROR","message":"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\n    at Set.forEach (<anonymous>) (src/app/error.tsx:14:13)"}
 {"timestamp":"01:27:43.349","source":"Server","level":"ERROR","message":"[browser] \"TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.\\n    at Set.forEach (<anonymous>)\" \"(src/app/error.tsx:14:13)\""}
+{"timestamp":"02:33:14.298","source":"Server","level":"LOG","message":"✓ Compiled in 70ms"}
+{"timestamp":"02:34:11.271","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"02:37:22.612","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}

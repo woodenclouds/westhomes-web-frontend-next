@@ -28,7 +28,7 @@ export function Logo({
       : "/images/logo-header.png";
 
   const sizes = compact
-    ? "h-8.5 w-auto sm:h-9.5"
+    ? "h-10 w-auto"
     : isHeader
       ? "h-12 w-auto sm:h-[3.25rem] lg:h-14"
       : "h-14 w-auto sm:h-16";
