@@ -11,7 +11,6 @@ const nav = [
   { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const HERO_ROUTES = new Set(["/", "/about"]);
