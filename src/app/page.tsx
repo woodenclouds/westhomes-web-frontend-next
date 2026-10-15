@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ProductGrid } from "@/components/ProductCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { TickerBanner } from "@/components/TickerBanner";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -109,6 +110,8 @@ export default async function HomePage() {
         headline={home.heroHeadline}
         support={home.heroSupport}
       />
+
+      <TickerBanner />
 
       <section className="section-space">
         <div className="container-page grid items-center gap-12 md:grid-cols-2">

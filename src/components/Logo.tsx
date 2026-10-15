@@ -37,8 +37,8 @@ export function Logo({
     <Image
       src={src}
       alt="West Home Furniture — Style your home, live better"
-      width={800}
-      height={620}
+      width={isHeader ? 1024 : 800}
+      height={isHeader ? 673 : 620}
       priority={priority}
       className={`${sizes} object-contain object-left ${className}`}
     />

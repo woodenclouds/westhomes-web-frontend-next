@@ -295,6 +295,26 @@ html[data-nav-open="true"] .floating-wa {
   text-underline-offset: 3px;
 }
 
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.ticker-container:hover .animate-marquee,
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -302,7 +322,8 @@ html[data-nav-open="true"] .floating-wa {
 
   .reveal,
   .hero-copy.is-ready > *,
-  .hero-slide.is-active img {
+  .hero-slide.is-active img,
+  .animate-marquee {
     opacity: 1;
     transform: none;
     animation: none;
