@@ -61,8 +61,8 @@ export function HeroCarousel({
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-charcoal/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/35 to-charcoal/65" />
+      <div className="absolute inset-0 bg-charcoal/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-charcoal/50" />
 
       <div className="relative flex min-h-[100svh] w-full flex-col justify-center items-center pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-28 sm:pb-16 md:pb-20 md:pt-32 px-4">
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-8 flex justify-center">

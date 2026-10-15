@@ -1436,6 +1436,16 @@
     }
   }
 
+  .bg-charcoal\/40 {
+    background-color: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-charcoal\/40 {
+      background-color: color-mix(in oklab, var(--charcoal) 40%, transparent);
+    }
+  }
+
   .bg-charcoal\/60 {
     background-color: var(--charcoal);
   }
@@ -1770,6 +1780,20 @@
   }
 
   .to-charcoal\/35 {
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .to-charcoal\/50 {
+    --tw-gradient-to: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .to-charcoal\/50 {
+      --tw-gradient-to: color-mix(in oklab, var(--charcoal) 50%, transparent);
+    }
+  }
+
+  .to-charcoal\/50 {
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
