@@ -70,7 +70,7 @@ export function HeroCarousel({
             <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-stone/85 sm:text-[0.7rem]">
               {eyebrow}
             </p>
-            <h1 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-stone sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem]">
+            <h1 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-stone sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem] capitalize">
               {headline}
             </h1>
             <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-stone/90 sm:mt-5 md:text-base">

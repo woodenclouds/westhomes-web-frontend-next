@@ -487,7 +487,7 @@ const gallery: GalleryItem[] = [
 ];
 
 const homeContent: HomeContent = {
-  heroHeadline: "Stylish, comfortable furniture for modern homes",
+  heroHeadline: "Stylish, Comfortable Furniture For Modern Homes",
   heroSupport:
     "Quality sofas, beds, mattresses, bedroom and living room furniture, dining tables, coffee tables and more — visit our Al Barsha showroom in Dubai. We customise sofas, beds, club chairs and more.",
   heroImageUrl: img("living-white-sectional-hero.jpg"),
