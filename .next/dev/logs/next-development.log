@@ -23,3 +23,6 @@
 {"timestamp":"03:57:31.971","source":"Server","level":"LOG","message":"✓ Compiled in 86ms"}
 {"timestamp":"03:59:15.164","source":"Server","level":"LOG","message":"✓ Compiled in 106ms"}
 {"timestamp":"04:00:49.204","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"04:46:43.980","source":"Browser","level":"WARN","message":"Image with src \"/nature-chair-sunrise-4k.png\" is using quality \"95\" which is not configured in images.qualities [75]. Please update your config to [75, 95].\nRead more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities"}
+{"timestamp":"04:46:43.999","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/nature-chair-sunrise-4k.png\\\" is using quality \\\"95\\\" which is not configured in images.qualities [75]. Please update your config to [75, 95].\\nRead more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities\" \"(<anonymous>)\""}
+{"timestamp":"04:46:49.775","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
