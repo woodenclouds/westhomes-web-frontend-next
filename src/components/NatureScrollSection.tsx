@@ -128,7 +128,7 @@ export function NatureScrollSection({
             </p>
           ) : null}
 
-          <h2 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem] tracking-tight">
+          <h2 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem] tracking-tight capitalize">
             {title}
           </h2>
 

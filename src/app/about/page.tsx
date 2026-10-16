@@ -160,8 +160,8 @@ export default async function AboutPage() {
         <div className="container-page">
           <ScrollReveal>
             <p className="eyebrow">What we stand for</p>
-            <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl">
-              {about.valuesTitle || "Comfort and elegance"}
+            <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl capitalize">
+              {about.valuesTitle || "Comfort And Elegance"}
             </h2>
           </ScrollReveal>
           <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-10">

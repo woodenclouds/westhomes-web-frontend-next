@@ -422,7 +422,7 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
                 columnNumber: 18
             }, this) : null,
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: `font-display text-[1.75rem] leading-[1.1] sm:text-3xl md:text-[2.75rem] ${light ? "text-stone" : "text-charcoal"} ${eyebrow ? "mt-2.5 sm:mt-3" : ""}`,
+                className: `font-display text-[1.75rem] leading-[1.1] sm:text-3xl md:text-[2.75rem] capitalize ${light ? "text-stone" : "text-charcoal"} ${eyebrow ? "mt-2.5 sm:mt-3" : ""}`,
                 children: title
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
@@ -457,7 +457,7 @@ function PageIntro({ eyebrow, title, description }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "mt-2.5 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-3 sm:text-4xl md:text-6xl",
+                className: "mt-2.5 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-3 sm:text-4xl md:text-6xl capitalize",
                 children: title
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",

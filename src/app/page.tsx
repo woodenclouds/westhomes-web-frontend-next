@@ -137,7 +137,7 @@ export default async function HomePage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Made to order"
-                title={home.customisableTitle || "Customisable pieces"}
+                title={home.customisableTitle || "Customisable Pieces"}
                 description={
                   home.customisableText ||
                   "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
@@ -160,7 +160,7 @@ export default async function HomePage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Showroom"
-                title={home.featuredTitle || "Featured pieces"}
+                title={home.featuredTitle || "Featured Pieces"}
                 description={
                   home.featuredText ||
                   "Ready looks from the floor — priced as shown, with custom options available when you need them."
@@ -182,7 +182,7 @@ export default async function HomePage() {
           <ScrollReveal>
             <SectionHeading
               eyebrow="Atelier"
-              title="Made for your rooms"
+              title="Made For Your Rooms"
               description="Sofas, beds, mattresses, living room and bedroom furniture, dining tables, coffee tables and more."
             />
           </ScrollReveal>
@@ -219,7 +219,7 @@ export default async function HomePage() {
       <section className="bg-stone-deep/70 section-space">
         <div className="container-page">
           <ScrollReveal>
-            <SectionHeading eyebrow="Why us" title="Quiet luxury, personal service" />
+            <SectionHeading eyebrow="Why us" title="Quiet Luxury, Personal Service" />
           </ScrollReveal>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {home.valueProps.map((item, i) => (
@@ -241,7 +241,7 @@ export default async function HomePage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <SectionHeading
                 eyebrow="Portfolio"
-                title="From the showroom"
+                title="From The Showroom"
                 description="Rooms, fabrics and details from recent West Home settings."
               />
               <Link href="/gallery" className="text-link self-start sm:self-auto">

@@ -27,7 +27,7 @@ export function Footer({ contact }: { contact: SiteContact }) {
             showroom. Open daily 9:00 AM – 9:00 PM.
           </p>
           <p className="mt-2 text-xs uppercase tracking-[0.14em] text-stone/45">
-            Comfort and elegance for your home
+            Comfort And Elegance For Your Home
           </p>
           <div className="mt-5">
             <WhatsAppButton
