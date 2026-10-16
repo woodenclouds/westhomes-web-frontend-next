@@ -5,6 +5,11 @@
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
       --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
@@ -729,6 +734,10 @@
     height: calc(var(--spacing) * 28);
   }
 
+  .h-32 {
+    height: calc(var(--spacing) * 32);
+  }
+
   .h-64 {
     height: calc(var(--spacing) * 64);
   }
@@ -743,6 +752,10 @@
 
   .h-\[100svh\] {
     height: 100svh;
+  }
+
+  .h-\[175vh\] {
+    height: 175vh;
   }
 
   .h-full {
@@ -901,6 +914,10 @@
     max-width: var(--container-3xl);
   }
 
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+
   .max-w-5xl {
     max-width: var(--container-5xl);
   }
@@ -968,8 +985,16 @@
     rotate: 45deg;
   }
 
+  .transform {
+    transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
+  }
+
   .animate-pulse {
     animation: var(--animate-pulse);
+  }
+
+  .resize {
+    resize: both;
   }
 
   .resize-y {
@@ -1652,6 +1677,11 @@
     }
   }
 
+  .bg-gradient-to-b {
+    --tw-gradient-position: to bottom in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+
   .bg-gradient-to-l {
     --tw-gradient-position: to left in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
@@ -1669,6 +1699,11 @@
 
   .from-\[\#151515\] {
     --tw-gradient-from: #151515;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .from-background {
+    --tw-gradient-from: var(--background);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -1712,6 +1747,21 @@
 
   .from-charcoal\/92 {
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .via-background\/40 {
+    --tw-gradient-via: var(--background);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .via-background\/40 {
+      --tw-gradient-via: color-mix(in oklab, var(--background) 40%, transparent);
+    }
+  }
+
+  .via-background\/40 {
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
 
   .via-charcoal\/20 {
@@ -1966,6 +2016,10 @@
 
   .pt-14 {
     padding-top: calc(var(--spacing) * 14);
+  }
+
+  .pt-24 {
+    padding-top: calc(var(--spacing) * 24);
   }
 
   .pt-28 {
@@ -2909,6 +2963,10 @@
       height: 3.25rem;
     }
 
+    .sm\:h-\[190vh\] {
+      height: 190vh;
+    }
+
     .sm\:h-auto {
       height: auto;
     }
@@ -3035,6 +3093,10 @@
 
     .sm\:pt-8 {
       padding-top: calc(var(--spacing) * 8);
+    }
+
+    .sm\:pt-32 {
+      padding-top: calc(var(--spacing) * 32);
     }
 
     .sm\:pb-16 {
@@ -3168,6 +3230,10 @@
       height: 68px;
     }
 
+    .md\:h-\[200vh\] {
+      height: 200vh;
+    }
+
     .md\:min-h-\[40vh\] {
       min-height: 40vh;
     }
@@ -3276,6 +3342,10 @@
 
     .md\:pt-32 {
       padding-top: calc(var(--spacing) * 32);
+    }
+
+    .md\:pt-40 {
+      padding-top: calc(var(--spacing) * 40);
     }
 
     .md\:pb-10 {
@@ -3831,6 +3901,31 @@ html[data-nav-open="true"] .floating-wa {
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false
 }
 
 @property --tw-space-y-reverse {

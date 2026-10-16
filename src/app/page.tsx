@@ -7,6 +7,7 @@ import { ProductGrid } from "@/components/ProductCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { TickerBanner } from "@/components/TickerBanner";
+import { NatureScrollSection } from "@/components/NatureScrollSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -120,40 +121,15 @@ export default async function HomePage() {
       <div className="relative z-10 bg-background shadow-[0_-16px_40px_rgba(0,0,0,0.3)]">
         <TickerBanner />
 
-        <section className="section-space">
-          <div className="container-page flex flex-col items-center">
-            {/* Centered Editorial Header */}
-            <ScrollReveal className="max-w-3xl text-center">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-wood sm:text-[0.75rem]">
-                The house
-              </p>
-              <h2 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight">
-                {home.introTitle}
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-muted sm:mt-5 sm:text-base md:text-[1.05rem]">
-                {home.introBody}
-              </p>
-              <div className="mt-7 flex justify-center sm:mt-8">
-                <ButtonLink href="/about" variant="wood-outline">
-                  Our story
-                </ButtonLink>
-              </div>
-            </ScrollReveal>
-
-            {/* Expansive Wide Showcase Image */}
-            <ScrollReveal delay={120} className="mt-10 w-full sm:mt-12 md:mt-14">
-              <div className="frame-image relative aspect-[16/10] w-full overflow-hidden bg-stone-deep rounded-[24px] shadow-sm sm:aspect-[16/9] md:aspect-[21/10] lg:aspect-[2.1/1]">
-                <Image
-                  src="/nature-chair-sunrise.png"
-                  alt="Minimalist armchair on a peaceful sunlit hilltop inspired by nature"
-                  fill
-                  className="object-cover object-bottom"
-                  sizes="(max-width: 1200px) 100vw, 1200px"
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
+        <NatureScrollSection
+          eyebrow="The house"
+          title={home.introTitle}
+          body={home.introBody}
+          ctaText="Our story"
+          ctaHref="/about"
+          imageUrl="/nature-chair-sunrise.png"
+          imageAlt="Minimalist armchair on a sunlit hilltop — West Home Furniture Dubai"
+        />
 
       <section className="border-y border-border bg-surface section-space">
         <div className="container-page">
