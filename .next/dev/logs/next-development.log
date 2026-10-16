@@ -26,3 +26,7 @@
 {"timestamp":"04:46:43.980","source":"Browser","level":"WARN","message":"Image with src \"/nature-chair-sunrise-4k.png\" is using quality \"95\" which is not configured in images.qualities [75]. Please update your config to [75, 95].\nRead more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities"}
 {"timestamp":"04:46:43.999","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/nature-chair-sunrise-4k.png\\\" is using quality \\\"95\\\" which is not configured in images.qualities [75]. Please update your config to [75, 95].\\nRead more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities\" \"(<anonymous>)\""}
 {"timestamp":"04:46:49.775","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"05:06:01.285","source":"Server","level":"LOG","message":"✓ Compiled in 127ms"}
+{"timestamp":"05:07:06.121","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"05:11:50.098","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"05:13:14.476","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}

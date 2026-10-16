@@ -138,7 +138,7 @@ export function NatureScrollSection({
 
           {ctaText && ctaHref ? (
             <div className="mt-7 flex justify-center sm:mt-8">
-              <ButtonLink href={ctaHref} variant="wood-outline">
+              <ButtonLink href={ctaHref} variant="primary">
                 {ctaText}
               </ButtonLink>
             </div>
