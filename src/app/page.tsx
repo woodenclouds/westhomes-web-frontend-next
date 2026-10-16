@@ -127,7 +127,7 @@ export default async function HomePage() {
           body={home.introBody}
           ctaText="Our story"
           ctaHref="/about"
-          imageUrl="/nature-chair-sunrise-2x.png"
+          imageUrl="/nature-chair-sunrise-4k.png"
           imageAlt="Minimalist armchair on a sunlit hilltop — West Home Furniture Dubai"
         />
 

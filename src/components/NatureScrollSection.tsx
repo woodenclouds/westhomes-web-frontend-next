@@ -20,7 +20,7 @@ export function NatureScrollSection({
   body,
   ctaText = "Our story",
   ctaHref = "/about",
-  imageUrl = "/nature-chair-sunrise-2x.png",
+  imageUrl = "/nature-chair-sunrise-4k.png",
   imageAlt = "Where nature inspires every crafted piece — West Home Furniture",
 }: NatureScrollSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -105,7 +105,7 @@ export function NatureScrollSection({
             alt={imageAlt}
             fill
             priority
-            quality={95}
+            unoptimized
             className="object-cover object-bottom"
             sizes="100vw"
           />
