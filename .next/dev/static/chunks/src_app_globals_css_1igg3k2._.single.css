@@ -2343,6 +2343,16 @@
     color: var(--muted);
   }
 
+  .text-muted\/70 {
+    color: var(--muted);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-muted\/70 {
+      color: color-mix(in oklab, var(--muted) 70%, transparent);
+    }
+  }
+
   .text-neutral-400 {
     color: var(--color-neutral-400);
   }
@@ -2470,6 +2480,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .text-wood\/80 {
       color: color-mix(in oklab, var(--wood) 80%, transparent);
+    }
+  }
+
+  .text-wood\/90 {
+    color: var(--wood);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-wood\/90 {
+      color: color-mix(in oklab, var(--wood) 90%, transparent);
     }
   }
 
@@ -3225,6 +3245,14 @@
 
     .sm\:text-\[0\.92rem\] {
       font-size: .92rem;
+    }
+
+    .sm\:text-\[0\.95rem\] {
+      font-size: .95rem;
+    }
+
+    .sm\:text-\[1\.02rem\] {
+      font-size: 1.02rem;
     }
 
     .sm\:text-\[1\.05rem\] {

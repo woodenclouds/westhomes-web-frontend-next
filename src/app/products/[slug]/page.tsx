@@ -92,7 +92,7 @@ export default async function ProductDetailPage({
             <p className="mt-4 text-muted leading-relaxed">
               {product.description}
             </p>
-            <p className="mt-6 font-display text-3xl text-charcoal">{priceLabel}</p>
+            <p className="mt-6 font-display text-3xl font-medium text-wood">{priceLabel}</p>
             {product.price == null || product.priceNote ? (
               <p className="mt-2 text-sm text-muted">{priceNoteFor(product)}</p>
             ) : null}
