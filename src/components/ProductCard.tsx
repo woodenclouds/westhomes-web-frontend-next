@@ -95,20 +95,20 @@ export function ProductCard({ product }: { product: Product }) {
           </Link>
         </h3>
 
-        <div className="mt-1.5 flex items-baseline gap-2 text-sm sm:text-[0.95rem]">
+        <div className="mt-1 flex items-baseline gap-2 text-sm text-black/70">
           {product.price != null ? (
             <>
-              <span className="font-semibold text-wood text-[0.95rem] sm:text-[1.02rem]">
+              <span className="font-normal text-black/70">
                 {formatPrice(product.price)}
               </span>
               {product.originalPrice != null ? (
-                <span className="text-xs font-normal text-muted/70 line-through sm:text-sm">
+                <span className="text-xs font-normal text-black/40 line-through sm:text-sm">
                   {formatPrice(product.originalPrice)}
                 </span>
               ) : null}
             </>
           ) : (
-            <span className="text-xs font-medium text-wood/90 sm:text-sm">
+            <span className="text-xs font-normal text-black/70 sm:text-sm leading-relaxed">
               {product.priceNote || "Price on enquiry"}
             </span>
           )}
