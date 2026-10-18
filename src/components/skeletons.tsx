@@ -9,17 +9,10 @@ function Bone({ className = "" }: { className?: string }) {
 
 export function ProductCardSkeleton() {
   return (
-    <article>
-      <Bone className="aspect-[4/3]" />
-      <Bone className="mt-4 h-3 w-24" />
-      <Bone className="mt-3 h-7 w-4/5" />
-      <Bone className="mt-3 h-4 w-full" />
-      <Bone className="mt-2 h-4 w-5/6" />
-      <Bone className="mt-3 h-6 w-28" />
-      <div className="mt-4 flex gap-2">
-        <Bone className="h-10 w-28" />
-        <Bone className="h-10 w-24" />
-      </div>
+    <article className="flex flex-col">
+      <Bone className="aspect-square w-full rounded-2xl sm:rounded-3xl" />
+      <Bone className="mt-3.5 h-4 w-3/4 rounded sm:mt-4" />
+      <Bone className="mt-2 h-3.5 w-1/3 rounded" />
     </article>
   );
 }

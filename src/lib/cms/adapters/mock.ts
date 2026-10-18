@@ -401,6 +401,73 @@ const products: Product[] = [
     customisable: false,
     price: 1890,
   },
+  {
+    id: "prd-ref-001",
+    slug: "rubber-lounge-armchair",
+    name: "Rubber Lounge Armchair",
+    categoryId: "cat-seating",
+    categoryName: "Chairs & Ottomans",
+    shortDescription:
+      "Minimalist lounge armchair with solid oak frame and soft textured linen cushions.",
+    description:
+      "A modern luxury minimalist armchair with natural oak frame and soft linen cushion. Built with structured oak armrests and generous, supportive seat proportions.",
+    imageUrl: img("rubber-lounge-armchair.jpg"),
+    gallery: [img("rubber-lounge-armchair.jpg")],
+    specs: [
+      { label: "Frame", value: "Solid natural oak" },
+      { label: "Upholstery", value: "Textured linen blend" },
+      { label: "Style", value: "Scandinavian Japandi" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 3500,
+    isNew: true,
+  },
+  {
+    id: "prd-ref-002",
+    slug: "nova-edge-sofa",
+    name: "Nova Edge Sofa",
+    categoryId: "cat-seating",
+    categoryName: "Chairs & Ottomans",
+    shortDescription:
+      "Scandinavian armchair with woven webbing strap seat and sculpted oak frame.",
+    description:
+      "Featuring woven natural webbing straps across a sculpted white oak frame, the Nova Edge delivers timeless Scandinavian craft and relaxed ergonomic support.",
+    imageUrl: img("nova-edge-sofa.jpg"),
+    gallery: [img("nova-edge-sofa.jpg")],
+    specs: [
+      { label: "Seat", value: "Woven natural webbing" },
+      { label: "Frame", value: "FSC certified white oak" },
+      { label: "Origin", value: "Artisan workshop" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 7650,
+    originalPrice: 9900,
+    isNew: true,
+  },
+  {
+    id: "prd-ref-003",
+    slug: "lumen-arc-coffee-table",
+    name: "Lumen Arc Coffee Table",
+    categoryId: "cat-seating",
+    categoryName: "Chairs & Ottomans",
+    shortDescription:
+      "Sculptural cognac saddle leather scoop chair on slender chrome tubular legs.",
+    description:
+      "A striking curved silhouette in rich saddle leather resting on minimalist tubular chrome legs. Designed to bring warmth and architectural elegance to any modern interior.",
+    imageUrl: img("lumen-arc-chair.jpg"),
+    gallery: [img("lumen-arc-chair.jpg")],
+    specs: [
+      { label: "Upholstery", value: "Top-grain cognac saddle leather" },
+      { label: "Base", value: "Polished stainless chrome" },
+      { label: "Dimensions", value: "W 68 x D 64 x H 78 cm" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 7080,
+    isNew: false,
+  },
 ];
 
 const gallery: GalleryItem[] = [
@@ -498,7 +565,11 @@ const homeContent: HomeContent = {
   featuredTitle: "Featured Pieces",
   featuredText:
     "Ready looks from the floor — priced as shown, with custom options available when you need them.",
-  featuredProductSlugs: [],
+  featuredProductSlugs: [
+    "rubber-lounge-armchair",
+    "nova-edge-sofa",
+    "lumen-arc-coffee-table",
+  ],
   customisableTitle: "Customisable Pieces",
   customisableText:
     "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag.",
