@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { ButtonLink } from "./ui/Button";
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => { };
 
 export type HeroSlide = {
   src: string;
@@ -45,9 +45,8 @@ export function HeroCarousel({
       {slides.map((slide, i) => (
         <div
           key={`${slide.src}-${i}`}
-          className={`hero-slide absolute inset-0 transition-opacity duration-1000 ease-out ${
-            i === index ? "is-active opacity-100" : "opacity-0"
-          }`}
+          className={`hero-slide absolute inset-0 transition-opacity duration-1000 ease-out ${i === index ? "is-active opacity-100" : "opacity-0"
+            }`}
           aria-hidden={i !== index}
         >
           <Image
@@ -119,11 +118,10 @@ export function HeroCarousel({
                       aria-selected={i === index}
                       aria-label={`Show slide ${i + 1}`}
                       onClick={() => setIndex(i)}
-                      className={`h-2 rounded-full transition-all duration-500 sm:h-1.5 ${
-                        i === index
+                      className={`h-2 rounded-full transition-all duration-500 sm:h-1.5 ${i === index
                           ? "w-8 bg-wood-soft sm:w-9"
                           : "w-2.5 bg-white/40 hover:bg-white/65"
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>
