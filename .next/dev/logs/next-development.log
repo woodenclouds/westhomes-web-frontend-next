@@ -125,3 +125,15 @@
 {"timestamp":"71:52:23.809","source":"Server","level":"LOG","message":"✓ Compiled in 33ms"}
 {"timestamp":"71:55:44.761","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"71:56:03.917","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"72:11:57.400","source":"Server","level":"LOG","message":"✓ Compiled in 294ms"}
+{"timestamp":"72:15:02.173","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"72:16:20.625","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"72:16:59.894","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"72:17:08.007","source":"Browser","level":"WARN","message":"Image with src \"/images/sofa-custom-swatches.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"72:17:08.044","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/sofa-custom-swatches.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"72:28:34.188","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"72:28:40.835","source":"Browser","level":"WARN","message":"Image with src \"/images/showroom-boucle-sectional.jpg\" has \"fill\" prop and \"sizes\" prop of \"100vw\", but image is not rendered at full viewport width. Please adjust \"sizes\" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"72:28:40.873","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/showroom-boucle-sectional.jpg\\\" has \\\"fill\\\" prop and \\\"sizes\\\" prop of \\\"100vw\\\", but image is not rendered at full viewport width. Please adjust \\\"sizes\\\" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\""}
+{"timestamp":"72:33:30.936","source":"Server","level":"LOG","message":"✓ Compiled in 170ms"}
+{"timestamp":"72:33:46.354","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
+{"timestamp":"72:36:36.115","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
+import { AboutProcessTimeline } from "@/components/AboutProcessTimeline";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -93,46 +94,16 @@ export default async function AboutPage() {
             </aside>
           </div>
 
-          <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:mt-12 md:grid-cols-2 md:gap-12 md:pt-12">
-            <ScrollReveal>
-              <div className="frame-image relative aspect-[4/5] bg-stone-deep md:aspect-[5/6]">
-                <Image
-                  src={about.craftImageUrl}
-                  alt="Fabric swatches and custom sofa finishes at West Home"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={80}>
-              <p className="eyebrow">How we work</p>
-              <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl">
-                {about.processTitle || "From showroom to your rooms"}
-              </h2>
-              <p className="mt-4 text-muted leading-relaxed">
-                {about.processIntro ||
-                  "Choose ready pieces from the showroom, or customise sofas, beds, club chairs and more — we guide you through fabric, size and layout so the furniture fits your home."}
-              </p>
-              <ol className="mt-8 space-y-6">
-                {about.process.map((step, i) => (
-                  <li key={step.title} className="grid grid-cols-[2.5rem_1fr] gap-3">
-                    <span className="font-display text-2xl text-wood/80">
-                      0{i + 1}
-                    </span>
-                    <div>
-                      <p className="font-display text-xl text-charcoal">
-                        {step.title}
-                      </p>
-                      <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                        {step.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </ScrollReveal>
-          </div>
+          <AboutProcessTimeline
+            eyebrow="How we work"
+            title={about.processTitle || "From showroom to your rooms"}
+            intro={
+              about.processIntro ||
+              "Choose ready pieces from the showroom, or customise sofas, beds, club chairs and more — we guide you through fabric, size and layout so the furniture fits your home."
+            }
+            steps={about.process}
+            craftImageUrl={about.craftImageUrl}
+          />
 
           <ScrollReveal className="mt-10 border-t border-border pt-8 md:mt-12">
             <p className="eyebrow">Our collection</p>
