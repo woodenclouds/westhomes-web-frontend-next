@@ -98,7 +98,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-1 flex items-baseline gap-2 text-sm text-black/70">
           {product.price != null ? (
             <>
-              <span className="font-normal text-black/70">
+              <span className="font-semibold text-wood">
                 {formatPrice(product.price)}
               </span>
               {product.originalPrice != null ? (
