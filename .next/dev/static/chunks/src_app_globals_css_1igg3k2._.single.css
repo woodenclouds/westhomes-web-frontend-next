@@ -1925,6 +1925,20 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
+  .from-charcoal\/95 {
+    --tw-gradient-from: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .from-charcoal\/95 {
+      --tw-gradient-from: color-mix(in oklab, var(--charcoal) 95%, transparent);
+    }
+  }
+
+  .from-charcoal\/95 {
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
   .via-background\/40 {
     --tw-gradient-via: var(--background);
   }
@@ -1951,6 +1965,21 @@
   }
 
   .via-charcoal\/20 {
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+
+  .via-charcoal\/45 {
+    --tw-gradient-via: var(--charcoal);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .via-charcoal\/45 {
+      --tw-gradient-via: color-mix(in oklab, var(--charcoal) 45%, transparent);
+    }
+  }
+
+  .via-charcoal\/45 {
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
@@ -2928,6 +2957,11 @@
       }
     }
 
+    .group-hover\:from-charcoal:is(:where(.group):hover *) {
+      --tw-gradient-from: var(--charcoal);
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
+
     .group-hover\:opacity-100:is(:where(.group):hover *) {
       opacity: 1;
     }
@@ -3109,6 +3143,11 @@
 
     .hover\:underline:hover {
       text-decoration-line: underline;
+    }
+
+    .hover\:shadow-md:hover {
+      --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, #0000001a), 0 2px 4px -2px var(--tw-shadow-color, #0000001a);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
 
     .hover\:brightness-95:hover {
@@ -3471,6 +3510,11 @@
     .sm\:text-base {
       font-size: var(--text-base);
       line-height: var(--tw-leading, var(--text-base--line-height));
+    }
+
+    .sm\:text-lg {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
     }
 
     .sm\:text-sm {

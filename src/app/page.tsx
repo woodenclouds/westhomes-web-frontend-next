@@ -183,27 +183,24 @@ export default async function HomePage() {
               description="Sofas, beds, mattresses, living room and bedroom furniture, dining tables, coffee tables and more."
             />
           </ScrollReveal>
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 md:grid-cols-3 xl:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-3.5 sm:mt-12 sm:gap-4 md:grid-cols-3 xl:grid-cols-5">
             {categories.map((cat, i) => (
-              <ScrollReveal key={cat.id} delay={i * 80}>
+              <ScrollReveal key={cat.id} delay={i * 60}>
                 <Link
                   href={`/products?category=${cat.slug}`}
-                  className="frame-image group relative block aspect-[3/4] bg-stone-deep"
+                  className="group relative block aspect-[3/4] overflow-hidden rounded-2xl bg-stone-deep shadow-xs transition-all duration-500 hover:shadow-md"
                 >
                   <Image
                     src={cat.imageUrl}
                     alt={cat.name}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 50vw, 20vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 20vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent transition duration-500 [@media(hover:hover)_and_(pointer:fine)]:group-hover:from-charcoal/90" />
-                  <div className="absolute inset-x-0 bottom-0 p-3 transition duration-500 sm:p-5 [@media(hover:hover)_and_(pointer:fine)]:group-hover:-translate-y-1">
-                    <p className="font-display text-lg leading-tight text-stone sm:text-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/45 to-transparent transition-opacity duration-300 group-hover:from-charcoal" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                    <p className="font-sans text-base font-semibold leading-snug text-white sm:text-lg">
                       {cat.name}
-                    </p>
-                    <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-stone/75 sm:mt-2 sm:text-sm">
-                      {cat.description}
                     </p>
                   </div>
                 </Link>
