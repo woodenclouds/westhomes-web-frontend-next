@@ -3630,6 +3630,10 @@
       padding-bottom: calc(var(--spacing) * 12);
     }
 
+    .md\:pb-14 {
+      padding-bottom: calc(var(--spacing) * 14);
+    }
+
     .md\:pb-20 {
       padding-bottom: calc(var(--spacing) * 20);
     }
