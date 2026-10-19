@@ -3754,6 +3754,10 @@
       padding-bottom: calc(var(--spacing) * 16);
     }
 
+    .lg\:pb-24 {
+      padding-bottom: calc(var(--spacing) * 24);
+    }
+
     .lg\:pb-32 {
       padding-bottom: calc(var(--spacing) * 32);
     }

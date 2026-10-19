@@ -132,7 +132,7 @@ export function AboutProcessTimeline({
                 {/* Left: Large Rounded Image (slightly reduced size + vertical spacing) */}
                 <div
                   className={`self-start ${
-                    !isLast ? "pb-20 md:pb-28 lg:pb-32" : "pb-6 md:pb-10"
+                    !isLast ? "pb-14 md:pb-20 lg:pb-24" : "pb-6 md:pb-10"
                   }`}
                 >
                   <div className="relative aspect-[4/3] w-full max-w-[450px] lg:max-w-[470px] overflow-hidden rounded-2xl bg-stone-deep shadow-sm transition-all duration-500 group-hover:shadow-md border border-border/40">
@@ -167,7 +167,7 @@ export function AboutProcessTimeline({
                 {/* Right: Content & Thumbnail Gallery */}
                 <div
                   className={`flex flex-col self-start ${
-                    !isLast ? "pb-20 md:pb-28 lg:pb-32" : "pb-6 md:pb-10"
+                    !isLast ? "pb-14 md:pb-20 lg:pb-24" : "pb-6 md:pb-10"
                   }`}
                 >
                   {/* Step Badge */}
