@@ -961,6 +961,14 @@
     max-width: 320px;
   }
 
+  .max-w-\[420px\] {
+    max-width: 420px;
+  }
+
+  .max-w-\[450px\] {
+    max-width: 450px;
+  }
+
   .max-w-\[1200px\] {
     max-width: 1200px;
   }
@@ -1364,6 +1372,16 @@
 
   .border-border {
     border-color: var(--border);
+  }
+
+  .border-border\/40 {
+    border-color: var(--border);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-border\/40 {
+      border-color: color-mix(in oklab, var(--border) 40%, transparent);
+    }
   }
 
   .border-border\/70 {
@@ -2156,6 +2174,10 @@
     padding-bottom: calc(var(--spacing) * 3);
   }
 
+  .pb-6 {
+    padding-bottom: calc(var(--spacing) * 6);
+  }
+
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
   }
@@ -2170,6 +2192,14 @@
 
   .pb-14 {
     padding-bottom: calc(var(--spacing) * 14);
+  }
+
+  .pb-16 {
+    padding-bottom: calc(var(--spacing) * 16);
+  }
+
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
   }
 
   .pb-\[max\(1rem\,env\(safe-area-inset-bottom\)\)\] {
@@ -2820,6 +2850,10 @@
       --tw-scale-y: 125%;
       --tw-scale-z: 125%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+
+    .group-hover\:scale-\[1\.02\]:is(:where(.group):hover *) {
+      scale: 1.02;
     }
 
     .group-hover\:scale-\[1\.03\]:is(:where(.group):hover *) {
@@ -3486,6 +3520,10 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
+    .md\:grid-cols-\[0\.85fr_2\.5rem_1\.15fr\] {
+      grid-template-columns: .85fr 2.5rem 1.15fr;
+    }
+
     .md\:grid-cols-\[1\.4fr_0\.85fr\] {
       grid-template-columns: 1.4fr .85fr;
     }
@@ -3596,6 +3634,10 @@
       padding-bottom: calc(var(--spacing) * 20);
     }
 
+    .md\:pb-28 {
+      padding-bottom: calc(var(--spacing) * 28);
+    }
+
     .md\:pl-8 {
       padding-left: calc(var(--spacing) * 8);
     }
@@ -3668,6 +3710,10 @@
       max-width: var(--container-5xl);
     }
 
+    .lg\:max-w-\[470px\] {
+      max-width: 470px;
+    }
+
     .lg\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -3678,6 +3724,10 @@
 
     .lg\:grid-cols-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .lg\:grid-cols-\[0\.8fr_3\.5rem_1\.2fr\] {
+      grid-template-columns: .8fr 3.5rem 1.2fr;
     }
 
     .lg\:grid-cols-\[0\.9fr_1\.1fr\] {
@@ -3702,6 +3752,10 @@
 
     .lg\:pb-16 {
       padding-bottom: calc(var(--spacing) * 16);
+    }
+
+    .lg\:pb-32 {
+      padding-bottom: calc(var(--spacing) * 32);
     }
 
     .lg\:pl-10 {

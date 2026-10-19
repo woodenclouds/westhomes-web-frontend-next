@@ -128,17 +128,24 @@ export function AboutProcessTimeline({
               className="group relative"
             >
               {/* Desktop & Tablet: 3-column timeline layout (Image | Line & Dot | Content) */}
-              <div className="hidden md:grid md:grid-cols-[1fr_2.5rem_1fr] md:gap-8 lg:grid-cols-[1fr_3.5rem_1fr] lg:gap-12 items-start">
-                {/* Left: Large Rounded Image */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-deep shadow-sm transition-all duration-500 group-hover:shadow-md">
-                  <Image
-                    src={currentMainImg}
-                    alt={config.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    sizes="(max-width: 1024px) 45vw, 540px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent pointer-events-none" />
+              <div className="hidden md:grid md:grid-cols-[0.85fr_2.5rem_1.15fr] lg:grid-cols-[0.8fr_3.5rem_1.2fr] md:gap-8 lg:gap-12 items-stretch">
+                {/* Left: Large Rounded Image (slightly reduced size + vertical spacing) */}
+                <div
+                  className={`self-start ${
+                    !isLast ? "pb-20 md:pb-28 lg:pb-32" : "pb-6 md:pb-10"
+                  }`}
+                >
+                  <div className="relative aspect-[4/3] w-full max-w-[450px] lg:max-w-[470px] overflow-hidden rounded-2xl bg-stone-deep shadow-sm transition-all duration-500 group-hover:shadow-md border border-border/40">
+                    <Image
+                      key={currentMainImg}
+                      src={currentMainImg}
+                      alt={config.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                      sizes="(max-width: 1024px) 40vw, 470px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent pointer-events-none" />
+                  </div>
                 </div>
 
                 {/* Center: Vertical Timeline Track with Node */}
@@ -158,7 +165,11 @@ export function AboutProcessTimeline({
                 </div>
 
                 {/* Right: Content & Thumbnail Gallery */}
-                <div className="flex flex-col pb-12 lg:pb-16">
+                <div
+                  className={`flex flex-col self-start ${
+                    !isLast ? "pb-20 md:pb-28 lg:pb-32" : "pb-6 md:pb-10"
+                  }`}
+                >
                   {/* Step Badge */}
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full border border-charcoal/60 bg-transparent" />
@@ -211,7 +222,11 @@ export function AboutProcessTimeline({
               </div>
 
               {/* Mobile View: Vertical stacked with subtle connecting bar */}
-              <div className="flex flex-col md:hidden pb-10">
+              <div
+                className={`flex flex-col md:hidden ${
+                  !isLast ? "pb-16" : "pb-6"
+                }`}
+              >
                 {/* Step badge */}
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full border border-charcoal/60 bg-transparent" />
@@ -231,8 +246,9 @@ export function AboutProcessTimeline({
                 </p>
 
                 {/* Main Image */}
-                <div className="mt-4 relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-deep shadow-sm">
+                <div className="mt-4 relative aspect-[4/3] w-full max-w-[420px] overflow-hidden rounded-2xl bg-stone-deep shadow-sm border border-border/40">
                   <Image
+                    key={currentMainImg}
                     src={currentMainImg}
                     alt={config.imageAlt}
                     fill
