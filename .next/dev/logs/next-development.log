@@ -144,3 +144,6 @@
 {"timestamp":"72:42:54.164","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"72:43:39.173","source":"Server","level":"LOG","message":"✓ Compiled in 80ms"}
 {"timestamp":"72:44:25.697","source":"Server","level":"LOG","message":"✓ Compiled in 62ms"}
+{"timestamp":"72:50:32.647","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"72:50:38.300","source":"Browser","level":"WARN","message":"Image with src \"/images/showroom-boucle-sectional.jpg\" has \"fill\" prop and \"sizes\" prop of \"100vw\", but image is not rendered at full viewport width. Please adjust \"sizes\" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"72:50:38.300","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/showroom-boucle-sectional.jpg\\\" has \\\"fill\\\" prop and \\\"sizes\\\" prop of \\\"100vw\\\", but image is not rendered at full viewport width. Please adjust \\\"sizes\\\" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\""}
