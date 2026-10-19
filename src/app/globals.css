@@ -229,7 +229,7 @@ html[data-nav-open="true"] .floating-wa {
 .hero-copy.is-ready > *:nth-child(5) { animation-delay: 0.6s; }
 
 .hero-slide.is-active img {
-  animation: kenburns 6.5s ease-out forwards;
+  animation: kenburns 4s ease-out forwards;
 }
 
 @keyframes kenburns {

@@ -32,9 +32,9 @@ export function HeroCarousel({
     if (!ready || count <= 1) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % count);
-    }, 5500);
+    }, 3000);
     return () => window.clearInterval(id);
-  }, [count, ready]);
+  }, [count, ready, index]);
 
   function go(next: number) {
     setIndex((next + count) % count);
@@ -54,7 +54,7 @@ export function HeroCarousel({
             src={slide.src}
             alt={slide.alt}
             fill
-            priority={i < 2}
+            priority={true}
             className="object-cover object-[center_40%] sm:object-center"
             sizes="100vw"
           />
