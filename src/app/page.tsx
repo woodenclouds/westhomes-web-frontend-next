@@ -133,7 +133,7 @@ export default async function HomePage() {
       <section className="border-y border-border bg-surface section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
               <SectionHeading
                 title={home.customisableTitle || "Customisable Pieces"}
                 description={
@@ -141,7 +141,7 @@ export default async function HomePage() {
                   "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
                 }
               />
-              <Link href="/products#customisable" className="text-link self-start sm:self-auto">
+              <Link href="/products#customisable" className="text-link self-start sm:self-auto sm:pt-2">
                 View customisable
               </Link>
             </div>
@@ -155,7 +155,7 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
               <SectionHeading
                 title={home.featuredTitle || "Featured Pieces"}
                 description={
@@ -163,7 +163,7 @@ export default async function HomePage() {
                   "Ready looks from the floor — priced as shown, with custom options available when you need them."
                 }
               />
-              <Link href="/products#showroom" className="text-link self-start sm:self-auto">
+              <Link href="/products#showroom" className="text-link self-start sm:self-auto sm:pt-2">
                 View all
               </Link>
             </div>
@@ -234,12 +234,12 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
               <SectionHeading
                 title="From The Showroom"
                 description="Rooms, fabrics and details from recent West Home settings."
               />
-              <Link href="/gallery" className="text-link self-start sm:self-auto">
+              <Link href="/gallery" className="text-link self-start sm:self-auto sm:pt-2">
                 Open gallery
               </Link>
             </div>

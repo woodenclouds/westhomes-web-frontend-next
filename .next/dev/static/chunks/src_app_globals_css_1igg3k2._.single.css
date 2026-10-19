@@ -3025,6 +3025,10 @@
       align-items: flex-end;
     }
 
+    .sm\:items-start {
+      align-items: flex-start;
+    }
+
     .sm\:justify-between {
       justify-content: space-between;
     }
@@ -3095,6 +3099,10 @@
 
     .sm\:py-14 {
       padding-block: calc(var(--spacing) * 14);
+    }
+
+    .sm\:pt-2 {
+      padding-top: calc(var(--spacing) * 2);
     }
 
     .sm\:pt-8 {
