@@ -15,7 +15,7 @@ interface NatureScrollSectionProps {
 }
 
 export function NatureScrollSection({
-  eyebrow = "The house",
+  eyebrow,
   title,
   body,
   ctaText = "Our story",
@@ -128,7 +128,7 @@ export function NatureScrollSection({
             </p>
           ) : null}
 
-          <h2 className="mt-3 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-4 sm:text-4xl md:text-5xl lg:text-[3.75rem] tracking-tight capitalize">
+          <h2 className={`font-display text-[2.25rem] leading-[1.08] text-charcoal sm:text-4xl md:text-5xl lg:text-[3.75rem] tracking-tight capitalize ${eyebrow ? "mt-3 sm:mt-4" : ""}`}>
             {title}
           </h2>
 

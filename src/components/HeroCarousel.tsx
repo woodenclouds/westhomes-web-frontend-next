@@ -84,7 +84,7 @@ export function HeroCarousel({
                 href="/enquire"
                 size="lg"
                 variant="wood-outline"
-                className="w-full !border-stone/55 !text-stone hover:!bg-stone hover:!text-charcoal sm:w-auto"
+                className="w-full !bg-white !text-charcoal !border-white hover:!bg-neutral-100 hover:!text-black sm:w-auto shadow-sm"
               >
                 Enquire now
               </ButtonLink>

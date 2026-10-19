@@ -1275,6 +1275,10 @@
     }
   }
 
+  .\!border-white {
+    border-color: var(--color-white) !important;
+  }
+
   .border-black\/\[0\.04\] {
     border-color: #0000000a;
   }
@@ -1409,6 +1413,10 @@
     .\!bg-charcoal\/15 {
       background-color: color-mix(in oklab, var(--charcoal) 15%, transparent) !important;
     }
+  }
+
+  .\!bg-white {
+    background-color: var(--color-white) !important;
   }
 
   .\!bg-white\/10 {
@@ -2239,6 +2247,10 @@
     white-space: nowrap;
   }
 
+  .\!text-charcoal {
+    color: var(--charcoal) !important;
+  }
+
   .\!text-stone {
     color: var(--stone) !important;
   }
@@ -2680,6 +2692,10 @@
       border-color: var(--charcoal);
     }
 
+    .hover\:\!bg-neutral-100:hover {
+      background-color: var(--color-neutral-100) !important;
+    }
+
     .hover\:\!bg-stone:hover {
       background-color: var(--stone) !important;
     }
@@ -2750,6 +2766,10 @@
 
     .hover\:bg-wood-hover:hover {
       background-color: var(--wood-hover);
+    }
+
+    .hover\:\!text-black:hover {
+      color: var(--color-black) !important;
     }
 
     .hover\:\!text-charcoal:hover {
