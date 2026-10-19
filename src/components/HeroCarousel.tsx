@@ -22,7 +22,7 @@ export function HeroCarousel({
   slides,
   headline,
   support,
-  eyebrow = "West Home Furniture",
+  eyebrow,
 }: Props) {
   const [index, setIndex] = useState(0);
   const ready = useSyncExternalStore(emptySubscribe, () => true, () => false);
@@ -67,10 +67,12 @@ export function HeroCarousel({
       <div className="relative flex min-h-[100svh] w-full flex-col justify-center items-center pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-28 sm:pb-16 md:pb-20 md:pt-32 px-4">
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-8 flex justify-center">
           <div className={`flex flex-col items-center text-center max-w-3xl lg:max-w-5xl ${ready ? "hero-copy is-ready" : "hero-copy"}`}>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-stone/85 sm:text-[0.7rem]">
-              {eyebrow}
-            </p>
-            <h1 className="mt-3 font-display text-[2.5rem] leading-[1.06] text-stone sm:mt-4 sm:text-5xl md:text-[3.5rem] lg:text-[4.25rem] tracking-tight capitalize">
+            {eyebrow ? (
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-stone/85 sm:text-[0.7rem]">
+                {eyebrow}
+              </p>
+            ) : null}
+            <h1 className={`${eyebrow ? "mt-3 sm:mt-4" : ""} font-display text-[2.5rem] leading-[1.06] text-stone sm:text-5xl md:text-[3.5rem] lg:text-[4.25rem] tracking-tight capitalize`}>
               {headline}
             </h1>
             <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-stone/90 sm:mt-5 md:text-base">
