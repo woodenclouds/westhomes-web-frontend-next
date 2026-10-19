@@ -178,6 +178,7 @@ export default async function HomePage() {
         <div className="container-page">
           <ScrollReveal>
             <SectionHeading
+              centered
               title="Made For Your Rooms"
               description="Sofas, beds, mattresses, living room and bedroom furniture, dining tables, coffee tables and more."
             />

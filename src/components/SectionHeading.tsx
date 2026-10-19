@@ -3,14 +3,22 @@ export function SectionHeading({
   title,
   description,
   light = false,
+  centered = false,
+  className = "",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   light?: boolean;
+  centered?: boolean;
+  className?: string;
 }) {
   return (
-    <div className="max-w-2xl">
+    <div
+      className={`max-w-2xl ${
+        centered ? "mx-auto text-center" : ""
+      } ${className}`}
+    >
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
       <h2
         className={`font-display text-[1.75rem] leading-[1.1] sm:text-3xl md:text-[2.75rem] capitalize ${

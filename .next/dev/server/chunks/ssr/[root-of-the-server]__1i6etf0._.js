@@ -409,16 +409,16 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 ;
-function SectionHeading({ eyebrow, title, description, light = false }) {
+function SectionHeading({ eyebrow, title, description, light = false, centered = false, className = "" }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "max-w-2xl",
+        className: `max-w-2xl ${centered ? "mx-auto text-center" : ""} ${className}`,
         children: [
             eyebrow ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                 className: "eyebrow",
                 children: eyebrow
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 14,
+                lineNumber: 22,
                 columnNumber: 18
             }, this) : null,
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -426,7 +426,7 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
                 children: title
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 15,
+                lineNumber: 23,
                 columnNumber: 7
             }, this),
             description ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -434,13 +434,13 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
                 children: description
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 23,
+                lineNumber: 31,
                 columnNumber: 9
             }, this) : null
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/SectionHeading.tsx",
-        lineNumber: 13,
+        lineNumber: 17,
         columnNumber: 5
     }, this);
 }
@@ -453,7 +453,7 @@ function PageIntro({ eyebrow, title, description }) {
                 children: eyebrow
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 46,
+                lineNumber: 54,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -461,7 +461,7 @@ function PageIntro({ eyebrow, title, description }) {
                 children: title
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 47,
+                lineNumber: 55,
                 columnNumber: 7
             }, this),
             description ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -469,13 +469,13 @@ function PageIntro({ eyebrow, title, description }) {
                 children: description
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 51,
+                lineNumber: 59,
                 columnNumber: 9
             }, this) : null
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/SectionHeading.tsx",
-        lineNumber: 45,
+        lineNumber: 53,
         columnNumber: 5
     }, this);
 }
