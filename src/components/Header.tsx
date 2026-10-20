@@ -58,6 +58,7 @@ export function Header() {
       ? createPortal(
           <div
             id="mobile-nav"
+            data-lenis-prevent
             className="fixed inset-0 z-[60] flex flex-col p-3.5 sm:p-6 lg:hidden"
             role="dialog"
             aria-modal="true"

@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/WhatsAppButton";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { cms } from "@/lib/cms/client";
 import { siteConfig } from "@/lib/site";
 import { generalEnquiryMessage } from "@/lib/whatsapp";
@@ -85,14 +86,15 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       className={`${neueMontreal.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer contact={contact} />
-        <FloatingWhatsApp message={generalEnquiryMessage()} />
+        <SmoothScroll>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer contact={contact} />
+          <FloatingWhatsApp message={generalEnquiryMessage()} />
+        </SmoothScroll>
       </body>
     </html>
   );
