@@ -215,14 +215,16 @@ export default async function HomePage() {
           <ScrollReveal>
             <SectionHeading centered title="Quiet Luxury, Personal Service" />
           </ScrollReveal>
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:mt-12 md:grid-cols-3 md:gap-6 lg:gap-8">
             {home.valueProps.map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 90}>
-                <p className="font-display text-4xl text-wood/80">0{i + 1}</p>
-                <h3 className="mt-3 font-display text-2xl text-charcoal">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">
-                  {item.description}
-                </p>
+              <ScrollReveal key={item.title} delay={i * 90} className="h-full">
+                <div className="flex h-full flex-col rounded-2xl border border-border/60 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-md sm:p-8 lg:p-9">
+                  <p className="font-display text-4xl text-wood/80">0{i + 1}</p>
+                  <h3 className="mt-4 font-display text-2xl text-charcoal">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">
+                    {item.description}
+                  </p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
