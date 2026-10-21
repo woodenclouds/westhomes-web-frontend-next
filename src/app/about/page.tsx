@@ -105,11 +105,6 @@ export default async function AboutPage() {
               <p className="mt-6 text-muted leading-relaxed text-[0.95rem] md:text-base max-w-3xl mx-auto">
                 {about.body}
               </p>
-              {about.heroText ? (
-                <p className="mt-3 text-sm text-muted/80 max-w-2xl mx-auto leading-relaxed">
-                  {about.heroText}
-                </p>
-              ) : null}
             </ScrollReveal>
 
             {/* Actions: Enquire now / Visit showroom (matching Get In Touch) */}
