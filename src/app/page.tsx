@@ -213,7 +213,7 @@ export default async function HomePage() {
       <section className="bg-stone-deep/70 section-space">
         <div className="container-page">
           <ScrollReveal>
-            <SectionHeading title="Quiet Luxury, Personal Service" />
+            <SectionHeading centered title="Quiet Luxury, Personal Service" />
           </ScrollReveal>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {home.valueProps.map((item, i) => (
