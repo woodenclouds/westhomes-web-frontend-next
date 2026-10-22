@@ -219,3 +219,6 @@
 {"timestamp":"148:40:33.604","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"148:40:33.833","source":"Browser","level":"WARN","message":"Image with src \"/images/highlight-white-sectional.png\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
 {"timestamp":"148:40:33.835","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/highlight-white-sectional.png\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"148:41:22.745","source":"Server","level":"LOG","message":"✓ Compiled in 164ms"}
+{"timestamp":"148:42:29.566","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"148:43:28.804","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}

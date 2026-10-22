@@ -127,7 +127,7 @@ export function ShowroomSpotlight() {
                   </p>
 
                   {/* Feature Chips */}
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 hidden sm:flex flex-wrap gap-2">
                     {item.features.map((feature) => (
                       <span
                         key={feature}
