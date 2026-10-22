@@ -211,7 +211,7 @@ function ProductCard({ product }) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 sm:mt-4",
+                        className: "mt-3 flex items-center justify-between gap-x-4 gap-y-2 sm:mt-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 href: `/products/${product.slug}`,
@@ -250,7 +250,8 @@ function ProductCard({ product }) {
                                 message: waMessage,
                                 label: "Enquire",
                                 variant: "wood-outline",
-                                size: "sm"
+                                size: "sm",
+                                className: "ml-auto shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ProductCard.tsx",
                                 lineNumber: 85,
@@ -278,11 +279,11 @@ function ProductCard({ product }) {
 function ProductGrid({ products, pageSize = PAGE_SIZE }) {
     const [page, setPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     const productKey = products.map((p)=>p.id).join(",");
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+    const [prevProductKey, setPrevProductKey] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(productKey);
+    if (prevProductKey !== productKey) {
+        setPrevProductKey(productKey);
         setPage(1);
-    }, [
-        productKey
-    ]);
+    }
     const totalPages = Math.max(1, Math.ceil(products.length / pageSize));
     const currentPage = Math.min(page, totalPages);
     const pageItems = products.slice((currentPage - 1) * pageSize, currentPage * pageSize);
@@ -302,12 +303,12 @@ function ProductGrid({ products, pageSize = PAGE_SIZE }) {
                         product: product
                     }, product.id, false, {
                         fileName: "[project]/src/components/ProductCard.tsx",
-                        lineNumber: 128,
+                        lineNumber: 131,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/components/ProductCard.tsx",
-                lineNumber: 126,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Pagination$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Pagination"], {
@@ -319,13 +320,13 @@ function ProductGrid({ products, pageSize = PAGE_SIZE }) {
                 label: "Product pagination"
             }, void 0, false, {
                 fileName: "[project]/src/components/ProductCard.tsx",
-                lineNumber: 131,
+                lineNumber: 134,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ProductCard.tsx",
-        lineNumber: 125,
+        lineNumber: 128,
         columnNumber: 5
     }, this);
 }

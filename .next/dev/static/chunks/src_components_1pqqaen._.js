@@ -73,7 +73,7 @@ function GalleryGrid({ items }) {
                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         type: "button",
                         onClick: ()=>setActiveIndex(globalIndex),
-                        className: "frame-image relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-stone-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood",
+                        className: "frame-image relative aspect-[4/5] w-full overflow-hidden bg-stone-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 src: item.imageUrl,
@@ -130,7 +130,7 @@ function GalleryGrid({ items }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         type: "button",
-                        className: "absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10 min-h-11 rounded-sm bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 sm:right-4 sm:top-4",
+                        className: "absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10 min-h-11 rounded-full bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20 sm:right-4 sm:top-4",
                         onClick: ()=>setActiveIndex(null),
                         children: "Close"
                     }, void 0, false, {
@@ -147,7 +147,7 @@ function GalleryGrid({ items }) {
                                     e.stopPropagation();
                                     showPrev();
                                 },
-                                className: "absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:left-6 sm:h-11 sm:w-11",
+                                className: "absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:left-6 sm:h-11 sm:w-11",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Chevron, {
                                     direction: "left"
                                 }, void 0, false, {
@@ -167,7 +167,7 @@ function GalleryGrid({ items }) {
                                     e.stopPropagation();
                                     showNext();
                                 },
-                                className: "absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-sm bg-white/10 text-white transition hover:bg-white/20 sm:right-6 sm:h-11 sm:w-11",
+                                className: "absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:right-6 sm:h-11 sm:w-11",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Chevron, {
                                     direction: "right"
                                 }, void 0, false, {
@@ -339,7 +339,7 @@ function Pagination({ page, totalPages, totalItems, itemLabel = "items", onPageC
                         type: "button",
                         onClick: ()=>onPageChange(page - 1),
                         disabled: page <= 1,
-                        className: "min-h-11 flex-1 rounded-sm border border-border px-3.5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none",
+                        className: "min-h-11 flex-1 rounded-full border border-border px-5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none",
                         children: "Previous"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Pagination.tsx",
@@ -352,7 +352,7 @@ function Pagination({ page, totalPages, totalItems, itemLabel = "items", onPageC
                             type: "button",
                             onClick: ()=>onPageChange(n),
                             "aria-current": n === page ? "page" : undefined,
-                            className: `min-h-11 min-w-11 rounded-sm px-3.5 py-2.5 text-[0.78rem] font-medium tracking-[0.04em] transition ${n === page ? "bg-charcoal text-stone" : "border border-border text-charcoal hover:border-charcoal"}`,
+                            className: `min-h-11 min-w-11 rounded-full px-3.5 py-2.5 text-[0.78rem] font-medium tracking-[0.04em] transition ${n === page ? "bg-charcoal text-stone" : "border border-border text-charcoal hover:border-charcoal"}`,
                             children: n
                         }, n, false, {
                             fileName: "[project]/src/components/Pagination.tsx",
@@ -363,7 +363,7 @@ function Pagination({ page, totalPages, totalItems, itemLabel = "items", onPageC
                         type: "button",
                         onClick: ()=>onPageChange(page + 1),
                         disabled: page >= totalPages,
-                        className: "min-h-11 flex-1 rounded-sm border border-border px-3.5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none",
+                        className: "min-h-11 flex-1 rounded-full border border-border px-5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none",
                         children: "Next"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Pagination.tsx",

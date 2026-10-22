@@ -76,7 +76,7 @@ export default async function ContactPage() {
             </div>
 
             {contact.mapEmbedUrl ? (
-              <div className="overflow-hidden rounded-sm border border-border bg-stone-deep">
+              <div className="overflow-hidden rounded-[24px] border border-border bg-stone-deep shadow-sm">
                 <iframe
                   title="WestHome location map"
                   src={contact.mapEmbedUrl}

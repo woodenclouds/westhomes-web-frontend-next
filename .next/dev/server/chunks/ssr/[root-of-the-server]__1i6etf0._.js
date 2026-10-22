@@ -409,24 +409,24 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 ;
-function SectionHeading({ eyebrow, title, description, light = false }) {
+function SectionHeading({ eyebrow, title, description, light = false, centered = false, className = "" }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "max-w-2xl",
+        className: `max-w-2xl ${centered ? "mx-auto text-center" : ""} ${className}`,
         children: [
             eyebrow ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                 className: "eyebrow",
                 children: eyebrow
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 14,
+                lineNumber: 22,
                 columnNumber: 18
             }, this) : null,
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: `font-display text-[1.75rem] leading-[1.1] sm:text-3xl md:text-[2.75rem] ${light ? "text-stone" : "text-charcoal"} ${eyebrow ? "mt-2.5 sm:mt-3" : ""}`,
+                className: `font-display text-[1.75rem] leading-[1.1] sm:text-3xl md:text-[2.75rem] capitalize ${light ? "text-stone" : "text-charcoal"} ${eyebrow ? "mt-2.5 sm:mt-3" : ""}`,
                 children: title
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 15,
+                lineNumber: 23,
                 columnNumber: 7
             }, this),
             description ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -434,13 +434,13 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
                 children: description
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 23,
+                lineNumber: 31,
                 columnNumber: 9
             }, this) : null
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/SectionHeading.tsx",
-        lineNumber: 13,
+        lineNumber: 17,
         columnNumber: 5
     }, this);
 }
@@ -453,15 +453,15 @@ function PageIntro({ eyebrow, title, description }) {
                 children: eyebrow
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 46,
+                lineNumber: 54,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "mt-2.5 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-3 sm:text-4xl md:text-6xl",
+                className: "mt-2.5 font-display text-[2.25rem] leading-[1.08] text-charcoal sm:mt-3 sm:text-4xl md:text-6xl capitalize",
                 children: title
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 47,
+                lineNumber: 55,
                 columnNumber: 7
             }, this),
             description ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -469,13 +469,13 @@ function PageIntro({ eyebrow, title, description }) {
                 children: description
             }, void 0, false, {
                 fileName: "[project]/src/components/SectionHeading.tsx",
-                lineNumber: 51,
+                lineNumber: 59,
                 columnNumber: 9
             }, this) : null
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/SectionHeading.tsx",
-        lineNumber: 45,
+        lineNumber: 53,
         columnNumber: 5
     }, this);
 }
@@ -499,7 +499,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$B
 ;
 function EmptyState({ title, description, actionHref, actionLabel }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "rounded-sm border border-dashed border-border bg-surface px-6 py-14 text-center",
+        className: "rounded-[24px] border border-dashed border-border bg-surface px-6 py-14 text-center",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                 className: "font-display text-2xl text-charcoal",
@@ -542,7 +542,7 @@ function EmptyState({ title, description, actionHref, actionLabel }) {
 }
 function ErrorState({ title = "Something went wrong", description = "We could not load this content. Please try again.", onRetry, retryHref }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "rounded-sm border border-error/30 bg-surface px-6 py-12 text-center",
+        className: "rounded-[24px] border border-error/30 bg-surface px-6 py-12 text-center",
         role: "alert",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {

@@ -8,6 +8,7 @@ type Props = {
   onClick?: () => void;
   variant?: "header" | "footer";
   tone?: "dark" | "light";
+  compact?: boolean;
 };
 
 export function Logo({
@@ -17,6 +18,7 @@ export function Logo({
   onClick,
   variant = "header",
   tone = "dark",
+  compact = false,
 }: Props) {
   const isHeader = variant === "header";
   const src = !isHeader
@@ -25,16 +27,18 @@ export function Logo({
       ? "/images/logo-nav-light.png"
       : "/images/logo-header.png";
 
-  const sizes = isHeader
-    ? "h-12 w-auto sm:h-[3.25rem] lg:h-14"
-    : "h-14 w-auto sm:h-16";
+  const sizes = compact
+    ? "h-10 md:h-11 w-auto"
+    : isHeader
+      ? "h-12 w-auto sm:h-[3.25rem] lg:h-14"
+      : "h-14 w-auto sm:h-16";
 
   const image = (
     <Image
       src={src}
       alt="West Home Furniture — Style your home, live better"
-      width={800}
-      height={620}
+      width={isHeader ? 1024 : 800}
+      height={isHeader ? 673 : 620}
       priority={priority}
       className={`${sizes} object-contain object-left ${className}`}
     />

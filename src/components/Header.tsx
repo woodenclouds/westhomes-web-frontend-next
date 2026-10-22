@@ -4,17 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { ButtonLink } from "./ui/Button";
 import { Logo } from "./Logo";
-import { WhatsAppButton } from "./WhatsAppButton";
-import { generalEnquiryMessage } from "@/lib/whatsapp";
 
 const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const HERO_ROUTES = new Set(["/", "/about"]);
@@ -62,55 +58,60 @@ export function Header() {
       ? createPortal(
           <div
             id="mobile-nav"
-            className="fixed inset-0 z-[60] flex flex-col bg-charcoal text-stone lg:hidden"
+            data-lenis-prevent
+            className="fixed inset-0 z-[60] flex flex-col p-3.5 sm:p-6 lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
           >
-            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-white/10 pt-[env(safe-area-inset-top)] sm:h-[4.25rem]">
-              <Logo href="/" onClick={closeMenu} variant="header" tone="light" />
-              <button
-                type="button"
-                className="tap-target relative inline-flex items-center justify-center rounded-sm border border-white/25 bg-white/10 text-stone"
-                aria-label="Close menu"
-                onClick={closeMenu}
-              >
-                <span className="absolute h-0.5 w-5 rotate-45 bg-stone" />
-                <span className="absolute h-0.5 w-5 -rotate-45 bg-stone" />
-              </button>
-            </div>
-            <nav
-              className="container-page flex flex-1 flex-col overflow-y-auto py-4"
-              aria-label="Mobile"
-            >
-              {nav.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`border-b border-white/10 py-4 font-display text-[1.75rem] leading-none transition active:opacity-70 ${
-                      active ? "text-wood" : "text-stone"
-                    }`}
-                    onClick={closeMenu}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-            <div className="container-page flex flex-col gap-3 border-t border-white/10 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-              <ButtonLink href="/enquire" onClick={closeMenu} className="w-full">
-                Enquire now
-              </ButtonLink>
-              <WhatsAppButton
-                message={generalEnquiryMessage()}
-                label="WhatsApp us"
-                className="w-full"
-              />
+            <div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+              onClick={closeMenu}
+              aria-hidden="true"
+            />
+            <div className="relative z-10 w-full rounded-3xl bg-white p-5 shadow-2xl border border-black/[0.08] flex flex-col gap-4 mt-1">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
+                <Logo href="/" onClick={closeMenu} variant="header" tone="dark" compact />
+                <button
+                  type="button"
+                  className="w-8 h-8 inline-flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition"
+                  aria-label="Close menu"
+                  onClick={closeMenu}
+                >
+                  <span className="text-xl leading-none">&times;</span>
+                </button>
+              </div>
+              <nav className="flex flex-col py-1 gap-1" aria-label="Mobile">
+                {nav.map((item) => {
+                  const active =
+                    item.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`py-2.5 px-3 rounded-xl font-medium text-base transition ${
+                        active
+                          ? "bg-neutral-100 text-black font-semibold"
+                          : "text-neutral-700 hover:bg-neutral-50 hover:text-black"
+                      }`}
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+              <div className="pt-2 border-t border-neutral-100">
+                <Link
+                  href="/enquire"
+                  onClick={closeMenu}
+                  className="w-full flex items-center justify-center rounded-full bg-[#171717] hover:bg-black text-white text-sm font-medium py-3 transition shadow-sm"
+                >
+                  Enquire Now
+                </Link>
+              </div>
             </div>
           </div>,
           document.body,
@@ -119,23 +120,31 @@ export function Header() {
 
   return (
     <>
-      <header
-        data-tone="light"
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled ? "nav-glass-scrolled" : "nav-glass-base"
-        }`}
-      >
-        <div className="container-page flex h-16 items-center justify-between gap-3 sm:h-[4.25rem] lg:h-[4.75rem]">
-          <Logo
-            href="/"
-            priority
-            onClick={closeMenu}
-            variant="header"
-            tone="light"
-          />
+      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+        <div
+          className={`pointer-events-auto grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center w-full max-w-[1200px] h-14 md:h-[68px] pl-6 pr-2 rounded-full backdrop-blur-2xl backdrop-saturate-180 transition-all duration-300 ${
+            scrolled
+              ? "bg-white/84 border border-white/60 shadow-[0_16px_44px_rgba(0,0,0,0.14),inset_0_1px_1.5px_rgba(255,255,255,0.85)] ring-1 ring-black/[0.06]"
+              : overHero
+                ? "bg-white/78 border border-white/50 shadow-[0_12px_40px_rgba(0,0,0,0.16),inset_0_1px_1.5px_rgba(255,255,255,0.85)] ring-1 ring-black/[0.05]"
+                : "bg-white/72 border border-white/45 shadow-[0_12px_40px_rgba(0,0,0,0.10),inset_0_1px_1.5px_rgba(255,255,255,0.75)] ring-1 ring-black/[0.05]"
+          }`}
+        >
+          {/* Column 1: Logo */}
+          <div className="justify-self-start flex items-center">
+            <Logo
+              href="/"
+              priority
+              onClick={closeMenu}
+              variant="header"
+              tone="dark"
+              compact
+            />
+          </div>
 
+          {/* Column 2: Nav Links mathematically centered */}
           <nav
-            className="hidden items-center gap-6 xl:gap-7 lg:flex"
+            className="hidden md:flex items-center gap-10 justify-self-center leading-none"
             aria-label="Primary"
           >
             {nav.map((item) => {
@@ -147,57 +156,54 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`nav-link ${active ? "is-active" : ""}`}
+                  data-label={item.label}
+                  className={`relative inline-flex flex-col items-center justify-center text-[0.925rem] leading-none tracking-normal transition-colors duration-200 after:content-[attr(data-label)] after:block after:h-0 after:invisible after:overflow-hidden after:font-semibold after:select-none ${
+                    active
+                      ? "text-black font-semibold"
+                      : "text-neutral-700 hover:text-black font-medium"
+                  }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
-            <WhatsAppButton
-              message={generalEnquiryMessage()}
-              label="WhatsApp"
-              size="sm"
-              variant="ghost"
-              className="!text-stone hover:!bg-white/10"
-            />
-            <ButtonLink
+          {/* Column 3: CTA Button (desktop) & Mobile Toggle */}
+          <div className="justify-self-end flex items-center">
+            <Link
               href="/enquire"
-              size="sm"
-              variant="wood-outline"
-              className="!border-stone/70 !text-stone hover:!bg-stone hover:!text-charcoal"
+              className="hidden md:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#171717] hover:bg-black text-white text-[0.875rem] font-medium px-7 h-[52px] transition-all duration-200 active:scale-[0.98] shadow-sm"
             >
-              Enquire
-            </ButtonLink>
-          </div>
+              Enquire Now
+            </Link>
 
-          <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
-              className="tap-target relative inline-flex items-center justify-center rounded-sm border border-white/35 bg-white/10 transition hover:bg-white/20"
+              className="relative inline-flex md:hidden items-center justify-center w-10 h-10 rounded-full text-neutral-800 hover:bg-black/5 active:bg-black/10 transition"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((v) => !v)}
             >
               <span className="sr-only">Menu</span>
-              <span
-                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
-                  open ? "rotate-45" : "-translate-y-1.5"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
-                  open ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-stone transition duration-300 ${
-                  open ? "-rotate-45" : "translate-y-1.5"
-                }`}
-              />
+              <div className="w-4 h-3 flex flex-col justify-between">
+                <span
+                  className={`h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${
+                    open ? "rotate-45 translate-y-[5px]" : ""
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-full bg-current rounded-full transition-all duration-300 ${
+                    open ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${
+                    open ? "-rotate-45 -translate-y-[5px]" : ""
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -206,7 +212,7 @@ export function Header() {
       {/* Keeps page content clear of the fixed bar on non-hero pages */}
       {!overHero ? (
         <div
-          className="h-16 shrink-0 sm:h-[4.25rem] lg:h-[4.75rem]"
+          className="h-24 shrink-0 sm:h-28"
           aria-hidden="true"
         />
       ) : null}

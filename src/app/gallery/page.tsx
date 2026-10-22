@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { EmptyState } from "@/components/ui/States";
-import { PageIntro } from "@/components/SectionHeading";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
 
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function GalleryPage() {
-  const [items, page] = await Promise.all([
+  const [items] = await Promise.all([
     cms.getGallery(),
     cms.getGalleryPage(),
   ]);
@@ -20,13 +19,7 @@ export default async function GalleryPage() {
   return (
     <div className="section-space">
       <div className="container-page">
-        <PageIntro
-          eyebrow="Portfolio"
-          title={page.title}
-          description={page.intro}
-        />
-
-        <ScrollReveal className="mt-12">
+        <ScrollReveal>
           {items.length === 0 ? (
             <EmptyState
               title="Gallery is empty"

@@ -39,6 +39,8 @@ export interface Product {
   /** Showroom price in AED. Null means the piece is quoted after enquiry. */
   price: number | null;
   priceNote?: string;
+  originalPrice?: number | null;
+  isNew?: boolean;
 }
 
 export interface GalleryItem {

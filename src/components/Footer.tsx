@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { SiteContact } from "@/lib/cms/types";
 import { Logo } from "./Logo";
-import { WhatsAppButton } from "./WhatsAppButton";
-import { generalEnquiryMessage } from "@/lib/whatsapp";
 
 const links = [
   { href: "/", label: "Home" },
@@ -27,16 +25,8 @@ export function Footer({ contact }: { contact: SiteContact }) {
             showroom. Open daily 9:00 AM – 9:00 PM.
           </p>
           <p className="mt-2 text-xs uppercase tracking-[0.14em] text-stone/45">
-            Comfort and elegance for your home
+            Comfort And Elegance For Your Home
           </p>
-          <div className="mt-5">
-            <WhatsAppButton
-              message={generalEnquiryMessage()}
-              label="Chat on WhatsApp"
-              variant="wood-outline"
-              className="!border-stone/40 !text-stone hover:!bg-stone hover:!text-charcoal"
-            />
-          </div>
         </div>
 
         <div>

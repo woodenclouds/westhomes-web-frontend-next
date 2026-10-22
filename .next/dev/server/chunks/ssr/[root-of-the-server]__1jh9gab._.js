@@ -3360,20 +3360,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 ;
-function Logo({ href = "/", className = "", priority, onClick, variant = "header", tone = "dark" }) {
+function Logo({ href = "/", className = "", priority, onClick, variant = "header", tone = "dark", compact = false }) {
     const isHeader = variant === "header";
     const src = !isHeader ? "/images/logo.png" : tone === "light" ? "/images/logo-nav-light.png" : "/images/logo-header.png";
-    const sizes = isHeader ? "h-12 w-auto sm:h-[3.25rem] lg:h-14" : "h-14 w-auto sm:h-16";
+    const sizes = compact ? "h-10 md:h-11 w-auto" : isHeader ? "h-12 w-auto sm:h-[3.25rem] lg:h-14" : "h-14 w-auto sm:h-16";
     const image = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
         src: src,
         alt: "West Home Furniture — Style your home, live better",
-        width: 800,
-        height: 620,
+        width: isHeader ? 1024 : 800,
+        height: isHeader ? 673 : 620,
         priority: priority,
         className: `${sizes} object-contain object-left ${className}`
     }, void 0, false, {
         fileName: "[project]/src/components/Logo.tsx",
-        lineNumber: 33,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
     if (!href) return image;
@@ -3385,7 +3385,7 @@ function Logo({ href = "/", className = "", priority, onClick, variant = "header
         children: image
     }, void 0, false, {
         fileName: "[project]/src/components/Logo.tsx",
-        lineNumber: 46,
+        lineNumber: 50,
         columnNumber: 5
     }, this);
 }
@@ -4519,7 +4519,7 @@ const gallery = [
     }
 ];
 const homeContent = {
-    heroHeadline: "Stylish, comfortable furniture for modern homes",
+    heroHeadline: "Stylish, Comfortable Furniture For Modern Homes",
     heroSupport: "Quality sofas, beds, mattresses, bedroom and living room furniture, dining tables, coffee tables and more — visit our Al Barsha showroom in Dubai. We customise sofas, beds, club chairs and more.",
     heroImageUrl: img("living-white-sectional-hero.jpg"),
     introTitle: "Comfort and elegance for your home",

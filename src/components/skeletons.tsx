@@ -9,17 +9,10 @@ function Bone({ className = "" }: { className?: string }) {
 
 export function ProductCardSkeleton() {
   return (
-    <article>
-      <Bone className="aspect-[4/3]" />
-      <Bone className="mt-4 h-3 w-24" />
-      <Bone className="mt-3 h-7 w-4/5" />
-      <Bone className="mt-3 h-4 w-full" />
-      <Bone className="mt-2 h-4 w-5/6" />
-      <Bone className="mt-3 h-6 w-28" />
-      <div className="mt-4 flex gap-2">
-        <Bone className="h-10 w-28" />
-        <Bone className="h-10 w-24" />
-      </div>
+    <article className="flex flex-col">
+      <Bone className="aspect-square w-full rounded-2xl sm:rounded-3xl" />
+      <Bone className="mt-3.5 h-4 w-3/4 rounded sm:mt-4" />
+      <Bone className="mt-2 h-3.5 w-1/3 rounded" />
     </article>
   );
 }
@@ -51,7 +44,7 @@ export function PageIntroSkeleton({
 
 export function EnquiryFormSkeleton() {
   return (
-    <div className="space-y-5 rounded-sm border border-border bg-surface p-6 md:p-8">
+    <div className="space-y-5 rounded-[24px] border border-border bg-surface p-6 md:p-8">
       <div className="grid gap-5 md:grid-cols-2">
         <FieldSkeleton />
         <FieldSkeleton />
@@ -65,7 +58,7 @@ export function EnquiryFormSkeleton() {
         <Bone className="h-4 w-20" />
         <Bone className="mt-2 h-28 w-full" />
       </div>
-      <Bone className="h-11 w-40" />
+      <Bone className="h-11 w-40 rounded-full" />
     </div>
   );
 }
@@ -84,17 +77,13 @@ export function HomeSkeleton() {
     <div aria-busy="true" aria-label="Loading home">
       <Bone className="min-h-[100svh] w-full !bg-charcoal/15" />
 
-      <section className="section-space">
-        <div className="container-page grid items-center gap-12 md:grid-cols-2">
-          <div>
-            <Bone className="h-3 w-24" />
-            <Bone className="mt-4 h-12 w-4/5" />
-            <Bone className="mt-4 h-4 w-full" />
-            <Bone className="mt-2 h-4 w-full" />
-            <Bone className="mt-2 h-4 w-3/4" />
-            <Bone className="mt-8 h-11 w-32" />
-          </div>
-          <Bone className="aspect-[5/4]" />
+      <section className="relative h-[100svh] w-full overflow-hidden bg-background">
+        <div className="mx-auto flex h-full max-w-4xl flex-col items-center px-4 pt-24 sm:pt-32 text-center">
+          <Bone className="h-3 w-20" />
+          <Bone className="mt-4 h-12 w-4/5" />
+          <Bone className="mt-4 h-4 w-full" />
+          <Bone className="mt-2 h-4 w-5/6" />
+          <Bone className="mt-8 h-10 w-28 !rounded-full" />
         </div>
       </section>
 

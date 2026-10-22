@@ -34,7 +34,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(page - 1)}
           disabled={page <= 1}
-          className="min-h-11 flex-1 rounded-sm border border-border px-3.5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
+          className="min-h-11 flex-1 rounded-full border border-border px-5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
         >
           Previous
         </button>
@@ -44,7 +44,7 @@ export function Pagination({
             type="button"
             onClick={() => onPageChange(n)}
             aria-current={n === page ? "page" : undefined}
-            className={`min-h-11 min-w-11 rounded-sm px-3.5 py-2.5 text-[0.78rem] font-medium tracking-[0.04em] transition ${
+            className={`min-h-11 min-w-11 rounded-full px-3.5 py-2.5 text-[0.78rem] font-medium tracking-[0.04em] transition ${
               n === page
                 ? "bg-charcoal text-stone"
                 : "border border-border text-charcoal hover:border-charcoal"
@@ -57,7 +57,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(page + 1)}
           disabled={page >= totalPages}
-          className="min-h-11 flex-1 rounded-sm border border-border px-3.5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
+          className="min-h-11 flex-1 rounded-full border border-border px-5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.04em] text-charcoal transition hover:border-charcoal disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
         >
           Next
         </button>

@@ -144,7 +144,7 @@ export function EnquiryForm({
   if (success) {
     const waMessage = enquiryFollowUpMessage(success);
     return (
-      <div className="space-y-6 rounded-sm border border-border bg-surface p-6 md:p-8">
+      <div className="space-y-6 rounded-[24px] border border-border bg-surface p-6 md:p-8 shadow-sm">
         <StatusMessage tone="success" title="Enquiry received">
           Your reference number is <strong>{success.reference}</strong>. Our
           team will follow up shortly.
@@ -161,7 +161,7 @@ export function EnquiryForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-5 rounded-sm border border-border bg-surface p-6 md:p-8"
+      className="space-y-5 rounded-[24px] border border-border bg-surface p-6 md:p-8 shadow-sm"
       noValidate
     >
       <div className="grid gap-5 md:grid-cols-2">

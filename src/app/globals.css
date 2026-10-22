@@ -15,6 +15,11 @@
   --success: #3f6b4a;
   --error: #9b3a2f;
   --focus-ring: #d4af37;
+  --font-display: var(--font-neue-montreal);
+  --font-sans: var(--font-inter);
+  --font-fraunces: var(--font-neue-montreal);
+  --font-outfit: var(--font-inter);
+  --card-radius: 24px;
 }
 
 @theme inline {
@@ -31,8 +36,9 @@
   --color-wood-soft: var(--wood-soft);
   --color-success: var(--success);
   --color-error: var(--error);
-  --font-sans: var(--font-outfit);
-  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-neue-montreal), system-ui, sans-serif;
+  --radius-card: 24px;
 }
 
 * {
@@ -40,14 +46,18 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1rem;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
@@ -63,14 +73,16 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-weight: 460;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  font-family: var(--font-neue-montreal), var(--font-display), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
   text-wrap: balance;
 }
 
 p {
+  font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;
+  font-weight: 400;
   text-wrap: pretty;
 }
 
@@ -119,7 +131,7 @@ p {
 }
 
 .eyebrow {
-  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -221,7 +233,7 @@ html[data-nav-open="true"] .floating-wa {
 .hero-copy.is-ready > *:nth-child(5) { animation-delay: 0.6s; }
 
 .hero-slide.is-active img {
-  animation: kenburns 6.5s ease-out forwards;
+  animation: kenburns 4s ease-out forwards;
 }
 
 @keyframes kenburns {
@@ -246,6 +258,13 @@ html[data-nav-open="true"] .floating-wa {
 
 .frame-image {
   overflow: hidden;
+  border-radius: var(--card-radius);
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.card-radius {
+  border-radius: var(--card-radius);
 }
 
 .frame-image img {
@@ -295,6 +314,26 @@ html[data-nav-open="true"] .floating-wa {
   text-underline-offset: 3px;
 }
 
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.ticker-container:hover .animate-marquee,
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -302,7 +341,8 @@ html[data-nav-open="true"] .floating-wa {
 
   .reveal,
   .hero-copy.is-ready > *,
-  .hero-slide.is-active img {
+  .hero-slide.is-active img,
+  .animate-marquee {
     opacity: 1;
     transform: none;
     animation: none;

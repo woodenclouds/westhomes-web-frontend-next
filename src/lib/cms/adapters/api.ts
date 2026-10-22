@@ -194,6 +194,8 @@ function mapProduct(entry: WoQuickEntry): Product {
     customisable: asBoolean(entry.customisable),
     price: asNumberOrNull(entry.price),
     priceNote: asString(entry.price_note) || undefined,
+    originalPrice: asNumberOrNull(entry.original_price),
+    isNew: asBoolean(entry.is_new),
   };
 }
 
@@ -237,7 +239,12 @@ function mapHome(entry: WoQuickEntry): HomeContent {
     introImageUrl: mediaUrl(entry.intro_image) || undefined,
     featuredTitle: asString(entry.featured_title) || undefined,
     featuredText: asString(entry.featured_text) || undefined,
-    featuredProductSlugs: relationSlugs(entry.featured_products),
+    featuredProductSlugs: [
+      "rubber-lounge-armchair",
+      "nova-edge-sofa",
+      "lumen-arc-coffee-table",
+      ...relationSlugs(entry.featured_products),
+    ],
     customisableTitle: asString(entry.customisable_title) || undefined,
     customisableText: asString(entry.customisable_text) || undefined,
     customisableProductSlugs: relationSlugs(entry.customisable_products),
@@ -309,6 +316,76 @@ function mapContact(entry: WoQuickEntry): SiteContact {
   };
 }
 
+const referenceProducts: Product[] = [
+  {
+    id: "prd-ref-001",
+    slug: "rubber-lounge-armchair",
+    name: "Rubber Lounge Armchair",
+    categoryId: "chairs",
+    categoryName: "Chairs & Ottomans",
+    shortDescription:
+      "Minimalist lounge armchair with solid oak frame and soft textured linen cushions.",
+    description:
+      "A modern luxury minimalist armchair with natural oak frame and soft linen cushion. Built with structured oak armrests and generous, supportive seat proportions.",
+    imageUrl: "/images/rubber-lounge-armchair.jpg",
+    gallery: ["/images/rubber-lounge-armchair.jpg"],
+    specs: [
+      { label: "Frame", value: "Solid natural oak" },
+      { label: "Upholstery", value: "Textured linen blend" },
+      { label: "Style", value: "Scandinavian Japandi" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 3500,
+    isNew: true,
+  },
+  {
+    id: "prd-ref-002",
+    slug: "nova-edge-sofa",
+    name: "Nova Edge Sofa",
+    categoryId: "chairs",
+    categoryName: "Chairs & Ottomans",
+    shortDescription:
+      "Scandinavian armchair with woven webbing strap seat and sculpted oak frame.",
+    description:
+      "Featuring woven natural webbing straps across a sculpted white oak frame, the Nova Edge delivers timeless Scandinavian craft and relaxed ergonomic support.",
+    imageUrl: "/images/nova-edge-sofa.jpg",
+    gallery: ["/images/nova-edge-sofa.jpg"],
+    specs: [
+      { label: "Seat", value: "Woven natural webbing" },
+      { label: "Frame", value: "FSC certified white oak" },
+      { label: "Origin", value: "Artisan workshop" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 7650,
+    originalPrice: 9900,
+    isNew: true,
+  },
+  {
+    id: "prd-ref-003",
+    slug: "lumen-arc-coffee-table",
+    name: "Lumen Arc Coffee Table",
+    categoryId: "chairs",
+    categoryName: "Chairs & Ottomans",
+    shortDescription:
+      "Sculptural cognac saddle leather scoop chair on slender chrome tubular legs.",
+    description:
+      "A striking curved silhouette in rich saddle leather resting on minimalist tubular chrome legs. Designed to bring warmth and architectural elegance to any modern interior.",
+    imageUrl: "/images/lumen-arc-chair.jpg",
+    gallery: ["/images/lumen-arc-chair.jpg"],
+    specs: [
+      { label: "Upholstery", value: "Top-grain cognac saddle leather" },
+      { label: "Base", value: "Polished stainless chrome" },
+      { label: "Dimensions", value: "W 68 x D 64 x H 78 cm" },
+    ],
+    featured: true,
+    customisable: false,
+    price: 7080,
+    isNew: false,
+  },
+];
+
 export const apiAdapter: CmsAdapter = {
   async getHomeContent() {
     const res = await cmsFetch<WoQuickSingleResponse>("/home/");
@@ -331,7 +408,13 @@ export const apiAdapter: CmsAdapter = {
   },
 
   async getProducts(params) {
-    let list = (await fetchAllEntries("products")).map(mapProduct);
+    const remoteList = (await fetchAllEntries("products")).map(mapProduct);
+    const existingSlugs = new Set(remoteList.map((p) => p.slug));
+    const merged = [
+      ...referenceProducts.filter((p) => !existingSlugs.has(p.slug)),
+      ...remoteList,
+    ];
+    let list = merged;
 
     if (params?.featured) {
       list = list.filter((p) => p.featured);
@@ -356,6 +439,8 @@ export const apiAdapter: CmsAdapter = {
   },
 
   async getProductBySlug(slug) {
+    const local = referenceProducts.find((p) => p.slug === slug);
+    if (local) return local;
     try {
       const res = await cmsFetch<WoQuickSingleResponse>(
         `/products/${encodeURIComponent(slug)}/`,

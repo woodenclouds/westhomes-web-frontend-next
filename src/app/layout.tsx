@@ -1,23 +1,52 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/WhatsAppButton";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { cms } from "@/lib/cms/client";
 import { siteConfig } from "@/lib/site";
 import { generalEnquiryMessage } from "@/lib/whatsapp";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
+const neueMontreal = localFont({
+  src: [
+    {
+      path: "../fonts/neue-montreal/NeueMontreal-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../fonts/neue-montreal/NeueMontreal-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/neue-montreal/NeueMontreal-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/neue-montreal/NeueMontreal-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/neue-montreal/NeueMontreal-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-neue-montreal",
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -57,14 +86,15 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
-      className={`${fraunces.variable} ${outfit.variable} h-full antialiased`}
+      className={`${neueMontreal.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer contact={contact} />
-        <FloatingWhatsApp message={generalEnquiryMessage()} />
+        <SmoothScroll>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer contact={contact} />
+          <FloatingWhatsApp message={generalEnquiryMessage()} />
+        </SmoothScroll>
       </body>
     </html>
   );
