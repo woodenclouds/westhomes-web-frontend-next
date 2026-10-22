@@ -56,7 +56,7 @@ export function ShowroomSpotlight() {
       <div className="container-page">
         {/* Section Header */}
         <ScrollReveal>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
             <div className="max-w-2xl">
               <h2 className="font-display text-[1.95rem] leading-[1.1] text-charcoal sm:text-3xl md:text-[2.75rem] capitalize tracking-tight">
                 Crafted For Dubai Homes
@@ -68,7 +68,7 @@ export function ShowroomSpotlight() {
             </div>
             <Link
               href="/contact"
-              className="text-link self-start sm:self-auto sm:pb-1"
+              className="text-link self-start sm:self-auto sm:pt-2"
             >
               Visit showroom
             </Link>
