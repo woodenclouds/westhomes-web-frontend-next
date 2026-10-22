@@ -168,14 +168,24 @@ function mapCategory(entry: WoQuickEntry): Category {
   };
 }
 
+const CUSTOM_FALLBACK_PRICES: Record<string, number> = {
+  "custom-dining-table": 7200,
+  "custom-curtains-living": 2800,
+  "custom-beige-sectional": 9800,
+  "green-accent-living-set": 8900,
+};
+
 function mapProduct(entry: WoQuickEntry): Product {
   const categorySlug = relationSlug(entry.category);
   const gallery = parseJsonField<string[]>(entry.gallery, []);
   const specs = parseJsonField<ProductSpec[]>(entry.specs, []);
+  const slug = asString(entry.slug);
+  const rawPrice = asNumberOrNull(entry.price);
+  const price = rawPrice ?? CUSTOM_FALLBACK_PRICES[slug] ?? null;
 
   return {
     id: asString(entry.id) || asString(entry.slug),
-    slug: asString(entry.slug),
+    slug,
     name: asString(entry.name),
     categoryId: categorySlug || asString(entry.category_id),
     categoryName: asString(entry.category_name),
@@ -192,7 +202,7 @@ function mapProduct(entry: WoQuickEntry): Product {
       : [],
     featured: asBoolean(entry.featured),
     customisable: asBoolean(entry.customisable),
-    price: asNumberOrNull(entry.price),
+    price,
     priceNote: asString(entry.price_note) || undefined,
     originalPrice: asNumberOrNull(entry.original_price),
     isNew: asBoolean(entry.is_new),

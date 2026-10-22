@@ -10,11 +10,11 @@ interface TickerBannerProps {
  * Can also be overridden with custom context items via the `items` prop.
  */
 const DEFAULT_ITEMS: string[] = [
-  "FREE SHIPPING WORLDWIDE",
-  "50% OFF THIS WEEK",
-  "NEW ARRIVALS JUST DROPPED",
-  "ENJOY EXCLUSIVE DEALS AND DISCOUNTS.",
-  "LIMITED STOCK AVAILABLE",
+  "BESPOKE CRAFTSMANSHIP & CUSTOM PIECES",
+  "CONTEMPORARY LIVING & TIMELESS DESIGN",
+  "CUSTOM SOFAS, BEDS & INTERIOR PIECES",
+  "TAILORED FABRICS & PREMIUM FINISHES",
+  "DESIGNED FOR MODERN DUBAI HOMES",
 ];
 
 export function TickerBanner({
@@ -28,7 +28,7 @@ export function TickerBanner({
 
   return (
     <aside
-      aria-label="Announcements and offers"
+      aria-label="Brand highlights"
       className={`ticker-container relative flex h-[56px] w-full items-center overflow-hidden bg-[#151515] select-none ${className}`}
     >
       {/* Left side gradient fade mask */}
@@ -45,7 +45,7 @@ export function TickerBanner({
 
       {/* Accessible list for screen readers */}
       <div className="sr-only">
-        <h2>Announcements and offers</h2>
+        <h2>Brand highlights</h2>
         <ul>
           {baseItems.map((item, index) => (
             <li key={`sr-${index}`}>{item}</li>
