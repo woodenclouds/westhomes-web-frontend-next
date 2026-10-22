@@ -80,7 +80,7 @@ const products: Product[] = [
     ],
     featured: true,
     customisable: true,
-    price: null,
+    price: 9800,
     priceNote: "Custom fabric and size. Price is confirmed after enquiry.",
   },
   {
@@ -169,7 +169,7 @@ const products: Product[] = [
     ],
     featured: false,
     customisable: true,
-    price: null,
+    price: 8900,
     priceNote: "Styled to your colour story. Price is confirmed after enquiry.",
   },
   {
@@ -237,7 +237,7 @@ const products: Product[] = [
     ],
     featured: false,
     customisable: true,
-    price: null,
+    price: 2800,
     priceNote: "Measured to your windows. Price is confirmed after enquiry.",
   },
   {
@@ -378,7 +378,7 @@ const products: Product[] = [
     ],
     featured: false,
     customisable: true,
-    price: null,
+    price: 7200,
     priceNote: "Size and material are chosen with you. Price is confirmed after enquiry.",
   },
   {
