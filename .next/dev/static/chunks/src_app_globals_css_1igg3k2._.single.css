@@ -2521,16 +2521,6 @@
     color: var(--muted);
   }
 
-  .text-muted\/80 {
-    color: var(--muted);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .text-muted\/80 {
-      color: color-mix(in oklab, var(--muted) 80%, transparent);
-    }
-  }
-
   .text-neutral-700 {
     color: var(--color-neutral-700);
   }
@@ -3371,10 +3361,6 @@
       align-items: center;
     }
 
-    .sm\:items-end {
-      align-items: flex-end;
-    }
-
     .sm\:items-start {
       align-items: flex-start;
     }
@@ -3473,10 +3459,6 @@
 
     .sm\:pt-32 {
       padding-top: calc(var(--spacing) * 32);
-    }
-
-    .sm\:pb-1 {
-      padding-bottom: var(--spacing);
     }
 
     .sm\:pb-16 {
