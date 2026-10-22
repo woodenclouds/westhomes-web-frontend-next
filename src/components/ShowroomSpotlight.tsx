@@ -109,7 +109,7 @@ export function ShowroomSpotlight() {
                 </div>
 
                 {/* Top-Right Tag */}
-                <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10">
+                <div className="hidden sm:block absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10">
                   <span className="inline-flex items-center rounded-full bg-charcoal/80 px-2.5 py-1 text-[0.68rem] sm:text-[0.72rem] font-medium tracking-[0.06em] text-stone shadow-sm backdrop-blur-md">
                     {item.tag}
                   </span>

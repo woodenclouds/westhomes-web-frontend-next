@@ -210,3 +210,9 @@
 {"timestamp":"148:10:02.033","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"148:24:15.190","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"148:26:02.024","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"148:35:28.524","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"148:37:14.484","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"148:38:27.808","source":"Browser","level":"ERROR","message":"Uncaught Error: Internal Next.js error: Router action dispatched before initialization."}
+{"timestamp":"148:38:27.809","source":"Server","level":"ERROR","message":"[browser] \"Uncaught Error: Internal Next.js error: Router action dispatched before initialization.\""}
+{"timestamp":"148:38:51.430","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"148:39:05.921","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}

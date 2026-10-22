@@ -3287,6 +3287,10 @@
       margin-top: calc(var(--spacing) * 12);
     }
 
+    .sm\:block {
+      display: block;
+    }
+
     .sm\:inline {
       display: inline;
     }
