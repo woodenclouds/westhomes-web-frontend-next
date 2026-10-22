@@ -58,8 +58,7 @@ export function ShowroomSpotlight() {
         <ScrollReveal>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <div className="max-w-2xl">
-              <p className="eyebrow">Showroom Spotlight</p>
-              <h2 className="mt-2.5 font-display text-[1.95rem] leading-[1.1] text-charcoal sm:mt-3 sm:text-3xl md:text-[2.75rem] capitalize tracking-tight">
+              <h2 className="font-display text-[1.95rem] leading-[1.1] text-charcoal sm:text-3xl md:text-[2.75rem] capitalize tracking-tight">
                 Crafted For Dubai Homes
               </h2>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-muted sm:mt-4 sm:text-base md:text-lg">
