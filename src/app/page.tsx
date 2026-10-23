@@ -11,6 +11,7 @@ import { NatureScrollSection } from "@/components/NatureScrollSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ShowroomSpotlight } from "@/components/ShowroomSpotlight";
 import { cms } from "@/lib/cms/client";
 import { generalEnquiryMessage } from "@/lib/whatsapp";
 
@@ -120,6 +121,8 @@ export default async function HomePage() {
       {/* Content wrapper: scrolls over the hero section */}
       <div className="relative z-10 bg-background shadow-[0_-16px_40px_rgba(0,0,0,0.3)]">
         <TickerBanner />
+
+        <ShowroomSpotlight />
 
         <NatureScrollSection
           title={home.introTitle}
