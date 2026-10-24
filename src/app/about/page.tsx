@@ -25,7 +25,6 @@ function splitStatement(text: string): { lead: string; emphasis?: string } {
 export default async function AboutPage() {
   const about = await cms.getAboutContent();
   const statement = splitStatement(about.intro);
-  const quote = about.quote?.trim();
 
   return (
     <>
@@ -118,16 +117,6 @@ export default async function AboutPage() {
               </ScrollReveal>
             </div>
           </div>
-
-          <ScrollReveal delay={160} className="mt-8 max-w-2xl lg:mt-10">
-            <p className="font-display text-xl leading-snug tracking-tight text-charcoal sm:text-2xl md:text-[1.65rem] md:leading-[1.25]">
-              First, we understand how you live —{" "}
-              <span className="italic text-wood">
-                {quote ||
-                  "then we build the clearest path to furniture that fits."}
-              </span>
-            </p>
-          </ScrollReveal>
 
           <AboutProcessTimeline
             eyebrow="How we work"
