@@ -121,3 +121,4 @@
 {"timestamp":"01:43:38.691","source":"Browser","level":"WARN","message":"Image with src \"/images/living-beige-sectional.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
 {"timestamp":"01:43:38.691","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/living-beige-sectional.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
 {"timestamp":"01:46:32.534","source":"Server","level":"LOG","message":"✓ Compiled in 79ms"}
+{"timestamp":"01:47:32.962","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
