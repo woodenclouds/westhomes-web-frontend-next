@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
+import { AboutOfferings } from "@/components/AboutOfferings";
 import { AboutProcessTimeline } from "@/components/AboutProcessTimeline";
 
 export const metadata: Metadata = {
@@ -134,17 +135,8 @@ export default async function AboutPage() {
             <h2 className="mt-3 font-display text-3xl text-charcoal">
               {about.offeringsTitle || "What you will find"}
             </h2>
-            <ul className="mx-auto mt-6 grid max-w-3xl gap-x-10 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
-              {about.offerings.map((item) => (
-                <li
-                  key={item}
-                  className="border-b border-border/80 py-3 text-charcoal"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex justify-center">
+            <AboutOfferings offerings={about.offerings} />
+            <div className="mt-10 flex justify-center">
               <ButtonLink href="/products">Explore collection</ButtonLink>
             </div>
           </ScrollReveal>
