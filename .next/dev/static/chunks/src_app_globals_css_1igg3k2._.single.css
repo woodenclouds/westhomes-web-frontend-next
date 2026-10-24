@@ -993,6 +993,10 @@
     max-width: var(--container-xl);
   }
 
+  .min-w-0 {
+    min-width: 0;
+  }
+
   .min-w-11 {
     min-width: calc(var(--spacing) * 11);
   }
@@ -1063,6 +1067,10 @@
 
   .scroll-mt-28 {
     scroll-margin-top: calc(var(--spacing) * 28);
+  }
+
+  .appearance-none {
+    appearance: none;
   }
 
   .grid-cols-1 {
@@ -2015,6 +2023,18 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
+  .bg-\[length\:1rem\] {
+    background-size: 1rem;
+  }
+
+  .bg-\[right_1\.1rem_center\] {
+    background-position: right 1.1rem center;
+  }
+
+  .bg-no-repeat {
+    background-repeat: no-repeat;
+  }
+
   .object-contain {
     object-fit: contain;
   }
@@ -2101,6 +2121,10 @@
 
   .\!py-2\.5 {
     padding-block: calc(var(--spacing) * 2.5) !important;
+  }
+
+  .py-0 {
+    padding-block: 0;
   }
 
   .py-1 {
@@ -2195,6 +2219,10 @@
     padding-right: calc(var(--spacing) * 2);
   }
 
+  .pr-11 {
+    padding-right: calc(var(--spacing) * 11);
+  }
+
   .pb-1 {
     padding-bottom: var(--spacing);
   }
@@ -2233,6 +2261,10 @@
 
   .pb-\[max\(4\.5rem\,calc\(env\(safe-area-inset-bottom\)\+3\.5rem\)\)\] {
     padding-bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem));
+  }
+
+  .pl-5 {
+    padding-left: calc(var(--spacing) * 5);
   }
 
   .pl-6 {
@@ -3615,8 +3647,16 @@
       width: calc(var(--spacing) * 56);
     }
 
+    .md\:w-72 {
+      width: calc(var(--spacing) * 72);
+    }
+
     .md\:w-auto {
       width: auto;
+    }
+
+    .md\:shrink-0 {
+      flex-shrink: 0;
     }
 
     .md\:grid-cols-2 {

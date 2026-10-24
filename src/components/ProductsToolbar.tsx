@@ -33,16 +33,17 @@ export function ProductsToolbar({
       onSubmit={apply}
       className="flex flex-col gap-3 rounded-[24px] border border-border bg-surface p-4 sm:p-5 md:flex-row md:items-end shadow-sm"
     >
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         <Input
           id="product-search"
           label="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by name or description"
+          className="h-11"
         />
       </div>
-      <div className="md:w-56">
+      <div className="w-full md:w-72 md:shrink-0">
         <Select
           id="product-category"
           label="Category"
@@ -57,7 +58,7 @@ export function ProductsToolbar({
           ))}
         </Select>
       </div>
-      <Button type="submit" className="w-full md:mb-0.5 md:w-auto">
+      <Button type="submit" className="h-11 w-full shrink-0 md:w-auto">
         Apply
       </Button>
     </form>
