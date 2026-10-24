@@ -161,22 +161,22 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
-              <SectionHeading
-                title={home.featuredTitle || "Featured Pieces"}
-                description={
-                  home.featuredText ||
-                  "Ready looks from the floor — priced as shown, with custom options available when you need them."
-                }
-              />
-              <Link href="/products#showroom" className="text-link self-start sm:self-auto sm:pt-2">
-                View all
-              </Link>
-            </div>
+            <SectionHeading
+              title={home.featuredTitle || "Featured Pieces"}
+              description={
+                home.featuredText ||
+                "Ready looks from the floor — priced as shown, with custom options available when you need them."
+              }
+            />
           </ScrollReveal>
-          <ScrollReveal delay={80} className="mt-12">
+          <ScrollReveal delay={80} className="mt-10 sm:mt-12">
             <ProductGrid products={featuredShowroom} />
           </ScrollReveal>
+          <div className="mt-8 flex justify-start sm:mt-10">
+            <Link href="/products#showroom" className="text-link inline-flex">
+              View all
+            </Link>
+          </div>
         </div>
       </section>
 
