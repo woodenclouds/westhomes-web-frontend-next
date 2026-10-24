@@ -31,7 +31,7 @@ export default async function AboutPage() {
     <>
       <section className="pt-28 pb-10 sm:pt-32 md:pt-36 md:pb-14">
         <div className="container-page">
-          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-x-10 lg:gap-y-0">
             {/* Left narrative — Neutomni-style lead column */}
             <div className="lg:col-span-6 lg:pt-2">
               <ScrollReveal>
@@ -100,10 +100,10 @@ export default async function AboutPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right visual — offset for staggered rhythm */}
-            <div className="lg:col-span-6 lg:pt-16 xl:pt-24">
-              <ScrollReveal delay={80}>
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-stone-deep sm:aspect-[5/6] lg:aspect-[4/5]">
+            {/* Right visual — height matches left column on desktop */}
+            <div className="lg:col-span-6 lg:flex lg:min-h-0 lg:flex-col lg:pt-2">
+              <ScrollReveal delay={80} className="h-full min-h-0 flex-1">
+                <div className="relative aspect-[4/3] h-full min-h-[240px] overflow-hidden rounded-[1.75rem] bg-stone-deep sm:aspect-[16/10] lg:aspect-auto lg:min-h-0">
                   <Image
                     src={
                       about.imageUrl || "/images/showroom-boucle-sectional.jpg"
@@ -116,18 +116,18 @@ export default async function AboutPage() {
                   />
                 </div>
               </ScrollReveal>
-
-              <ScrollReveal delay={160}>
-                <p className="mt-7 max-w-md font-display text-xl leading-snug tracking-tight text-charcoal sm:text-2xl md:text-[1.65rem] md:leading-[1.25]">
-                  First, we understand how you live —{" "}
-                  <span className="italic text-wood">
-                    {quote ||
-                      "then we build the clearest path to furniture that fits."}
-                  </span>
-                </p>
-              </ScrollReveal>
             </div>
           </div>
+
+          <ScrollReveal delay={160} className="mt-8 max-w-2xl lg:mt-10">
+            <p className="font-display text-xl leading-snug tracking-tight text-charcoal sm:text-2xl md:text-[1.65rem] md:leading-[1.25]">
+              First, we understand how you live —{" "}
+              <span className="italic text-wood">
+                {quote ||
+                  "then we build the clearest path to furniture that fits."}
+              </span>
+            </p>
+          </ScrollReveal>
 
           <AboutProcessTimeline
             eyebrow="How we work"

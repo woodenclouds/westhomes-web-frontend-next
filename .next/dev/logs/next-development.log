@@ -49,3 +49,5 @@
 {"timestamp":"00:33:06.019","source":"Server","level":"LOG","message":"✓ Compiled in 44ms"}
 {"timestamp":"00:33:06.979","source":"Server","level":"LOG","message":"✓ Compiled in 19ms"}
 {"timestamp":"00:33:21.241","source":"Server","level":"LOG","message":"✓ Compiled in 33ms"}
+{"timestamp":"00:34:02.693","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:34:31.260","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
