@@ -5,7 +5,7 @@ import {
   ProductsToolbar,
   type PricingFilter,
 } from "@/components/ProductsToolbar";
-import { PageIntro, SectionHeading } from "@/components/SectionHeading";
+import { PageIntro } from "@/components/SectionHeading";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
 
@@ -35,7 +35,6 @@ export default async function ProductsPage({
   const categorySlug = params.category;
   const search = params.q;
   const pricing = parsePricing(params.pricing);
-  const isFiltered = Boolean(categorySlug || search || pricing);
 
   const [categories, products, page] = await Promise.all([
     cms.getCategories(),
@@ -49,8 +48,6 @@ export default async function ProductsPage({
   ]);
 
   const activeCategory = categories.find((c) => c.slug === categorySlug);
-  const customisable = products.filter((p) => p.customisable);
-  const showroom = products.filter((p) => !p.customisable);
 
   return (
     <div className="section-space">
@@ -81,51 +78,10 @@ export default async function ProductsPage({
               actionLabel="Clear filters"
             />
           </ScrollReveal>
-        ) : isFiltered ? (
+        ) : (
           <ScrollReveal className="mt-12">
             <ProductGrid products={products} />
           </ScrollReveal>
-        ) : (
-          <>
-            <section id="customisable" className="mt-14 scroll-mt-28">
-              <ScrollReveal>
-                <SectionHeading
-                  eyebrow="Made to order"
-                  title={page.customisableTitle}
-                  description={page.customisableText}
-                />
-              </ScrollReveal>
-              <ScrollReveal delay={80} className="mt-10">
-                {customisable.length > 0 ? (
-                  <ProductGrid products={customisable} />
-                ) : (
-                  <p className="text-muted">
-                    No customisable pieces in this view.
-                  </p>
-                )}
-              </ScrollReveal>
-            </section>
-
-            <section
-              id="showroom"
-              className="mt-16 border-t border-border pt-14 scroll-mt-28"
-            >
-              <ScrollReveal>
-                <SectionHeading
-                  eyebrow="Showroom floor"
-                  title={page.showroomTitle}
-                  description={page.showroomText}
-                />
-              </ScrollReveal>
-              <ScrollReveal delay={80} className="mt-10">
-                {showroom.length > 0 ? (
-                  <ProductGrid products={showroom} />
-                ) : (
-                  <p className="text-muted">No showroom pieces in this view.</p>
-                )}
-              </ScrollReveal>
-            </section>
-          </>
         )}
       </div>
     </div>
