@@ -3566,6 +3566,14 @@
   }
 
   @media (min-width: 48rem) {
+    .md\:sticky {
+      position: sticky;
+    }
+
+    .md\:top-0 {
+      top: 0;
+    }
+
     .md\:mx-9 {
       margin-inline: calc(var(--spacing) * 9);
     }
@@ -3612,6 +3620,10 @@
 
     .md\:h-\[68px\] {
       height: 68px;
+    }
+
+    .md\:h-\[100svh\] {
+      height: 100svh;
     }
 
     .md\:h-\[200vh\] {
