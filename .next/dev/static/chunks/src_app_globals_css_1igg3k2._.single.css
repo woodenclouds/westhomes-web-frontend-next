@@ -1124,6 +1124,10 @@
     justify-content: center;
   }
 
+  .justify-start {
+    justify-content: flex-start;
+  }
+
   .gap-1 {
     gap: var(--spacing);
   }
@@ -3297,6 +3301,10 @@
 
     .sm\:mt-8 {
       margin-top: calc(var(--spacing) * 8);
+    }
+
+    .sm\:mt-10 {
+      margin-top: calc(var(--spacing) * 10);
     }
 
     .sm\:mt-12 {
