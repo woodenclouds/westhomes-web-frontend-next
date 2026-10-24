@@ -33,12 +33,12 @@ export function Footer({ contact }: { contact: SiteContact }) {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-stone/50">
             Navigate
           </p>
-          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-0.5">
             {links.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-11 items-center text-sm text-stone/80 transition hover:text-stone"
+                  className="inline-flex py-0.5 text-sm text-stone/80 transition hover:text-stone"
                 >
                   {item.label}
                 </Link>
