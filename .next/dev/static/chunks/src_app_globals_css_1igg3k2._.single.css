@@ -1393,6 +1393,10 @@
     border-radius: var(--radius-3xl);
   }
 
+  .rounded-\[1\.5rem\] {
+    border-radius: 1.5rem;
+  }
+
   .rounded-\[1\.75rem\] {
     border-radius: 1.75rem;
   }
@@ -3682,6 +3686,10 @@
       gap: calc(var(--spacing) * 4);
     }
 
+    .sm\:gap-5 {
+      gap: calc(var(--spacing) * 5);
+    }
+
     .sm\:gap-6 {
       gap: calc(var(--spacing) * 6);
     }
@@ -4197,6 +4205,10 @@
 
     .lg\:items-stretch {
       align-items: stretch;
+    }
+
+    .lg\:gap-6 {
+      gap: calc(var(--spacing) * 6);
     }
 
     .lg\:gap-8 {

@@ -200,25 +200,26 @@ function copyForOffering(label: string): { icon: ReactNode; blurb: string } {
 
 export function AboutOfferings({ offerings }: { offerings: string[] }) {
   return (
-    <div className="mx-auto mt-8 max-w-5xl rounded-[1.75rem] border border-border bg-surface px-5 py-8 shadow-sm sm:px-8 sm:py-10 md:px-10 md:py-12">
-      <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10">
-        {offerings.map((item) => {
-          const { icon, blurb } = copyForOffering(item);
-          return (
-            <li key={item} className="flex gap-4 text-left">
-              <IconCircle>{icon}</IconCircle>
-              <div className="min-w-0 pt-0.5">
-                <h3 className="font-sans text-[1rem] font-semibold leading-snug tracking-tight text-charcoal">
-                  {item}
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                  {blurb}
-                </p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+      {offerings.map((item) => {
+        const { icon, blurb } = copyForOffering(item);
+        return (
+          <li
+            key={item}
+            className="flex gap-4 rounded-[1.5rem] border border-border bg-surface p-5 text-left shadow-sm sm:p-6"
+          >
+            <IconCircle>{icon}</IconCircle>
+            <div className="min-w-0 pt-0.5">
+              <h3 className="font-sans text-[1rem] font-semibold leading-snug tracking-tight text-charcoal">
+                {item}
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                {blurb}
+              </p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
