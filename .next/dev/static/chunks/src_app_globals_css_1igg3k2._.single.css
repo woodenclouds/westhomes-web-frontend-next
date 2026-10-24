@@ -2134,6 +2134,10 @@
     padding-block: calc(var(--spacing) * 5);
   }
 
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
+  }
+
   .py-7 {
     padding-block: calc(var(--spacing) * 7);
   }
@@ -3377,6 +3381,10 @@
 
     .sm\:items-center {
       align-items: center;
+    }
+
+    .sm\:items-end {
+      align-items: flex-end;
     }
 
     .sm\:items-start {

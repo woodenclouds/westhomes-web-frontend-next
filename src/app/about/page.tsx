@@ -69,6 +69,35 @@ export default async function AboutPage() {
                   Visit showroom
                 </ButtonLink>
               </ScrollReveal>
+
+              <ScrollReveal
+                delay={180}
+                className="mt-10 border-y border-border py-6"
+              >
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                  <div className="min-w-0">
+                    <p className="eyebrow">Showroom</p>
+                    <h2 className="mt-2 font-display text-xl tracking-tight text-charcoal sm:text-2xl">
+                      {about.showroomTitle || "Al Barsha, Hessa Street"}
+                    </h2>
+                    <p className="mt-1.5 text-sm font-medium text-wood">
+                      {about.showroomHours || "Open daily, 9:00 AM – 9:00 PM"}
+                    </p>
+                    <p className="mt-2.5 text-sm leading-relaxed text-muted">
+                      {about.showroomText ||
+                        "Come sit with the pieces, browse fabrics and plan your rooms with our team."}
+                    </p>
+                  </div>
+                  <ButtonLink
+                    href="/contact"
+                    variant="wood-outline"
+                    size="md"
+                    className="shrink-0 self-start sm:self-auto"
+                  >
+                    Visit us
+                  </ButtonLink>
+                </div>
+              </ScrollReveal>
             </div>
 
             {/* Right visual — offset for staggered rhythm */}
@@ -99,28 +128,6 @@ export default async function AboutPage() {
               </ScrollReveal>
             </div>
           </div>
-
-          {/* Compact showroom strip — not a heavy card stack */}
-          <ScrollReveal delay={100} className="mt-14 border-y border-border py-7 md:mt-20 md:py-9">
-            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-              <div className="max-w-2xl">
-                <p className="eyebrow">Showroom</p>
-                <h2 className="mt-2 font-display text-2xl tracking-tight text-charcoal md:text-[1.85rem]">
-                  {about.showroomTitle || "Al Barsha, Hessa Street"}
-                </h2>
-                <p className="mt-1.5 text-sm font-medium text-wood">
-                  {about.showroomHours || "Open daily, 9:00 AM – 9:00 PM"}
-                </p>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted md:text-[0.95rem]">
-                  {about.showroomText ||
-                    "Come sit with the pieces, browse fabrics and plan your rooms with our team."}
-                </p>
-              </div>
-              <ButtonLink href="/contact" variant="wood-outline" size="md">
-                Visit us
-              </ButtonLink>
-            </div>
-          </ScrollReveal>
 
           <AboutProcessTimeline
             eyebrow="How we work"

@@ -5,7 +5,6 @@ import {
   ProductsToolbar,
   type PricingFilter,
 } from "@/components/ProductsToolbar";
-import { PageIntro } from "@/components/SectionHeading";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
 
@@ -36,7 +35,7 @@ export default async function ProductsPage({
   const search = params.q;
   const pricing = parsePricing(params.pricing);
 
-  const [categories, products, page] = await Promise.all([
+  const [categories, products] = await Promise.all([
     cms.getCategories(),
     cms.getProducts({
       categorySlug,
@@ -44,23 +43,12 @@ export default async function ProductsPage({
       customisable:
         pricing === "custom" ? true : pricing === "fixed" ? false : undefined,
     }),
-    cms.getProductsPage(),
   ]);
-
-  const activeCategory = categories.find((c) => c.slug === categorySlug);
 
   return (
     <div className="section-space">
       <div className="container-page">
-        <PageIntro
-          eyebrow="Catalogue"
-          title={page.title || "Products"}
-          description={
-            activeCategory ? activeCategory.description : page.intro
-          }
-        />
-
-        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start lg:gap-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start lg:gap-10">
           <ProductsToolbar
             categories={categories}
             currentCategory={categorySlug ?? ""}
