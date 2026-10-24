@@ -228,6 +228,16 @@ html[data-nav-open="true"] .floating-wa {
     filter 0.2s ease;
 }
 
+/* Products grid: scroll without a visible scrollbar */
+.products-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.products-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .reveal {
   transform: translateY(0.6rem);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);

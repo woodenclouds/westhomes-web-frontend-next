@@ -45,18 +45,23 @@ export default async function ProductsPage({
   ]);
 
   return (
-    <div className="pb-10 lg:pb-14">
-      <div className="container-page py-6 lg:py-8">
-        <div className="grid gap-8 lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-start lg:gap-10">
-          <ProductsToolbar
-            categories={categories}
-            currentCategory={categorySlug ?? ""}
-            currentSearch={search ?? ""}
-            currentPricing={pricing}
-            resultCount={products.length}
-          />
+    <div className="pb-10 lg:h-[calc(100svh-7rem)] lg:max-h-[calc(100svh-7rem)] lg:overflow-hidden lg:pb-0">
+      <div className="container-page h-full py-6 lg:py-8">
+        <div className="grid h-full min-h-0 gap-8 lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-stretch lg:gap-10">
+          <div className="lg:self-start">
+            <ProductsToolbar
+              categories={categories}
+              currentCategory={categorySlug ?? ""}
+              currentSearch={search ?? ""}
+              currentPricing={pricing}
+              resultCount={products.length}
+            />
+          </div>
 
-          <div className="min-w-0">
+          <div
+            className="products-scroll min-h-0 min-w-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-8"
+            data-lenis-prevent
+          >
             {products.length === 0 ? (
               <EmptyState
                 title="No products found"
