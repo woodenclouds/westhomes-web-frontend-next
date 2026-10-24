@@ -1,12 +1,25 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Category } from "@/lib/cms/types";
 import { Button } from "./ui/Button";
 import { Input, Select } from "./ui/FormFields";
 
 export type PricingFilter = "" | "custom" | "fixed";
+
+function buildProductsUrl(
+  category: string,
+  search: string,
+  pricing: PricingFilter,
+) {
+  const qs = new URLSearchParams();
+  if (category) qs.set("category", category);
+  if (search.trim()) qs.set("q", search.trim());
+  if (pricing) qs.set("pricing", pricing);
+  const query = qs.toString();
+  return query ? `/products?${query}` : "/products";
+}
 
 export function ProductsToolbar({
   categories,
@@ -24,14 +37,29 @@ export function ProductsToolbar({
   const [search, setSearch] = useState(currentSearch);
   const [pricing, setPricing] = useState<PricingFilter>(currentPricing);
 
+  useEffect(() => {
+    setCategory(currentCategory);
+    setSearch(currentSearch);
+    setPricing(currentPricing);
+  }, [currentCategory, currentSearch, currentPricing]);
+
+  function navigate(next: {
+    category?: string;
+    search?: string;
+    pricing?: PricingFilter;
+  }) {
+    router.push(
+      buildProductsUrl(
+        next.category ?? category,
+        next.search ?? search,
+        next.pricing ?? pricing,
+      ),
+    );
+  }
+
   function apply(e?: FormEvent) {
     e?.preventDefault();
-    const qs = new URLSearchParams();
-    if (category) qs.set("category", category);
-    if (search.trim()) qs.set("q", search.trim());
-    if (pricing) qs.set("pricing", pricing);
-    const query = qs.toString();
-    router.push(query ? `/products?${query}` : "/products");
+    navigate({});
   }
 
   return (
@@ -54,7 +82,11 @@ export function ProductsToolbar({
           id="product-category"
           label="Category"
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setCategory(value);
+            navigate({ category: value });
+          }}
         >
           <option value="">All categories</option>
           {categories.map((c) => (
@@ -69,7 +101,11 @@ export function ProductsToolbar({
           id="product-pricing"
           label="Pricing"
           value={pricing}
-          onChange={(e) => setPricing(e.target.value as PricingFilter)}
+          onChange={(e) => {
+            const value = e.target.value as PricingFilter;
+            setPricing(value);
+            navigate({ pricing: value });
+          }}
         >
           <option value="">All</option>
           <option value="custom">Custom products</option>
