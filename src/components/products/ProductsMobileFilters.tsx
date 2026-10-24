@@ -210,11 +210,11 @@ export function ProductsMobileFilters({
         </div>
       </div>
 
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-        <p className="text-xs text-muted" aria-live="polite">
-          {resultCount} {resultCount === 1 ? "result" : "results"}
-        </p>
-        {anyActive ? (
+      {anyActive ? (
+        <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
+          <p className="sr-only" aria-live="polite">
+            {resultCount} {resultCount === 1 ? "result" : "results"}
+          </p>
           <button
             type="button"
             onClick={clearAll}
@@ -222,8 +222,12 @@ export function ProductsMobileFilters({
           >
             Clear all
           </button>
-        ) : null}
-      </div>
+        </div>
+      ) : (
+        <p className="sr-only" aria-live="polite">
+          {resultCount} {resultCount === 1 ? "result" : "results"}
+        </p>
+      )}
 
       {sheetFilterCount > 0 ? (
         <div className="mt-2 flex flex-wrap gap-2">
