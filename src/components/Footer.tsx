@@ -64,7 +64,7 @@ export function Footer({ contact }: { contact: SiteContact }) {
               </a>
             </li>
           </ul>
-          <ul className="mt-4 flex flex-wrap gap-3">
+          <ul className="mt-4 flex flex-wrap justify-end gap-3 md:justify-start">
             {contact.socialLinks.map((s) => (
               <li key={s.label}>
                 <a
