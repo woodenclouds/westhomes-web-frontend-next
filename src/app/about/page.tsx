@@ -129,12 +129,12 @@ export default async function AboutPage() {
             craftImageUrl={about.craftImageUrl}
           />
 
-          <ScrollReveal className="mt-10 border-t border-border pt-8 md:mt-12">
+          <ScrollReveal className="mt-10 border-t border-border pt-8 text-center md:mt-12">
             <p className="eyebrow">Our collection</p>
             <h2 className="mt-3 font-display text-3xl text-charcoal">
               {about.offeringsTitle || "What you will find"}
             </h2>
-            <ul className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
+            <ul className="mx-auto mt-6 grid max-w-3xl gap-x-10 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
               {about.offerings.map((item) => (
                 <li
                   key={item}
@@ -144,7 +144,7 @@ export default async function AboutPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center">
               <ButtonLink href="/products">Explore collection</ButtonLink>
             </div>
           </ScrollReveal>
