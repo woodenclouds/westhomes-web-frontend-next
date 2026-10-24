@@ -2873,6 +2873,16 @@
     color: var(--wood-soft);
   }
 
+  .text-wood\/70 {
+    color: var(--wood);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-wood\/70 {
+      color: color-mix(in oklab, var(--wood) 70%, transparent);
+    }
+  }
+
   .text-wood\/80 {
     color: var(--wood);
   }
@@ -3876,6 +3886,10 @@
 
     .md\:mx-auto {
       margin-inline: auto;
+    }
+
+    .md\:mt-10 {
+      margin-top: calc(var(--spacing) * 10);
     }
 
     .md\:mt-12 {

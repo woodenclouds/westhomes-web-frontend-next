@@ -5,6 +5,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { cms } from "@/lib/cms/client";
 import { AboutOfferings } from "@/components/AboutOfferings";
 import { AboutProcessTimeline } from "@/components/AboutProcessTimeline";
+import { AboutValues } from "@/components/AboutValues";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -143,28 +144,10 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-surface py-8 md:py-10">
-        <div className="container-page">
-          <ScrollReveal>
-            <p className="eyebrow">What we stand for</p>
-            <h2 className="mt-3 font-display text-3xl text-charcoal md:text-4xl capitalize">
-              {about.valuesTitle || "Comfort And Elegance"}
-            </h2>
-          </ScrollReveal>
-          <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-10">
-            {about.values.map((value, i) => (
-              <ScrollReveal key={value.title} delay={i * 80}>
-                <h3 className="font-display text-2xl text-charcoal">
-                  {value.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-muted">
-                  {value.description}
-                </p>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AboutValues
+        title={about.valuesTitle || "Comfort And Elegance"}
+        values={about.values}
+      />
 
       <section className="py-8 md:py-10">
         <div className="container-page flex flex-col items-start justify-between gap-5 md:flex-row md:items-center">
