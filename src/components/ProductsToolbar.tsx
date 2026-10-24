@@ -26,11 +26,13 @@ export function ProductsToolbar({
   currentCategory,
   currentSearch,
   currentPricing = "",
+  resultCount,
 }: {
   categories: Category[];
   currentCategory: string;
   currentSearch: string;
   currentPricing?: PricingFilter;
+  resultCount?: number;
 }) {
   const router = useRouter();
   const [category, setCategory] = useState(currentCategory);
@@ -62,12 +64,32 @@ export function ProductsToolbar({
     navigate({});
   }
 
+  function clearFilters() {
+    setCategory("");
+    setSearch("");
+    setPricing("");
+    router.push("/products");
+  }
+
+  const hasFilters = Boolean(category || search.trim() || pricing);
+
   return (
-    <form
-      onSubmit={apply}
-      className="flex flex-col gap-3 rounded-[24px] border border-border bg-surface p-4 sm:p-5 md:flex-row md:items-end shadow-sm"
-    >
-      <div className="min-w-0 flex-1">
+    <aside className="rounded-[24px] border border-border bg-surface p-5 shadow-sm lg:sticky lg:top-28">
+      <div className="mb-5 flex items-end justify-between gap-3 border-b border-border/80 pb-4">
+        <div>
+          <p className="eyebrow">Filters</p>
+          <h2 className="mt-1 font-display text-xl tracking-tight text-charcoal">
+            Find a piece
+          </h2>
+        </div>
+        {typeof resultCount === "number" ? (
+          <p className="shrink-0 text-xs text-muted">
+            {resultCount} {resultCount === 1 ? "result" : "results"}
+          </p>
+        ) : null}
+      </div>
+
+      <form onSubmit={apply} className="flex flex-col gap-4">
         <Input
           id="product-search"
           label="Search"
@@ -76,8 +98,6 @@ export function ProductsToolbar({
           placeholder="Search by name or description"
           className="h-11"
         />
-      </div>
-      <div className="w-full md:w-56 md:shrink-0">
         <Select
           id="product-category"
           label="Category"
@@ -95,8 +115,6 @@ export function ProductsToolbar({
             </option>
           ))}
         </Select>
-      </div>
-      <div className="w-full md:w-52 md:shrink-0">
         <Select
           id="product-pricing"
           label="Pricing"
@@ -111,10 +129,22 @@ export function ProductsToolbar({
           <option value="custom">Custom products</option>
           <option value="fixed">Fixed price</option>
         </Select>
-      </div>
-      <Button type="submit" className="h-11 w-full shrink-0 md:w-auto">
-        Apply
-      </Button>
-    </form>
+
+        <div className="flex flex-col gap-2 pt-1">
+          <Button type="submit" className="h-11 w-full">
+            Apply
+          </Button>
+          {hasFilters ? (
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="text-sm text-muted underline-offset-2 transition hover:text-charcoal hover:underline"
+            >
+              Clear filters
+            </button>
+          ) : null}
+        </div>
+      </form>
+    </aside>
   );
 }

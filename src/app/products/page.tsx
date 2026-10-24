@@ -60,29 +60,35 @@ export default async function ProductsPage({
           }
         />
 
-        <div className="mt-8">
+        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start lg:gap-10">
           <ProductsToolbar
             categories={categories}
             currentCategory={categorySlug ?? ""}
             currentSearch={search ?? ""}
             currentPricing={pricing}
+            resultCount={products.length}
           />
-        </div>
 
-        {products.length === 0 ? (
-          <ScrollReveal className="mt-12">
-            <EmptyState
-              title="No products found"
-              description="Try another category, pricing filter, or clear your search to see the full catalogue."
-              actionHref="/products"
-              actionLabel="Clear filters"
-            />
-          </ScrollReveal>
-        ) : (
-          <ScrollReveal className="mt-12">
-            <ProductGrid products={products} />
-          </ScrollReveal>
-        )}
+          <div className="min-w-0">
+            {products.length === 0 ? (
+              <ScrollReveal>
+                <EmptyState
+                  title="No products found"
+                  description="Try another category, pricing filter, or clear your search to see the full catalogue."
+                  actionHref="/products"
+                  actionLabel="Clear filters"
+                />
+              </ScrollReveal>
+            ) : (
+              <ScrollReveal>
+                <ProductGrid
+                  products={products}
+                  className="grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 xl:grid-cols-3 xl:gap-8"
+                />
+              </ScrollReveal>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
