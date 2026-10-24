@@ -36,7 +36,7 @@ export function ProductListRow({
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 py-0.5">
-        <p className="truncate text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-wood">
+        <p className="truncate text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted">
           {product.categoryName}
         </p>
         <h3 className="line-clamp-2 font-sans text-[0.95rem] font-semibold leading-snug tracking-tight text-charcoal">

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { ProductGrid } from "@/components/ProductCard";
-import { EmptyState } from "@/components/ui/States";
-import {
-  ProductsToolbar,
-  type PricingFilter,
-} from "@/components/ProductsToolbar";
+import { ProductsMobileFilters } from "@/components/products/ProductsMobileFilters";
+import { ProductsMobileList } from "@/components/products/ProductListRow";
+import { ProductsToolbar } from "@/components/ProductsToolbar";
+import { ButtonLink } from "@/components/ui/Button";
+import { parsePricing } from "@/lib/products-filters";
 import { cms } from "@/lib/cms/client";
 
 export const metadata: Metadata = {
@@ -18,11 +18,6 @@ type SearchParams = Promise<{
   q?: string;
   pricing?: string;
 }>;
-
-function parsePricing(value?: string): PricingFilter {
-  if (value === "custom" || value === "fixed") return value;
-  return "";
-}
 
 export default async function ProductsPage({
   searchParams,
@@ -44,10 +39,43 @@ export default async function ProductsPage({
     }),
   ]);
 
+  const emptyMobile = (
+    <div className="rounded-2xl border border-dashed border-border bg-surface px-5 py-10 text-center">
+      <p className="font-sans text-base text-charcoal">
+        No pieces match your filters
+      </p>
+      <div className="mt-5">
+        <ButtonLink href="/products" variant="wood-outline" size="sm">
+          Clear all
+        </ButtonLink>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="pb-10 lg:h-[calc(100svh-7rem)] lg:max-h-[calc(100svh-7rem)] lg:overflow-hidden lg:pb-0">
-      <div className="container-page h-full py-6 lg:py-8">
-        <div className="grid h-full min-h-0 gap-8 lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-stretch lg:gap-10">
+    <div className="pb-[max(5.5rem,calc(1.25rem+env(safe-area-inset-bottom)+3rem))] lg:h-[calc(100svh-7rem)] lg:max-h-[calc(100svh-7rem)] lg:overflow-hidden lg:pb-0">
+      <div className="container-page h-full py-3 lg:py-8">
+        {/* Mobile + tablet (< lg) */}
+        <div className="lg:hidden">
+          <ProductsMobileFilters
+            categories={categories}
+            currentCategory={categorySlug ?? ""}
+            currentSearch={search ?? ""}
+            currentPricing={pricing}
+            resultCount={products.length}
+          />
+
+          <div className="mt-4 min-w-0">
+            {products.length === 0 ? (
+              emptyMobile
+            ) : (
+              <ProductsMobileList products={products} />
+            )}
+          </div>
+        </div>
+
+        {/* Desktop (lg+) — unchanged layout */}
+        <div className="hidden h-full min-h-0 gap-8 lg:grid lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-stretch lg:gap-10">
           <div className="lg:self-start">
             <ProductsToolbar
               categories={categories}
@@ -63,12 +91,20 @@ export default async function ProductsPage({
             data-lenis-prevent
           >
             {products.length === 0 ? (
-              <EmptyState
-                title="No products found"
-                description="Try another category, pricing filter, or clear your search to see the full catalogue."
-                actionHref="/products"
-                actionLabel="Clear filters"
-              />
+              <div className="rounded-[24px] border border-dashed border-border bg-surface px-6 py-14 text-center">
+                <h2 className="font-display text-2xl text-charcoal">
+                  No products found
+                </h2>
+                <p className="mx-auto mt-3 max-w-md text-muted">
+                  Try another category, pricing filter, or clear your search to
+                  see the full catalogue.
+                </p>
+                <div className="mt-6">
+                  <ButtonLink href="/products" variant="wood-outline">
+                    Clear filters
+                  </ButtonLink>
+                </div>
+              </div>
             ) : (
               <ProductGrid
                 products={products}

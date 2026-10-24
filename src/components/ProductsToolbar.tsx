@@ -3,23 +3,15 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Category } from "@/lib/cms/types";
+import {
+  buildProductsUrl,
+  hasAnyFilters,
+  type PricingFilter,
+} from "@/lib/products-filters";
 import { Button } from "./ui/Button";
 import { Input, Select } from "./ui/FormFields";
 
-export type PricingFilter = "" | "custom" | "fixed";
-
-function buildProductsUrl(
-  category: string,
-  search: string,
-  pricing: PricingFilter,
-) {
-  const qs = new URLSearchParams();
-  if (category) qs.set("category", category);
-  if (search.trim()) qs.set("q", search.trim());
-  if (pricing) qs.set("pricing", pricing);
-  const query = qs.toString();
-  return query ? `/products?${query}` : "/products";
-}
+export type { PricingFilter };
 
 export function ProductsToolbar({
   categories,
@@ -50,12 +42,13 @@ export function ProductsToolbar({
     search?: string;
     pricing?: PricingFilter;
   }) {
-    router.push(
+    router.replace(
       buildProductsUrl(
         next.category ?? category,
         next.search ?? search,
         next.pricing ?? pricing,
       ),
+      { scroll: false },
     );
   }
 
@@ -68,10 +61,10 @@ export function ProductsToolbar({
     setCategory("");
     setSearch("");
     setPricing("");
-    router.push("/products");
+    router.replace("/products", { scroll: false });
   }
 
-  const hasFilters = Boolean(category || search.trim() || pricing);
+  const hasFilters = hasAnyFilters(category, search, pricing);
 
   return (
     <aside className="rounded-[24px] border border-border bg-surface p-5 shadow-sm">
