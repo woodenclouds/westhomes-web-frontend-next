@@ -3683,6 +3683,10 @@
       width: calc(var(--spacing) * 44);
     }
 
+    .md\:w-52 {
+      width: calc(var(--spacing) * 52);
+    }
+
     .md\:w-56 {
       width: calc(var(--spacing) * 56);
     }

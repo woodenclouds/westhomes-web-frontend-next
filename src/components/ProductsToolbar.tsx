@@ -6,24 +6,30 @@ import type { Category } from "@/lib/cms/types";
 import { Button } from "./ui/Button";
 import { Input, Select } from "./ui/FormFields";
 
+export type PricingFilter = "" | "custom" | "fixed";
+
 export function ProductsToolbar({
   categories,
   currentCategory,
   currentSearch,
+  currentPricing = "",
 }: {
   categories: Category[];
   currentCategory: string;
   currentSearch: string;
+  currentPricing?: PricingFilter;
 }) {
   const router = useRouter();
   const [category, setCategory] = useState(currentCategory);
   const [search, setSearch] = useState(currentSearch);
+  const [pricing, setPricing] = useState<PricingFilter>(currentPricing);
 
   function apply(e?: FormEvent) {
     e?.preventDefault();
     const qs = new URLSearchParams();
     if (category) qs.set("category", category);
     if (search.trim()) qs.set("q", search.trim());
+    if (pricing) qs.set("pricing", pricing);
     const query = qs.toString();
     router.push(query ? `/products?${query}` : "/products");
   }
@@ -43,7 +49,7 @@ export function ProductsToolbar({
           className="h-11"
         />
       </div>
-      <div className="w-full md:w-72 md:shrink-0">
+      <div className="w-full md:w-56 md:shrink-0">
         <Select
           id="product-category"
           label="Category"
@@ -56,6 +62,18 @@ export function ProductsToolbar({
               {c.name}
             </option>
           ))}
+        </Select>
+      </div>
+      <div className="w-full md:w-52 md:shrink-0">
+        <Select
+          id="product-pricing"
+          label="Pricing"
+          value={pricing}
+          onChange={(e) => setPricing(e.target.value as PricingFilter)}
+        >
+          <option value="">All</option>
+          <option value="custom">Custom products</option>
+          <option value="fixed">Fixed price</option>
         </Select>
       </div>
       <Button type="submit" className="h-11 w-full shrink-0 md:w-auto">

@@ -86,16 +86,22 @@ const metadata = {
     title: "Products",
     description: "Browse sofas, beds, mattresses, living and bedroom furniture, dining tables, coffee tables and more from West Home Furniture Dubai. Custom sofas, beds and club chairs available."
 };
+function parsePricing(value) {
+    if (value === "custom" || value === "fixed") return value;
+    return "";
+}
 async function ProductsPage({ searchParams }) {
     const params = await searchParams;
     const categorySlug = params.category;
     const search = params.q;
-    const isFiltered = Boolean(categorySlug || search);
+    const pricing = parsePricing(params.pricing);
+    const isFiltered = Boolean(categorySlug || search || pricing);
     const [categories, products, page] = await Promise.all([
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cms$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cms"].getCategories(),
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cms$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cms"].getProducts({
             categorySlug,
-            search
+            search,
+            customisable: pricing === "custom" ? true : pricing === "fixed" ? false : undefined
         }),
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cms$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cms"].getProductsPage()
     ]);
@@ -113,7 +119,7 @@ async function ProductsPage({ searchParams }) {
                     description: activeCategory ? activeCategory.description : page.intro
                 }, void 0, false, {
                     fileName: "[project]/src/app/products/page.tsx",
-                    lineNumber: 43,
+                    lineNumber: 58,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -121,32 +127,33 @@ async function ProductsPage({ searchParams }) {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ProductsToolbar$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ProductsToolbar"], {
                         categories: categories,
                         currentCategory: categorySlug ?? "",
-                        currentSearch: search ?? ""
+                        currentSearch: search ?? "",
+                        currentPricing: pricing
                     }, void 0, false, {
                         fileName: "[project]/src/app/products/page.tsx",
-                        lineNumber: 52,
+                        lineNumber: 67,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/products/page.tsx",
-                    lineNumber: 51,
+                    lineNumber: 66,
                     columnNumber: 9
                 }, this),
                 products.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ScrollReveal$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ScrollReveal"], {
                     className: "mt-12",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$States$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["EmptyState"], {
                         title: "No products found",
-                        description: "Try another category or clear your search to see the full catalogue.",
+                        description: "Try another category, pricing filter, or clear your search to see the full catalogue.",
                         actionHref: "/products",
                         actionLabel: "Clear filters"
                     }, void 0, false, {
                         fileName: "[project]/src/app/products/page.tsx",
-                        lineNumber: 61,
+                        lineNumber: 77,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/products/page.tsx",
-                    lineNumber: 60,
+                    lineNumber: 76,
                     columnNumber: 11
                 }, this) : isFiltered ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ScrollReveal$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ScrollReveal"], {
                     className: "mt-12",
@@ -154,12 +161,12 @@ async function ProductsPage({ searchParams }) {
                         products: products
                     }, void 0, false, {
                         fileName: "[project]/src/app/products/page.tsx",
-                        lineNumber: 70,
+                        lineNumber: 86,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/products/page.tsx",
-                    lineNumber: 69,
+                    lineNumber: 85,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
@@ -174,12 +181,12 @@ async function ProductsPage({ searchParams }) {
                                         description: page.customisableText
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/page.tsx",
-                                        lineNumber: 76,
+                                        lineNumber: 92,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/products/page.tsx",
-                                    lineNumber: 75,
+                                    lineNumber: 91,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ScrollReveal$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ScrollReveal"], {
@@ -189,25 +196,25 @@ async function ProductsPage({ searchParams }) {
                                         products: customisable
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/page.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 100,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-muted",
                                         children: "No customisable pieces in this view."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/page.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 102,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/products/page.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 98,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/products/page.tsx",
-                            lineNumber: 74,
+                            lineNumber: 90,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -221,12 +228,12 @@ async function ProductsPage({ searchParams }) {
                                         description: page.showroomText
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/page.tsx",
-                                        lineNumber: 96,
+                                        lineNumber: 114,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/products/page.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 113,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ScrollReveal$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ScrollReveal"], {
@@ -236,42 +243,42 @@ async function ProductsPage({ searchParams }) {
                                         products: showroom
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/page.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 122,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-muted",
                                         children: "No showroom pieces in this view."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/page.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 124,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/products/page.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 120,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/products/page.tsx",
-                            lineNumber: 91,
+                            lineNumber: 109,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/products/page.tsx",
-                    lineNumber: 73,
+                    lineNumber: 89,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/products/page.tsx",
-            lineNumber: 42,
+            lineNumber: 57,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/products/page.tsx",
-        lineNumber: 41,
+        lineNumber: 56,
         columnNumber: 5
     }, this);
 }
