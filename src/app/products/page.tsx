@@ -48,7 +48,7 @@ export default async function ProductsPage({
   return (
     <div className="section-space">
       <div className="container-page">
-        <div className="grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start lg:gap-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-start lg:gap-10">
           <ProductsToolbar
             categories={categories}
             currentCategory={categorySlug ?? ""}
