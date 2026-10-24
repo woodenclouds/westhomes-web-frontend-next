@@ -70,3 +70,12 @@
 {"timestamp":"00:40:38.146","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
 {"timestamp":"00:48:00.025","source":"Server","level":"LOG","message":"✓ Compiled in 43ms"}
 {"timestamp":"00:48:06.583","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:51:10.032","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:52:04.002","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
+{"timestamp":"00:52:06.745","source":"Server","level":"LOG","message":"✓ Compiled in 37ms"}
+{"timestamp":"00:52:11.787","source":"Server","level":"LOG","message":"✓ Compiled in 43ms"}
+{"timestamp":"00:52:12.095","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:55:06.141","source":"Browser","level":"WARN","message":"Image with src \"/images/showroom-boucle-sectional.jpg\" has \"fill\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height."}
+{"timestamp":"00:55:06.194","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/showroom-boucle-sectional.jpg\\\" has \\\"fill\\\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.\""}
+{"timestamp":"00:55:06.195","source":"Browser","level":"WARN","message":"Image with src \"/images/sofa-custom-swatches.jpg\" has \"fill\" prop and \"sizes\" prop of \"100vw\", but image is not rendered at full viewport width. Please adjust \"sizes\" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:55:06.198","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/sofa-custom-swatches.jpg\\\" has \\\"fill\\\" prop and \\\"sizes\\\" prop of \\\"100vw\\\", but image is not rendered at full viewport width. Please adjust \\\"sizes\\\" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\""}

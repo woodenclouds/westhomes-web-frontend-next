@@ -103,7 +103,7 @@ export function AboutProcessTimeline({
   };
 
   return (
-    <div className="mt-12 border-t border-border pt-12 md:mt-16 md:pt-16">
+    <div className="mt-12 min-w-0 border-t border-border pt-12 md:mt-16 md:pt-16">
       {/* Section Header */}
       <ScrollReveal className="mx-auto max-w-3xl text-center">
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}

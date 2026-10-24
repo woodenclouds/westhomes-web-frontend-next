@@ -30,12 +30,12 @@ export default async function AboutPage() {
     <>
       <section className="pt-28 pb-10 sm:pt-32 md:pt-36 md:pb-14">
         <div className="container-page">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-x-10 lg:gap-y-0">
+          <div className="grid min-w-0 gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-x-10 lg:gap-y-0">
             {/* Left narrative — Neutomni-style lead column */}
-            <div className="lg:col-span-6 lg:pt-2">
+            <div className="min-w-0 lg:col-span-6 lg:pt-2">
               <ScrollReveal>
                 <p className="eyebrow">Our story</p>
-                <h1 className="mt-4 font-display text-[2.15rem] leading-[1.12] tracking-tight text-charcoal sm:text-5xl md:text-[3.35rem] md:leading-[1.08]">
+                <h1 className="mt-4 max-w-full font-display text-[2.15rem] leading-[1.12] tracking-tight text-balance text-charcoal sm:text-5xl md:text-[3.35rem] md:leading-[1.08]">
                   {statement.lead}
                   {statement.emphasis ? (
                     <>
@@ -100,9 +100,9 @@ export default async function AboutPage() {
             </div>
 
             {/* Right visual — height matches left column on desktop */}
-            <div className="lg:col-span-6 lg:flex lg:min-h-0 lg:flex-col lg:pt-2">
-              <ScrollReveal delay={80} className="h-full min-h-0 flex-1">
-                <div className="relative aspect-[4/3] h-full min-h-[240px] overflow-hidden rounded-[1.75rem] bg-stone-deep sm:aspect-[16/10] lg:aspect-auto lg:min-h-0">
+            <div className="min-w-0 lg:col-span-6 lg:flex lg:min-h-0 lg:flex-col lg:pt-2">
+              <ScrollReveal delay={80} className="h-full min-h-0 w-full flex-1">
+                <div className="relative aspect-[4/3] h-full min-h-[240px] w-full overflow-hidden rounded-[1.75rem] bg-stone-deep sm:aspect-[16/10] lg:aspect-auto lg:min-h-0">
                   <Image
                     src={
                       about.imageUrl || "/images/showroom-boucle-sectional.jpg"
