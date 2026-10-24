@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         hostname: "**.woquick.in",
         pathname: "/**",
       },
+      // WoQuick media uploads (S3-compatible R2 signed URLs)
+      {
+        protocol: "https",
+        hostname: "*.r2.cloudflarestorage.com",
+        pathname: "/**",
+      },
     ],
   },
 };

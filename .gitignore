@@ -34,6 +34,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# local MCP auth (token lives here — do not commit)
+.cursor/mcp.json
+
 # vercel
 .vercel
 
