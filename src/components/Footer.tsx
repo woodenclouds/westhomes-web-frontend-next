@@ -64,19 +64,21 @@ export function Footer({ contact }: { contact: SiteContact }) {
               </a>
             </li>
           </ul>
-          <ul className="mt-4 flex flex-wrap justify-end gap-3 md:justify-start">
-            {contact.socialLinks.map((s) => (
-              <li key={s.label}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-wood-soft hover:text-stone"
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
+          <ul className="mt-4 flex flex-wrap justify-start gap-3">
+            {contact.socialLinks
+              .filter((s) => s.label.toLowerCase() !== "website")
+              .map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-wood-soft hover:text-stone"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
