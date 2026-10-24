@@ -114,6 +114,21 @@ p {
   }
 }
 
+/* Desktop only — wider content, tighter side margins */
+@media (min-width: 1024px) {
+  .container-page {
+    max-width: 90rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-page {
+    max-width: 96rem;
+    padding-inline: 1.25rem;
+  }
+}
+
 .section-space {
   padding-block: 2.75rem;
 }
