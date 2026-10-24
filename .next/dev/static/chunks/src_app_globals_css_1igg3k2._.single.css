@@ -662,6 +662,10 @@
     margin-bottom: calc(var(--spacing) * 5);
   }
 
+  .ml-auto {
+    margin-left: auto;
+  }
+
   .line-clamp-1 {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -3902,6 +3906,10 @@
 
     .md\:mt-16 {
       margin-top: calc(var(--spacing) * 16);
+    }
+
+    .md\:ml-0 {
+      margin-left: 0;
     }
 
     .md\:block {

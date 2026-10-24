@@ -112,8 +112,10 @@ export function AboutValues({
               <ScrollReveal delay={i * 80} className="h-full">
                 <div className="flex h-full flex-col rounded-[1.5rem] border border-border bg-surface p-6 shadow-sm sm:p-7">
                   <div className="flex items-start justify-between gap-3">
-                    <IconCircle>{iconForValue(value.title, i)}</IconCircle>
-                    <span className="font-display text-3xl leading-none text-wood/70">
+                    <span className="hidden md:inline-flex">
+                      <IconCircle>{iconForValue(value.title, i)}</IconCircle>
+                    </span>
+                    <span className="ml-auto font-display text-3xl leading-none text-wood/70 md:ml-0">
                       0{i + 1}
                     </span>
                   </div>

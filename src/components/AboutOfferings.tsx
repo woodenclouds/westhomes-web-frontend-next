@@ -208,7 +208,9 @@ export function AboutOfferings({ offerings }: { offerings: string[] }) {
             key={item}
             className="flex gap-4 rounded-[1.5rem] border border-border bg-surface px-6 py-5 text-left shadow-sm sm:px-7 sm:py-6"
           >
-            <IconCircle>{icon}</IconCircle>
+            <span className="hidden md:inline-flex">
+              <IconCircle>{icon}</IconCircle>
+            </span>
             <div className="min-w-0 pt-0.5">
               <h3 className="font-display text-2xl text-charcoal">
                 {item}
