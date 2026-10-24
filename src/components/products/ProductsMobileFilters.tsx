@@ -43,7 +43,6 @@ export function ProductsMobileFilters({
   const filterBtnRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
   const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const chipRowRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
 
   useEffect(() => {
@@ -139,20 +138,6 @@ export function ProductsMobileFilters({
     router.replace("/products", { scroll: false });
   }
 
-  function selectCategoryChip(slug: string) {
-    replaceFilters({ category: slug });
-    requestAnimationFrame(() => {
-      const selected = chipRowRef.current?.querySelector<HTMLElement>(
-        '[aria-pressed="true"]',
-      );
-      selected?.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    });
-  }
-
   function onSheetChipKeyDown(e: ReactKeyboardEvent, apply: () => void) {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -223,37 +208,6 @@ export function ProductsMobileFilters({
             ) : null}
           </button>
         </div>
-      </div>
-
-      <div className="relative mt-2">
-        <div
-          ref={chipRowRef}
-          className="products-chip-scroll -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scroll-smooth"
-          role="listbox"
-          aria-label="Categories"
-        >
-          <Chip
-            selected={!currentCategory}
-            onClick={() => selectCategoryChip("")}
-            aria-pressed={!currentCategory}
-          >
-            All
-          </Chip>
-          {categories.map((c) => (
-            <Chip
-              key={c.id}
-              selected={currentCategory === c.slug}
-              onClick={() => selectCategoryChip(c.slug)}
-              aria-pressed={currentCategory === c.slug}
-            >
-              {c.name}
-            </Chip>
-          ))}
-        </div>
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent"
-          aria-hidden="true"
-        />
       </div>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
