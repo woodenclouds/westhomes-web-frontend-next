@@ -145,40 +145,80 @@ function CustomIcon() {
   );
 }
 
-function iconForOffering(label: string): ReactNode {
+function copyForOffering(label: string): { icon: ReactNode; blurb: string } {
   const key = label.toLowerCase();
+
   if (key.includes("custom") || key.includes("club")) {
-    return <CustomIcon />;
+    return {
+      icon: <CustomIcon />,
+      blurb:
+        "Fabric, size and finish chosen with you — sofas, beds and club chairs made to fit your rooms.",
+    };
   }
   if (key.includes("bedroom")) {
-    return <BedroomIcon />;
+    return {
+      icon: <BedroomIcon />,
+      blurb:
+        "Calm, considered pieces for restful rooms — storage, nightstands and bedroom sets that feel finished.",
+    };
   }
   if (key.includes("sofa") || key.includes("sectional")) {
-    return <SofaIcon />;
+    return {
+      icon: <SofaIcon />,
+      blurb:
+        "Deep seating and tailored silhouettes for everyday lounging — ready looks and custom sizes available.",
+    };
   }
   if (key.includes("bed") || key.includes("mattress")) {
-    return <BedIcon />;
+    return {
+      icon: <BedIcon />,
+      blurb:
+        "Supportive beds and mattresses chosen for comfort first — restful nights with a clean, modern line.",
+    };
   }
   if (key.includes("living")) {
-    return <ChairIcon />;
+    return {
+      icon: <ChairIcon />,
+      blurb:
+        "Armchairs, tables and accents that complete the room — soft textures with lasting everyday comfort.",
+    };
   }
   if (key.includes("dining") || key.includes("coffee") || key.includes("table")) {
-    return <TableIcon />;
+    return {
+      icon: <TableIcon />,
+      blurb:
+        "Dining and coffee tables with solid presence — warm materials scaled for apartments and villas.",
+    };
   }
-  return <ChairIcon />;
+
+  return {
+    icon: <ChairIcon />,
+    blurb:
+      "Thoughtfully chosen furniture for modern Dubai homes — comfort, elegance and everyday ease.",
+  };
 }
 
 export function AboutOfferings({ offerings }: { offerings: string[] }) {
   return (
-    <ul className="mx-auto mt-8 grid max-w-4xl gap-x-8 gap-y-8 sm:grid-cols-2 md:grid-cols-3 md:gap-y-10">
-      {offerings.map((item) => (
-        <li key={item} className="flex flex-col items-center text-center">
-          <IconCircle>{iconForOffering(item)}</IconCircle>
-          <p className="mt-3.5 max-w-[14rem] font-sans text-[0.95rem] font-medium leading-snug text-charcoal">
-            {item}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <div className="mx-auto mt-8 max-w-5xl rounded-[1.75rem] border border-border bg-surface px-5 py-8 shadow-sm sm:px-8 sm:py-10 md:px-10 md:py-12">
+      <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10">
+        {offerings.map((item) => {
+          const { icon, blurb } = copyForOffering(item);
+          return (
+            <li key={item} className="flex gap-4 text-left">
+              <IconCircle>{icon}</IconCircle>
+              <div className="min-w-0 pt-0.5">
+                <h3 className="font-sans text-[1rem] font-semibold leading-snug tracking-tight text-charcoal">
+                  {item}
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                  {blurb}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
