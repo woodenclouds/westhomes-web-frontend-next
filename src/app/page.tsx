@@ -240,17 +240,12 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
-              <SectionHeading
-                title="From The Showroom"
-                description="Rooms, fabrics and details from recent West Home settings."
-              />
-              <Link href="/gallery" className="text-link self-start sm:self-auto sm:pt-2">
-                Open gallery
-              </Link>
-            </div>
+            <SectionHeading
+              title="From The Showroom"
+              description="Rooms, fabrics and details from recent West Home settings."
+            />
           </ScrollReveal>
-          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 md:grid-cols-4 md:gap-4">
             {galleryPreview.map((item, i) => (
               <ScrollReveal key={item.id} delay={i * 70}>
                 <div className="frame-image relative aspect-square bg-stone-deep">
@@ -264,6 +259,11 @@ export default async function HomePage() {
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+          <div className="mt-8 flex justify-start sm:mt-10">
+            <Link href="/gallery" className="text-link inline-flex">
+              Open gallery
+            </Link>
           </div>
         </div>
       </section>
