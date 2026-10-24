@@ -9,3 +9,4 @@
 {"timestamp":"00:01:03.165","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/bedroom-taupe.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
 {"timestamp":"00:02:11.724","source":"Server","level":"LOG","message":"✓ Compiled in 99ms"}
 {"timestamp":"00:02:17.753","source":"Server","level":"LOG","message":"✓ Compiled in 35ms"}
+{"timestamp":"00:04:49.692","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}

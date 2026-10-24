@@ -11,134 +11,114 @@ export const metadata: Metadata = {
     "West Home Furniture Dubai offers stylish and comfortable furniture for modern homes. Visit our Al Barsha showroom — we customise sofas, beds, club chairs and more.",
 };
 
+function splitStatement(text: string): { lead: string; emphasis?: string } {
+  const parts = text.split(/\s+[—–]\s+/);
+  if (parts.length >= 2 && parts[0]?.trim() && parts[1]?.trim()) {
+    return {
+      lead: parts[0].trim(),
+      emphasis: parts.slice(1).join(" — ").trim(),
+    };
+  }
+  return { lead: text.trim() };
+}
+
 export default async function AboutPage() {
   const about = await cms.getAboutContent();
+  const statement = splitStatement(about.intro);
+  const quote = about.quote?.trim();
 
   return (
     <>
-      {/* Editorial 3-Image Hero Section (matching Ecomuz reference) */}
-      <section className="pt-28 pb-12 sm:pt-32 md:pt-36 md:pb-16">
+      <section className="pt-28 pb-10 sm:pt-32 md:pt-36 md:pb-14">
         <div className="container-page">
-          {/* Centered Hero Header */}
-          <ScrollReveal className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow">Our story</p>
-            <h1 className="mt-3 font-display text-4xl text-charcoal sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight">
-              {about.title}
-            </h1>
-          </ScrollReveal>
-
-          {/* 3 Images Gallery */}
-          <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
-            {/* Left Image: Armchair piece */}
-            <ScrollReveal delay={0} className="relative h-[340px] sm:h-[400px] md:h-[460px] lg:h-[520px] overflow-hidden rounded-2xl md:rounded-3xl bg-stone-deep shadow-sm group">
-              <Image
-                src="/images/armchair-ottoman.jpg"
-                alt="West Home luxury armchair"
-                fill
-                priority
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-charcoal/5 pointer-events-none" />
-            </ScrollReveal>
-
-            {/* Center Image: Main showroom / living space */}
-            <ScrollReveal delay={90} className="relative h-[340px] sm:h-[400px] md:h-[460px] lg:h-[520px] overflow-hidden rounded-2xl md:rounded-3xl bg-stone-deep shadow-sm group">
-              <Image
-                src={about.imageUrl || "/images/showroom-boucle-sectional.jpg"}
-                alt="West Home living room and sofa design"
-                fill
-                priority
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-charcoal/5 pointer-events-none" />
-            </ScrollReveal>
-
-            {/* Right Image: Dining / bedroom piece */}
-            <ScrollReveal delay={180} className="relative h-[340px] sm:h-[400px] md:h-[460px] lg:h-[520px] overflow-hidden rounded-2xl md:rounded-3xl bg-stone-deep shadow-sm group">
-              <Image
-                src="/images/dining-marble.jpg"
-                alt="West Home dining room setting"
-                fill
-                priority
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-charcoal/5 pointer-events-none" />
-            </ScrollReveal>
-          </div>
-
-          {/* Statement & Narrative Section (matching Ecomuz reference) */}
-          <div className="mt-16 md:mt-24 max-w-4xl mx-auto text-center">
-            {/* Pill Tag (Our Mission ○ Our Vision style) */}
-            <ScrollReveal className="inline-flex items-center gap-2.5 rounded-full border border-border/80 bg-white/80 px-4 py-1.5 shadow-2xs backdrop-blur-xs">
-              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-wood">
-                Our Story
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full border border-charcoal/60" />
-              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-charcoal/80">
-                Showroom & Custom
-              </span>
-            </ScrollReveal>
-
-            {/* Mission Statement Text (Large, inspiring) */}
-            <ScrollReveal delay={80}>
-              <p className="mt-6 font-display text-2xl leading-snug text-charcoal sm:text-3xl md:text-4xl md:leading-[1.28]">
-                {about.intro}
-              </p>
-            </ScrollReveal>
-
-            {/* Quote */}
-            {about.quote ? (
-              <ScrollReveal delay={120}>
-                <blockquote className="mt-6 border-y border-border/70 py-4 max-w-2xl mx-auto">
-                  <p className="font-display text-lg italic text-wood md:text-xl">
-                    “{about.quote}”
-                  </p>
-                </blockquote>
+          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0">
+            {/* Left narrative — Neutomni-style lead column */}
+            <div className="lg:col-span-6 lg:pt-2">
+              <ScrollReveal>
+                <p className="eyebrow">Our story</p>
+                <h1 className="mt-4 font-display text-[2.15rem] leading-[1.12] tracking-tight text-charcoal sm:text-5xl md:text-[3.35rem] md:leading-[1.08]">
+                  {statement.lead}
+                  {statement.emphasis ? (
+                    <>
+                      {" — "}
+                      <span className="italic text-wood">
+                        {statement.emphasis}
+                      </span>
+                    </>
+                  ) : null}
+                </h1>
               </ScrollReveal>
-            ) : null}
 
-            {/* Body paragraph */}
-            <ScrollReveal delay={150}>
-              <p className="mt-6 text-muted leading-relaxed text-[0.95rem] md:text-base max-w-3xl mx-auto">
-                {about.body}
-              </p>
-            </ScrollReveal>
+              <ScrollReveal delay={90}>
+                <p className="mt-8 max-w-xl text-[0.98rem] leading-relaxed text-muted md:text-base">
+                  {about.body}
+                  <span className="mt-3 block italic text-charcoal/75">
+                    One showroom → full rooms, made to fit.
+                  </span>
+                </p>
+              </ScrollReveal>
 
-            {/* Actions: Enquire now / Visit showroom (matching Get In Touch) */}
-            <ScrollReveal delay={200} className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
-              <ButtonLink href="/enquire" size="lg">
-                Enquire now
-              </ButtonLink>
-              <ButtonLink href="/contact" size="lg" variant="wood-outline">
-                Visit showroom
-              </ButtonLink>
-            </ScrollReveal>
+              <ScrollReveal
+                delay={140}
+                className="mt-9 flex flex-wrap items-center gap-3"
+              >
+                <ButtonLink href="/enquire" size="lg">
+                  Enquire now
+                </ButtonLink>
+                <ButtonLink href="/contact" size="lg" variant="wood-outline">
+                  Visit showroom
+                </ButtonLink>
+              </ScrollReveal>
+            </div>
+
+            {/* Right visual — offset for staggered rhythm */}
+            <div className="lg:col-span-6 lg:pt-16 xl:pt-24">
+              <ScrollReveal delay={80}>
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-stone-deep sm:aspect-[5/6] lg:aspect-[4/5]">
+                  <Image
+                    src={
+                      about.imageUrl || "/images/showroom-boucle-sectional.jpg"
+                    }
+                    alt={about.title || "West Home Furniture showroom"}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 48vw"
+                  />
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={160}>
+                <p className="mt-7 max-w-md font-display text-xl leading-snug tracking-tight text-charcoal sm:text-2xl md:text-[1.65rem] md:leading-[1.25]">
+                  First, we understand how you live —{" "}
+                  <span className="italic text-wood">
+                    {quote ||
+                      "then we build the clearest path to furniture that fits."}
+                  </span>
+                </p>
+              </ScrollReveal>
+            </div>
           </div>
 
-          {/* Showroom Info Banner */}
-          <ScrollReveal delay={100} className="mt-14 rounded-2xl border border-border/80 bg-surface p-6 sm:p-8 md:mt-20">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div>
+          {/* Compact showroom strip — not a heavy card stack */}
+          <ScrollReveal delay={100} className="mt-14 border-y border-border py-7 md:mt-20 md:py-9">
+            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
                 <p className="eyebrow">Showroom</p>
-                <h3 className="mt-1.5 font-display text-2xl text-charcoal md:text-[1.65rem]">
+                <h2 className="mt-2 font-display text-2xl tracking-tight text-charcoal md:text-[1.85rem]">
                   {about.showroomTitle || "Al Barsha, Hessa Street"}
-                </h3>
-                <p className="mt-1 text-sm font-medium text-wood">
+                </h2>
+                <p className="mt-1.5 text-sm font-medium text-wood">
                   {about.showroomHours || "Open daily, 9:00 AM – 9:00 PM"}
                 </p>
-                <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-muted">
+                <p className="mt-2.5 text-sm leading-relaxed text-muted md:text-[0.95rem]">
                   {about.showroomText ||
                     "Come sit with the pieces, browse fabrics and plan your rooms with our team."}
                 </p>
               </div>
-              <div className="shrink-0">
-                <ButtonLink href="/contact" variant="wood-outline" size="md">
-                  Visit us
-                </ButtonLink>
-              </div>
+              <ButtonLink href="/contact" variant="wood-outline" size="md">
+                Visit us
+              </ButtonLink>
             </div>
           </ScrollReveal>
 
@@ -186,8 +166,12 @@ export default async function AboutPage() {
           <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-10">
             {about.values.map((value, i) => (
               <ScrollReveal key={value.title} delay={i * 80}>
-                <h3 className="font-display text-2xl text-charcoal">{value.title}</h3>
-                <p className="mt-3 text-muted leading-relaxed">{value.description}</p>
+                <h3 className="font-display text-2xl text-charcoal">
+                  {value.title}
+                </h3>
+                <p className="mt-3 leading-relaxed text-muted">
+                  {value.description}
+                </p>
               </ScrollReveal>
             ))}
           </div>
