@@ -200,20 +200,20 @@ function copyForOffering(label: string): { icon: ReactNode; blurb: string } {
 
 export function AboutOfferings({ offerings }: { offerings: string[] }) {
   return (
-    <ul className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+    <ul className="mx-auto mt-8 grid max-w-6xl gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
       {offerings.map((item) => {
         const { icon, blurb } = copyForOffering(item);
         return (
           <li
             key={item}
-            className="flex gap-4 rounded-[1.5rem] border border-border bg-surface p-5 text-left shadow-sm sm:p-6"
+            className="flex gap-4 rounded-[1.5rem] border border-border bg-surface px-6 py-5 text-left shadow-sm sm:px-7 sm:py-6"
           >
             <IconCircle>{icon}</IconCircle>
             <div className="min-w-0 pt-0.5">
-              <h3 className="font-sans text-[1rem] font-semibold leading-snug tracking-tight text-charcoal">
+              <h3 className="font-display text-2xl text-charcoal">
                 {item}
               </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted">
+              <p className="mt-3 leading-relaxed text-muted">
                 {blurb}
               </p>
             </div>
