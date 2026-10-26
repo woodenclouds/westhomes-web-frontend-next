@@ -242,8 +242,7 @@ html[data-nav-open="true"] .floating-wa {
     filter 0.2s ease;
 }
 
-.products-mobile-sticky,
-.products-filters-sticky {
+.products-mobile-sticky {
   top: calc(var(--header-offset) + var(--header-sticky-gap));
 }
 
