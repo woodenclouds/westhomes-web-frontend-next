@@ -67,7 +67,7 @@ export function ProductsToolbar({
   const hasFilters = hasAnyFilters(category, search, pricing);
 
   return (
-    <aside className="products-filters-sticky rounded-[24px] border border-border bg-surface p-5 shadow-sm lg:sticky">
+    <aside className="rounded-[24px] border border-border bg-surface p-5 shadow-sm">
       <div className="mb-5 flex items-end justify-between gap-3 border-b border-border/80 pb-4">
         <div>
           <p className="eyebrow">Filters</p>

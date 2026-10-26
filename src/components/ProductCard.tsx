@@ -9,7 +9,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { productWhatsAppMessage } from "@/lib/whatsapp";
 import { formatPrice } from "@/lib/price";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 9;
 
 export function ProductCard({ product }: { product: Product }) {
   const priceLabel = formatPrice(product.price);
@@ -146,7 +146,12 @@ export function ProductGrid({
   function goToPage(next: number) {
     const clamped = Math.min(Math.max(1, next), totalPages);
     setPage(clamped);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const productsScroll = document.querySelector(".products-scroll");
+    if (productsScroll instanceof HTMLElement) {
+      productsScroll.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   return (
