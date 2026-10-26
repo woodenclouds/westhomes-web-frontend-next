@@ -191,8 +191,13 @@ function mapProduct(entry: WoQuickEntry): Product {
     categoryName: asString(entry.category_name),
     shortDescription: asString(entry.short_description),
     description: asString(entry.description),
-    imageUrl: mediaUrl(entry.image) || asString(entry.image_url),
-    gallery: Array.isArray(gallery) ? gallery.map((u) => asString(u)) : [],
+    imageUrl:
+      mediaUrl(entry.image) ||
+      asString(entry.image_url) ||
+      "/images/showroom-boucle-sectional.jpg",
+    gallery: Array.isArray(gallery)
+      ? gallery.map((u) => asString(u)).filter(Boolean)
+      : [],
     morePhotoSlugs: relationSlugs(entry.more_photos),
     specs: Array.isArray(specs)
       ? specs.map((s) => ({

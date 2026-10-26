@@ -16,14 +16,16 @@ export function ProductListRow({
       className="group flex h-full min-h-11 flex-col overflow-hidden rounded-2xl border border-border/80 bg-surface transition active:scale-[0.99] active:bg-stone-deep/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood"
     >
       <div className="relative aspect-square w-full overflow-hidden bg-[#F5F5F7]">
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          fill
-          priority={priority}
-          sizes="(max-width: 1023px) 50vw, 25vw"
-          className="object-cover"
-        />
+        {product.imageUrl ? (
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            priority={priority}
+            sizes="(max-width: 1023px) 50vw, 25vw"
+            className="object-cover"
+          />
+        ) : null}
         {product.isNew ? (
           <span className="pointer-events-none absolute left-2 top-2 z-10 rounded-md border border-black/[0.04] bg-white/95 px-1.5 py-0.5 text-[0.6rem] font-medium text-charcoal">
             New
