@@ -81,7 +81,23 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const contact = await cms.getContact();
+  let contact;
+  try {
+    contact = await cms.getContact();
+  } catch {
+    contact = {
+      companyName: "West Home Furniture Dubai",
+      address: "Al Barsha, Hessa Street, Dubai, United Arab Emirates",
+      phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+971 55 870 8760",
+      email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@westhomedubai.ae",
+      whatsappNumber:
+        process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "971558708760",
+      socialLinks: [
+        { label: "Instagram", href: "https://instagram.com/west.home.dubai" },
+        { label: "Facebook", href: "https://facebook.com" },
+      ],
+    };
+  }
 
   return (
     <html

@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["192.168.29.52", "localhost:3000"],
+  allowedDevOrigins: [
+    "localhost",
+    "127.0.0.1",
+    "192.168.29.52",
+  ],
   // Local photography is under /public/images; remotePatterns cover WoQuick media hosts.
   images: {
     formats: ["image/avif", "image/webp"],
