@@ -136,44 +136,47 @@ export default async function HomePage() {
       <section className="border-y border-border bg-surface section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
-              <SectionHeading
-                title={home.customisableTitle || "Customisable Pieces"}
-                description={
-                  home.customisableText ||
-                  "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
-                }
-              />
-              <Link href="/products#customisable" className="text-link self-start sm:self-auto sm:pt-2">
-                View customisable
-              </Link>
-            </div>
+            <SectionHeading
+              title={home.customisableTitle || "Customisable Pieces"}
+              description={
+                home.customisableText ||
+                "We customise sofas, beds, club chairs and more — fabric, size and finish chosen with you, priced after enquiry or as a starting showroom tag."
+              }
+            />
           </ScrollReveal>
-          <ScrollReveal delay={80} className="mt-12">
+          <ScrollReveal delay={80} className="mt-10 sm:mt-12">
             <ProductGrid products={customisablePreview} />
           </ScrollReveal>
+          <div className="mt-8 flex justify-start sm:mt-10">
+            <Link
+              href="/products#customisable"
+              className="text-link inline-flex"
+            >
+              View customisable
+            </Link>
+          </div>
         </div>
       </section>
 
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
-              <SectionHeading
-                title={home.featuredTitle || "Featured Pieces"}
-                description={
-                  home.featuredText ||
-                  "Ready looks from the floor — priced as shown, with custom options available when you need them."
-                }
-              />
-              <Link href="/products#showroom" className="text-link self-start sm:self-auto sm:pt-2">
-                View all
-              </Link>
-            </div>
+            <SectionHeading
+              title={home.featuredTitle || "Featured Pieces"}
+              description={
+                home.featuredText ||
+                "Ready looks from the floor — priced as shown, with custom options available when you need them."
+              }
+            />
           </ScrollReveal>
-          <ScrollReveal delay={80} className="mt-12">
+          <ScrollReveal delay={80} className="mt-10 sm:mt-12">
             <ProductGrid products={featuredShowroom} />
           </ScrollReveal>
+          <div className="mt-8 flex justify-start sm:mt-10">
+            <Link href="/products#showroom" className="text-link inline-flex">
+              View all
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -237,17 +240,12 @@ export default async function HomePage() {
       <section className="section-space">
         <div className="container-page">
           <ScrollReveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-6">
-              <SectionHeading
-                title="From The Showroom"
-                description="Rooms, fabrics and details from recent West Home settings."
-              />
-              <Link href="/gallery" className="text-link self-start sm:self-auto sm:pt-2">
-                Open gallery
-              </Link>
-            </div>
+            <SectionHeading
+              title="From The Showroom"
+              description="Rooms, fabrics and details from recent West Home settings."
+            />
           </ScrollReveal>
-          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 md:grid-cols-4 md:gap-4">
             {galleryPreview.map((item, i) => (
               <ScrollReveal key={item.id} delay={i * 70}>
                 <div className="frame-image relative aspect-square bg-stone-deep">
@@ -261,6 +259,11 @@ export default async function HomePage() {
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+          <div className="mt-8 flex justify-start sm:mt-10">
+            <Link href="/gallery" className="text-link inline-flex">
+              Open gallery
+            </Link>
           </div>
         </div>
       </section>

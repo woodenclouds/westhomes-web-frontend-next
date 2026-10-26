@@ -28,14 +28,32 @@ export function NatureScrollSection({
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // If the user prefers reduced motion, keep static
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
+    const desktopMq = window.matchMedia("(min-width: 768px)");
     let ticking = false;
 
+    const resetMobileStyles = () => {
+      if (contentRef.current) {
+        contentRef.current.style.opacity = "";
+        contentRef.current.style.transform = "";
+        contentRef.current.style.pointerEvents = "";
+      }
+      if (imageRef.current) {
+        imageRef.current.style.transform = "";
+      }
+    };
+
     const updateScroll = () => {
+      // Mobile: section scrolls away as a normal block — no sticky pin effect
+      if (!desktopMq.matches) {
+        resetMobileStyles();
+        ticking = false;
+        return;
+      }
+
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const windowH = window.innerHeight;
@@ -43,23 +61,20 @@ export function NatureScrollSection({
 
       if (totalScrollable <= 0) return;
 
-      // Progress from 0 (section top hits viewport top) to 1 (track scrolled to end)
       const currentScroll = Math.max(0, -rect.top);
       const progress = Math.min(1, Math.max(0, currentScroll / totalScrollable));
 
-      // Content fade out and translation:
-      // Fades out and glides up smoothly across the first 45% of scroll distance
       const textProgress = Math.min(1, progress / 0.45);
       const opacity = Math.max(0, 1 - textProgress);
-      const translateY = textProgress * -90; // translate up by 90px
+      const translateY = textProgress * -90;
 
       if (contentRef.current) {
         contentRef.current.style.opacity = `${opacity.toFixed(3)}`;
         contentRef.current.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
-        contentRef.current.style.pointerEvents = opacity < 0.05 ? "none" : "auto";
+        contentRef.current.style.pointerEvents =
+          opacity < 0.05 ? "none" : "auto";
       }
 
-      // Parallax & subtle expansion on the background image
       if (imageRef.current) {
         const scale = 1 + progress * 0.04;
         const imgTranslateY = progress * -25;
@@ -78,23 +93,24 @@ export function NatureScrollSection({
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
+    desktopMq.addEventListener("change", onScroll);
     updateScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      desktopMq.removeEventListener("change", onScroll);
     };
   }, []);
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[175vh] sm:h-[190vh] md:h-[200vh] bg-background"
+      className="relative w-full bg-background md:h-[200vh]"
       aria-label={title}
     >
-      {/* Sticky Fullscreen Frame */}
-      <div className="sticky top-0 z-0 h-[100svh] w-full overflow-hidden flex flex-col justify-between">
-        {/* Full-bleed background image filling entire viewport */}
+      {/* Mobile: normal block that scrolls away. md+: sticky pin track */}
+      <div className="relative z-0 flex min-h-[100svh] w-full flex-col justify-between overflow-hidden md:sticky md:top-0 md:h-[100svh]">
         <div
           ref={imageRef}
           className="absolute inset-0 h-full w-full will-change-transform"
@@ -110,17 +126,15 @@ export function NatureScrollSection({
             sizes="100vw"
           />
 
-          {/* Gentle top fade to ensure seamless blend with preceding TickerBanner / background */}
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/40 to-transparent"
             aria-hidden="true"
           />
         </div>
 
-        {/* Scrollable / Floating Content Layer */}
         <div
           ref={contentRef}
-          className="relative z-10 mx-auto w-full max-w-4xl px-4 pt-24 sm:pt-32 md:pt-40 text-center will-change-transform will-change-opacity"
+          className="relative z-10 mx-auto w-full max-w-4xl px-4 pt-24 text-center will-change-transform will-change-opacity sm:pt-32 md:pt-40"
         >
           {eyebrow ? (
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-wood sm:text-[0.75rem]">
@@ -128,7 +142,9 @@ export function NatureScrollSection({
             </p>
           ) : null}
 
-          <h2 className={`font-display text-[2.25rem] leading-[1.08] text-charcoal sm:text-4xl md:text-5xl lg:text-[3.75rem] tracking-tight capitalize ${eyebrow ? "mt-3 sm:mt-4" : ""}`}>
+          <h2
+            className={`font-display text-[2.25rem] leading-[1.08] tracking-tight text-charcoal capitalize sm:text-4xl md:text-5xl lg:text-[3.75rem] ${eyebrow ? "mt-3 sm:mt-4" : ""}`}
+          >
             {title}
           </h2>
 
@@ -145,8 +161,7 @@ export function NatureScrollSection({
           ) : null}
         </div>
 
-        {/* Bottom spacer to keep the layout balanced */}
-        <div className="relative z-10 pb-8 pointer-events-none" />
+        <div className="relative z-10 pointer-events-none pb-8" />
       </div>
     </section>
   );

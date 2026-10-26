@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "woquick-cms": {
+      "url": "https://west-homes.api.woquick.in/api/v1/cms/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${env:WOQUICK_CMS_TOKEN}"
+      }
+    }
+  }
+}
