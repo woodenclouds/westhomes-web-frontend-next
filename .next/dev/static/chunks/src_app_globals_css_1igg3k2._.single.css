@@ -4089,6 +4089,10 @@
   }
 
   @media (min-width: 64rem) {
+    .lg\:sticky {
+      position: sticky;
+    }
+
     .lg\:col-span-6 {
       grid-column: span 6 / span 6;
     }
@@ -4489,7 +4493,7 @@ html[data-nav-open="true"] .floating-wa {
   transition: opacity .25s, transform .25s, filter .2s;
 }
 
-.products-mobile-sticky {
+.products-mobile-sticky, .products-filters-sticky {
   top: calc(var(--header-offset) + var(--header-sticky-gap));
 }
 
