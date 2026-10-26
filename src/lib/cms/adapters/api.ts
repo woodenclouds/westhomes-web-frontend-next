@@ -177,11 +177,20 @@ const CUSTOM_FALLBACK_PRICES: Record<string, number> = {
 
 function mapProduct(entry: WoQuickEntry): Product {
   const categorySlug = relationSlug(entry.category);
-  const gallery = parseJsonField<string[]>(entry.gallery, []);
+  const rawGallery = parseJsonField<string[]>(entry.gallery, []);
+  const gallery = (Array.isArray(rawGallery) ? rawGallery : [])
+    .map((u) => asString(u))
+    .filter(Boolean);
   const specs = parseJsonField<ProductSpec[]>(entry.specs, []);
   const slug = asString(entry.slug);
   const rawPrice = asNumberOrNull(entry.price);
   const price = rawPrice ?? CUSTOM_FALLBACK_PRICES[slug] ?? null;
+  // Prefer media upload, then legacy image_url, then first gallery photo.
+  const imageUrl =
+    mediaUrl(entry.image) ||
+    asString(entry.image_url) ||
+    gallery[0] ||
+    "";
 
   return {
     id: asString(entry.id) || asString(entry.slug),
@@ -191,13 +200,8 @@ function mapProduct(entry: WoQuickEntry): Product {
     categoryName: asString(entry.category_name),
     shortDescription: asString(entry.short_description),
     description: asString(entry.description),
-    imageUrl:
-      mediaUrl(entry.image) ||
-      asString(entry.image_url) ||
-      "/images/showroom-boucle-sectional.jpg",
-    gallery: Array.isArray(gallery)
-      ? gallery.map((u) => asString(u)).filter(Boolean)
-      : [],
+    imageUrl,
+    gallery,
     morePhotoSlugs: relationSlugs(entry.more_photos),
     specs: Array.isArray(specs)
       ? specs.map((s) => ({
