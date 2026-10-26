@@ -242,17 +242,8 @@ html[data-nav-open="true"] .floating-wa {
     filter 0.2s ease;
 }
 
-/* Products grid: scroll without a visible scrollbar */
-.products-scroll {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.products-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.products-mobile-sticky {
+.products-mobile-sticky,
+.products-filters-sticky {
   top: calc(var(--header-offset) + var(--header-sticky-gap));
 }
 

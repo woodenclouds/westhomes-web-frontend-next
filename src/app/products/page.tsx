@@ -53,8 +53,8 @@ export default async function ProductsPage({
   );
 
   return (
-    <div className="pb-[max(5.5rem,calc(1.25rem+env(safe-area-inset-bottom)+3rem))] lg:h-[calc(100svh-7rem)] lg:max-h-[calc(100svh-7rem)] lg:overflow-hidden lg:pb-0">
-      <div className="container-page h-full py-3 lg:py-8">
+    <div className="pb-[max(5.5rem,calc(1.25rem+env(safe-area-inset-bottom)+3rem))] lg:pb-12">
+      <div className="container-page py-3 lg:py-8">
         {/* Mobile + tablet (< lg) */}
         <div className="lg:hidden">
           <ProductsMobileFilters
@@ -74,22 +74,17 @@ export default async function ProductsPage({
           </div>
         </div>
 
-        {/* Desktop (lg+) — unchanged layout */}
-        <div className="hidden h-full min-h-0 gap-8 lg:grid lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-stretch lg:gap-10">
-          <div className="lg:self-start">
-            <ProductsToolbar
-              categories={categories}
-              currentCategory={categorySlug ?? ""}
-              currentSearch={search ?? ""}
-              currentPricing={pricing}
-              resultCount={products.length}
-            />
-          </div>
+        {/* Desktop (lg+) */}
+        <div className="hidden gap-8 lg:grid lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-start lg:gap-10">
+          <ProductsToolbar
+            categories={categories}
+            currentCategory={categorySlug ?? ""}
+            currentSearch={search ?? ""}
+            currentPricing={pricing}
+            resultCount={products.length}
+          />
 
-          <div
-            className="products-scroll min-h-0 min-w-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-8"
-            data-lenis-prevent
-          >
+          <div className="min-w-0">
             {products.length === 0 ? (
               <div className="rounded-[24px] border border-dashed border-border bg-surface px-6 py-14 text-center">
                 <h2 className="font-display text-2xl text-charcoal">
