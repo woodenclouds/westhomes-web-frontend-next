@@ -74,7 +74,7 @@ export default async function ProductsPage({
           </div>
         </div>
 
-        {/* Desktop (lg+) — normal page scroll, sticky filters */}
+        {/* Desktop (lg+) — filters scroll with the page */}
         <div className="hidden gap-8 lg:grid lg:grid-cols-[minmax(280px,340px)_minmax(0,1fr)] lg:items-start lg:gap-10">
           <ProductsToolbar
             categories={categories}
