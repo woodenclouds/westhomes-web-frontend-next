@@ -4089,6 +4089,10 @@
   }
 
   @media (min-width: 64rem) {
+    .lg\:sticky {
+      position: sticky;
+    }
+
     .lg\:col-span-6 {
       grid-column: span 6 / span 6;
     }
@@ -4111,18 +4115,6 @@
 
     .lg\:h-14 {
       height: calc(var(--spacing) * 14);
-    }
-
-    .lg\:h-\[calc\(100svh-7rem\)\] {
-      height: calc(100svh - 7rem);
-    }
-
-    .lg\:h-full {
-      height: 100%;
-    }
-
-    .lg\:max-h-\[calc\(100svh-7rem\)\] {
-      max-height: calc(100svh - 7rem);
     }
 
     .lg\:min-h-0 {
@@ -4201,22 +4193,6 @@
       row-gap: 0;
     }
 
-    .lg\:self-start {
-      align-self: flex-start;
-    }
-
-    .lg\:overflow-hidden {
-      overflow: hidden;
-    }
-
-    .lg\:overflow-y-auto {
-      overflow-y: auto;
-    }
-
-    .lg\:overscroll-contain {
-      overscroll-behavior: contain;
-    }
-
     .lg\:p-9 {
       padding: calc(var(--spacing) * 9);
     }
@@ -4229,12 +4205,8 @@
       padding-top: calc(var(--spacing) * 2);
     }
 
-    .lg\:pb-0 {
-      padding-bottom: 0;
-    }
-
-    .lg\:pb-8 {
-      padding-bottom: calc(var(--spacing) * 8);
+    .lg\:pb-12 {
+      padding-bottom: calc(var(--spacing) * 12);
     }
 
     .lg\:pb-16 {
@@ -4521,17 +4493,8 @@ html[data-nav-open="true"] .floating-wa {
   transition: opacity .25s, transform .25s, filter .2s;
 }
 
-.products-mobile-sticky {
+.products-mobile-sticky, .products-filters-sticky {
   top: calc(var(--header-offset) + var(--header-sticky-gap));
-}
-
-.products-scroll {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.products-scroll::-webkit-scrollbar {
-  display: none;
 }
 
 .products-chip-scroll {

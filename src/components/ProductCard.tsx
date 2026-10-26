@@ -146,12 +146,7 @@ export function ProductGrid({
   function goToPage(next: number) {
     const clamped = Math.min(Math.max(1, next), totalPages);
     setPage(clamped);
-    const productsScroll = document.querySelector(".products-scroll");
-    if (productsScroll instanceof HTMLElement) {
-      productsScroll.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
