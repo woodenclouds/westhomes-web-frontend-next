@@ -87,19 +87,36 @@ async function cmsFetch<T>(
 }
 
 async function fetchAllEntries(typeSlug: string): Promise<WoQuickEntry[]> {
-  const first = await cmsFetch<WoQuickListResponse>(`/${typeSlug}/`);
-  const items = [...(first.data ?? [])];
-  const pagination = first.meta?.pagination;
-  const pageCount = pagination?.page_count ?? 1;
+  try {
+    const first = await cmsFetch<WoQuickListResponse>(`/${typeSlug}/`);
+    const items = [...(first.data ?? [])];
+    const pagination = first.meta?.pagination;
+    const pageCount = pagination?.page_count ?? 1;
 
-  for (let page = 2; page <= pageCount; page += 1) {
-    const next = await cmsFetch<WoQuickListResponse>(
-      `/${typeSlug}/?page=${page}`,
+    for (let page = 2; page <= pageCount; page += 1) {
+      try {
+        const next = await cmsFetch<WoQuickListResponse>(
+          `/${typeSlug}/?page=${page}`,
+        );
+        items.push(...(next.data ?? []));
+      } catch (error) {
+        console.error(
+          `[cms] fetchAllEntries(${typeSlug}) page ${page} failed; returning partial list`,
+          error,
+        );
+        break;
+      }
+    }
+
+    return items;
+  } catch (error) {
+    // Missing/unpublished types (404) must not fail the Next.js build.
+    console.error(
+      `[cms] fetchAllEntries(${typeSlug}) failed; returning empty list`,
+      error,
     );
-    items.push(...(next.data ?? []));
+    return [];
   }
-
-  return items;
 }
 
 function asString(value: unknown, fallback = ""): string {
