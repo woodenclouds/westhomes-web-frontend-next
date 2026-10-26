@@ -121,9 +121,11 @@ export function ProductCard({ product }: { product: Product }) {
 export function ProductGrid({
   products,
   pageSize = PAGE_SIZE,
+  className = "grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8",
 }: {
   products: Product[];
   pageSize?: number;
+  className?: string;
 }) {
   const [page, setPage] = useState(1);
   const productKey = products.map((p) => p.id).join(",");
@@ -149,7 +151,7 @@ export function ProductGrid({
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
+      <div className={`grid ${className}`}>
         {pageItems.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

@@ -50,6 +50,7 @@ self.__SERVER_FILES_MANIFEST={
       "disableStaticImages": false,
       "minimumCacheTTL": 14400,
       "formats": [
+        "image/avif",
         "image/webp"
       ],
       "maximumRedirects": 3,
@@ -64,7 +65,28 @@ self.__SERVER_FILES_MANIFEST={
           "search": ""
         }
       ],
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "https",
+          "hostname": "west-homes.api.woquick.in",
+          "pathname": "/**"
+        },
+        {
+          "protocol": "https",
+          "hostname": "api.woquick.in",
+          "pathname": "/**"
+        },
+        {
+          "protocol": "https",
+          "hostname": "**.woquick.in",
+          "pathname": "/**"
+        },
+        {
+          "protocol": "https",
+          "hostname": "*.r2.cloudflarestorage.com",
+          "pathname": "/**"
+        }
+      ],
       "qualities": [
         75
       ],
@@ -105,7 +127,11 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/alan/Documents/Projects/westhomes",
+    "outputFileTracingRoot": "/Users/novabjohn/Documents/west-homes/westhomes-web-frontend-next",
+    "allowedDevOrigins": [
+      "192.168.29.52",
+      "localhost:3000"
+    ],
     "enablePrerenderSourceMaps": true,
     "cacheComponents": false,
     "cacheLife": {
@@ -175,7 +201,7 @@ self.__SERVER_FILES_MANIFEST={
       "proxyPrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 7,
+      "cpus": 1,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptOperationCache": null,
@@ -320,13 +346,13 @@ self.__SERVER_FILES_MANIFEST={
     "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
-    "repoRoot": "/Users/alan/Documents/Projects/westhomes",
+    "repoRoot": "/Users/novabjohn/Documents/west-homes/westhomes-web-frontend-next",
     "turbopack": {
-      "root": "/Users/alan/Documents/Projects/westhomes"
+      "root": "/Users/novabjohn/Documents/west-homes/westhomes-web-frontend-next"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/Users/alan/Documents/Projects/westhomes",
+  "appDir": "/Users/novabjohn/Documents/west-homes/westhomes-web-frontend-next",
   "relativeAppDir": "",
   "files": [
     ".next/package.json",

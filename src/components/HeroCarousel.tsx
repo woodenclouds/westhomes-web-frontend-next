@@ -63,9 +63,10 @@ export function HeroCarousel({
       <div className="absolute inset-0 bg-charcoal/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-charcoal/50" />
 
-      <div className="relative flex min-h-[100svh] w-full flex-col justify-center items-center pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-28 sm:pb-16 md:pb-20 md:pt-32 px-4">
-        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-8 flex justify-center">
-          <div className={`flex flex-col items-center text-center max-w-3xl lg:max-w-5xl ${ready ? "hero-copy is-ready" : "hero-copy"}`}>
+      <div className="relative flex min-h-[100svh] w-full flex-col items-center justify-center pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-28 sm:pb-16 md:pb-20 md:pt-32">
+        {/* Mobile: exactly 16px side margins; larger screens keep existing spacing */}
+        <div className="mx-4 flex w-[calc(100%-2rem)] max-w-[1200px] justify-center sm:mx-8 sm:w-[calc(100%-4rem)] md:mx-auto md:w-full md:px-8">
+          <div className={`flex w-full max-w-3xl flex-col items-center text-center lg:max-w-5xl ${ready ? "hero-copy is-ready" : "hero-copy"}`}>
             {eyebrow ? (
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-stone/85 sm:text-[0.7rem]">
                 {eyebrow}

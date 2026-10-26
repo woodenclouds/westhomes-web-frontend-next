@@ -56,6 +56,12 @@ export function Textarea({
   );
 }
 
+const selectClass =
+  "w-full h-11 min-h-11 appearance-none rounded-full border border-border bg-surface bg-[length:1rem] bg-[right_1.1rem_center] bg-no-repeat py-0 pl-5 pr-11 text-base leading-none text-charcoal focus:border-wood focus:outline-none focus:ring-1 focus:ring-wood";
+
+const selectChevron =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236B635A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")";
+
 export function Select({
   label,
   id,
@@ -63,6 +69,7 @@ export function Select({
   hint,
   children,
   className = "",
+  style,
   ...props
 }: FieldProps &
   SelectHTMLAttributes<HTMLSelectElement> & { children: React.ReactNode }) {
@@ -72,7 +79,12 @@ export function Select({
         {label}
         {props.required ? <span className="text-error"> *</span> : null}
       </label>
-      <select id={id} className={`${fieldClass} ${className}`} {...props}>
+      <select
+        id={id}
+        className={`${selectClass} ${className}`}
+        style={{ backgroundImage: selectChevron, ...style }}
+        {...props}
+      >
         {children}
       </select>
       {hint && !error ? <p className="text-xs text-muted">{hint}</p> : null}

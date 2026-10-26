@@ -20,6 +20,16 @@
   --font-fraunces: var(--font-neue-montreal);
   --font-outfit: var(--font-inter);
   --card-radius: 24px;
+  /* Fixed header: top-4 (1rem) + h-14 (3.5rem); sticky gap 8px */
+  --header-offset: calc(1rem + 3.5rem);
+  --header-sticky-gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    /* top-4 + h-[68px] */
+    --header-offset: calc(1rem + 4.25rem);
+  }
 }
 
 @theme inline {
@@ -78,6 +88,8 @@ h4 {
   letter-spacing: -0.025em;
   line-height: 1.12;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 p {
@@ -99,7 +111,9 @@ p {
   width: 100%;
   max-width: 74rem;
   margin-inline: auto;
-  padding-inline: max(1rem, env(safe-area-inset-left), env(safe-area-inset-right));
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  min-width: 0;
 }
 
 @media (min-width: 480px) {
@@ -111,6 +125,21 @@ p {
 @media (min-width: 768px) {
   .container-page {
     padding-inline: 2.25rem;
+  }
+}
+
+/* Desktop only — wider content, tighter side margins */
+@media (min-width: 1024px) {
+  .container-page {
+    max-width: 90rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-page {
+    max-width: 96rem;
+    padding-inline: 1.25rem;
   }
 }
 
@@ -211,6 +240,55 @@ html[data-nav-open="true"] .floating-wa {
     opacity 0.25s ease,
     transform 0.25s ease,
     filter 0.2s ease;
+}
+
+/* Products grid: scroll without a visible scrollbar */
+.products-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.products-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.products-mobile-sticky {
+  top: calc(var(--header-offset) + var(--header-sticky-gap));
+}
+
+.products-chip-scroll {
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.products-chip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.products-filter-sheet {
+  animation: products-sheet-up 250ms ease-out;
+}
+
+@keyframes products-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .products-filter-sheet {
+    animation: none;
+  }
+}
+
+html[data-filter-sheet-open] .floating-wa {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .reveal {

@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.29.52", "localhost:3000"],
-  // Local photography is under /public/images. Remote patterns cover WoQuick and public Cloudflare R2 hosts.
+  // Local photography is under /public/images; remotePatterns cover WoQuick media hosts.
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -21,9 +21,10 @@ const nextConfig: NextConfig = {
         hostname: "**.woquick.in",
         pathname: "/**",
       },
+      // WoQuick media uploads (S3-compatible R2 signed URLs)
       {
         protocol: "https",
-        hostname: "**.r2.dev",
+        hostname: "*.r2.cloudflarestorage.com",
         pathname: "/**",
       },
     ],
