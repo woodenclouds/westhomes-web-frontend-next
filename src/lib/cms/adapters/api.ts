@@ -326,6 +326,27 @@ function mapContact(entry: WoQuickEntry): SiteContact {
   };
 }
 
+/** Used when the public CMS entry is missing (404) or unreachable during build. */
+function defaultContact(): SiteContact {
+  return {
+    companyName: "West Home Furniture Dubai",
+    address: "Al Barsha, Hessa Street, Dubai, United Arab Emirates",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+971 55 870 8760",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@westhomedubai.ae",
+    whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "971558708760",
+    mapEmbedUrl:
+      "https://www.openstreetmap.org/export/embed.html?bbox=55.18%2C25.09%2C55.22%2C25.12&layer=mapnik",
+    socialLinks: [
+      { label: "Instagram", href: "https://instagram.com/west.home.dubai" },
+      { label: "Facebook", href: "https://facebook.com" },
+      { label: "Website", href: "https://www.westhomedubai.ae" },
+    ],
+    pageTitle: "Come to the showroom",
+    pageIntro:
+      "Visit us in Al Barsha or send a WhatsApp enquiry — we reply with availability, pricing, and custom options.",
+  };
+}
+
 const referenceProducts: Product[] = [
   {
     id: "prd-ref-001",
@@ -398,18 +419,34 @@ const referenceProducts: Product[] = [
 
 export const apiAdapter: CmsAdapter = {
   async getHomeContent() {
-    const res = await cmsFetch<WoQuickSingleResponse>("/home/");
-    return mapHome(res.data);
+    try {
+      const res = await cmsFetch<WoQuickSingleResponse>("/home/");
+      return mapHome(res.data);
+    } catch (error) {
+      console.error("[cms] getHomeContent failed; using empty home content", error);
+      return mapHome({});
+    }
   },
 
   async getAboutContent() {
-    const res = await cmsFetch<WoQuickSingleResponse>("/about/");
-    return mapAbout(res.data);
+    try {
+      const res = await cmsFetch<WoQuickSingleResponse>("/about/");
+      return mapAbout(res.data);
+    } catch (error) {
+      console.error("[cms] getAboutContent failed; using empty about content", error);
+      return mapAbout({});
+    }
   },
 
   async getContact() {
-    const res = await cmsFetch<WoQuickSingleResponse>("/contact/");
-    return mapContact(res.data);
+    try {
+      const res = await cmsFetch<WoQuickSingleResponse>("/contact/");
+      return mapContact(res.data);
+    } catch (error) {
+      // Root layout calls this for every page (including /_not-found) at build time.
+      console.error("[cms] getContact failed; using env/default contact", error);
+      return defaultContact();
+    }
   },
 
   async getCategories() {
